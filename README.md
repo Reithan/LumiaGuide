@@ -44,7 +44,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `npm run deploy`
 
-Deploys the fully minified page to the GitHub Pages linked branch
+Deploys the fully minified page to the GitHub Pages linked branch.
+
 Will need the gh-pages module installed (`npm install gh-pages --saved dev`)
 
 ## Learn More
