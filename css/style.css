@@ -10,6 +10,10 @@ body {
   overflow: hidden;
 }
 
+h1 {
+  margin: 0px;
+}
+
 .wrapper {
   margin-left: auto;
   margin-right: auto;
@@ -27,6 +31,8 @@ body {
   text-align: left;
   margin: 0px;
   box-sizing: border-box;
+  padding: 10px;
+  margin: 0px;
 }
 
 .main.pane {
@@ -41,20 +47,26 @@ body {
   display: inline-block;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  padding: 0px;
 }
 
-.build.items {
+.build.gear {
+  height: 25%;
+}
+
+.build.consumables {
   height: 25%;
 }
 
 .build.stats {
-  height: 75%;
+  height: 50%;
 }
 
 .center {
   width: 33%;
   height: 100%;
   display: inline-block;
+  padding: 0px;
 }
 
 .shop,.plan {
@@ -67,6 +79,7 @@ body {
   display: inline-block;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+  padding: 0px;
 }
 
 .map {
