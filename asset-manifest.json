@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/LumiaGuide/static/css/main.5968da3f.chunk.css",
+    "main.js": "/LumiaGuide/static/js/main.73c8b2a5.chunk.js",
+    "main.js.map": "/LumiaGuide/static/js/main.73c8b2a5.chunk.js.map",
+    "runtime-main.js": "/LumiaGuide/static/js/runtime-main.6ca07243.js",
+    "runtime-main.js.map": "/LumiaGuide/static/js/runtime-main.6ca07243.js.map",
+    "static/js/2.2f4d9e65.chunk.js": "/LumiaGuide/static/js/2.2f4d9e65.chunk.js",
+    "static/js/2.2f4d9e65.chunk.js.map": "/LumiaGuide/static/js/2.2f4d9e65.chunk.js.map",
+    "static/js/3.658df11a.chunk.js": "/LumiaGuide/static/js/3.658df11a.chunk.js",
+    "static/js/3.658df11a.chunk.js.map": "/LumiaGuide/static/js/3.658df11a.chunk.js.map",
+    "index.html": "/LumiaGuide/index.html",
+    "static/css/main.5968da3f.chunk.css.map": "/LumiaGuide/static/css/main.5968da3f.chunk.css.map",
+    "static/js/2.2f4d9e65.chunk.js.LICENSE.txt": "/LumiaGuide/static/js/2.2f4d9e65.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/LumiaGuide/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ca07243.js",
+    "static/js/2.2f4d9e65.chunk.js",
+    "static/css/main.5968da3f.chunk.css",
+    "static/js/main.73c8b2a5.chunk.js"
+  ]
+}
