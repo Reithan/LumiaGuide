@@ -48,7 +48,14 @@ test('All map area connections are all bi-di', () => {
   }
 });
 
-test('All items have recipes defined', () => {});
+test('All item stats names match their key', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      expect(Items.all_items[item].name).toBe(item);
+    }
+  }
+});
+
 test('All items recipes are valid', () => {});
 test('All items have drop areas defined', () => {});
 test('All items drop areas are valid', () => {});
