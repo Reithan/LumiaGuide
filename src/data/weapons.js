@@ -49,5 +49,22 @@ weapons["Lightning Whip"] = new GearStats("Lightning Whip","Rare",1,new ItemReci
 weapons["Gleipnir"] = new GearStats("Gleipnir","Epic",1,new ItemRecipe("Wind Whip","Spiked Plank"),"Weapon","Whip",58,0,0,0,0,0,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Plasma Whip"] = new GearStats("Plasma Whip","Epic",1,new ItemRecipe("Lightning Whip","Laser Pointer"),"Weapon","Whip",60,0.3,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
 weapons["Bloody Nine Tails"] = new GearStats("Bloody Nine Tails","Legendary",1,new ItemRecipe("Wind Whip","VF Blood Sample"),"Weapon","Whip",65,0,0,0,0,0.25,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
+// Thrown Weapons
+weapons["Iron Ball"] = new GearStats("Iron Ball","Common",1,null,"Weapon","Throw",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Archery Range",5],["Forest",7],["Factory",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Baseball"] = new GearStats("Baseball","Common",1,null,"Weapon","Throw",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Grenade"] = new GearStats("Grenade","Uncommon",1,new ItemRecipe("Iron Ball","Gunpowder"),"Weapon","Throw",25,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Molotov Cocktail"] = new GearStats("Molotov Cocktail","Uncommon",1,new ItemRecipe("Glass Bottle","Oil"),"Weapon","Throw",22,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Signed Ball"] = new GearStats("Signed Ball","Uncommon",1,new ItemRecipe("Baseball","Fountain Pen"),"Weapon","Throw",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Sling"] = new GearStats("Sling","Rare",1,new ItemRecipe("Signed Ball","Rubber"),"Weapon","Throw",42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Flour Bomb"] = new GearStats("Flour Bomb","Rare",1,new ItemRecipe("White Powder","Molotov Cocktail"),"Weapon","Throw",58,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Ball Lightning"] = new GearStats("Ball Lightning","Rare",1,new ItemRecipe("Iron Ball","Dead Battery"),"Weapon","Throw",24,0.20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Flubber"] = new GearStats("Flubber","Rare",1,new ItemRecipe("Rubber","Boiling Water"),"Weapon","Throw",42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Spiky Bouncy Ball"] = new GearStats("Spiky Bouncy Ball","Rare",1,new ItemRecipe("Flubber","Nail"),"Weapon","Throw",45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
+weapons["Incendiary Bomb"] = new GearStats("Incendiary Bomb","Epic",1,new ItemRecipe("Molotov Cocktail","Ball Lightning"),"Weapon","Throw",70,0.5,0,0,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Grenade of Antioch"] = new GearStats("Grenade of Antioch","Epic",1,new ItemRecipe("High Explosive Grenade","Cross"),"Weapon","Throw",85,0,85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["David's Sling"] = new GearStats("David's Sling","Epic",1,new ItemRecipe("Sling","Saint's Relic"),"Weapon","Throw",71,0,27,0,0,0,0,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Smoke Bomb"] = new GearStats("Smoke Bomb","Epic",1,new ItemRecipe("Flour Bomb","Cola"),"Weapon","Throw",90,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["High Explosive Grenade"] = new GearStats("High Explosive Grenade","Epic",1,new ItemRecipe("Grenade","RDX"),"Weapon","Throw",56,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Ruthenium Marble"] = new GearStats("Ruthenium Marble","Epic",1,new ItemRecipe("Spiky Bouncy Ball","Gold"),"Weapon","Throw",80,0,0,0,0,0,0,0,0.28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
