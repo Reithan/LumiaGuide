@@ -2,6 +2,8 @@
 # LumiaGuide
 Open Source REACT App For Path Optimization in Eternal Return: Black Survival
 
+Current deployed version is available here: https://reithan.github.io/LumiaGuide/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
