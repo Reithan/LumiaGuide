@@ -39,5 +39,15 @@ weapons["Statue of Soteria"] = new GearStats("Statue of Soteria","Epic",1,new It
 weapons["Mallet"] = new GearStats("Mallet","Epic",1,new ItemRecipe("Goblin Bat","Motor"),"Weapon","Bat",85,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4,0);
 weapons["Spy Umbrella"] = new GearStats("Spy Umbrella","Epic",1,new ItemRecipe("Umbrella","Ash"),"Weapon","Bat",65,0,0,0,0,0,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Monkey King Bar"] = new GearStats("Monkey King Bar","Legendary",1,new ItemRecipe("Force Core","Long Rod"),"Weapon","Bat",150,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+// Whips
+weapons["Whip"] = new GearStats("Whip","Common",1,null,"Weapon","Whip",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Chapel",3],["School",4]]);
+weapons["Rope Cuffs"] = new GearStats("Rope Cuffs","Uncommon",1,new ItemRecipe("Whip","Stallion Medal"),"Weapon","Whip",24,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Bullwhip"] = new GearStats("Bullwhip","Uncommon",1,new ItemRecipe("Whip","Razor"),"Weapon","Whip",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Wind Whip"] = new GearStats("Wind Whip","Rare",1,new ItemRecipe("Rope Cuffs","Fan"),"Weapon","Whip",24,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Thunder Whip"] = new GearStats("Thunder Whip","Rare",1,new ItemRecipe("Bullwhip","Gold"),"Weapon","Whip",30,0,0,0,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Lightning Whip"] = new GearStats("Lightning Whip","Rare",1,new ItemRecipe("Bullwhip","Dead Battery"),"Weapon","Whip",42,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Gleipnir"] = new GearStats("Gleipnir","Epic",1,new ItemRecipe("Wind Whip","Spiked Plank"),"Weapon","Whip",58,0,0,0,0,0,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Plasma Whip"] = new GearStats("Plasma Whip","Epic",1,new ItemRecipe("Lightning Whip","Laser Pointer"),"Weapon","Whip",60,0.3,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
+weapons["Bloody Nine Tails"] = new GearStats("Bloody Nine Tails","Legendary",1,new ItemRecipe("Wind Whip","VF Blood Sample"),"Weapon","Whip",65,0,0,0,0,0.25,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
