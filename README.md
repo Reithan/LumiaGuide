@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml/badge.svg)](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml)
 # LumiaGuide
 Open Source REACT App For Path Optimization in Eternal Return: Black Survival
 
