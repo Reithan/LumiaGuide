@@ -140,5 +140,16 @@ weapons["Machine Gun"] = new GearStats("Machine Gun","Epic",1,new ItemRecipe("ST
 weapons["Gatling Gun"] = new GearStats("Gatling Gun","Epic",1,new ItemRecipe("Machine Gun","Oil"),"Weapon","Assault Rifle",55,0.15,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.5,0,0);
 weapons["AK-12"] = new GearStats("AK-12","Epic",1,new ItemRecipe("AK-47","Glass Panel"),"Weapon","Assault Rifle",89,0,0,0.17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
 weapons["XCR"] = new GearStats("XCR","Epic",1,new ItemRecipe("M16A1","Magazine"),"Weapon","Assault Rifle",60,0,10,0,0,0,0,0,0,0,350,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+// Sniper Rifles
+weapons["Long Rifle"] = new GearStats("Long Rifle","Common",1,null,"Weapon","Sniper Rifle",34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",3],["Forest",3]]);
+weapons["Springfield"] = new GearStats("Springfield","Uncommon",1,new ItemRecipe("Long Rifle","Laser Pointer"),"Weapon","Sniper Rifle",50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,1.5,0,0);
+weapons["Harpoon Gun"] = new GearStats("Harpoon Gun","Rare",1,new ItemRecipe("Springfield","Short Spear"),"Weapon","Sniper Rifle",64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2,0,0);
+weapons["Golden Rifle"] = new GearStats("Golden Rifle","Rare",1,new ItemRecipe("Springfield","Gold"),"Weapon","Sniper Rifle",56,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2.5,0,0);
+weapons["Railgun"] = new GearStats("Railgun","Rare",1,new ItemRecipe("Springfield","Electronic Parts"),"Weapon","Sniper Rifle",78,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.03,0,2,0,0);
+weapons["Tac-50"] = new GearStats("Tac-50","Epic",1,new ItemRecipe("Harpoon Gun","Blueprint"),"Weapon","Sniper Rifle",134,0,0,0,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.5,0,0);
+weapons["Intervention"] = new GearStats("Intervention","Epic",1,new ItemRecipe("Harpoon Gun","Telephoto Camera"),"Weapon","Sniper Rifle",120,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0);
+weapons["NTW-20"] = new GearStats("NTW-20","Epic",1,new ItemRecipe("Golden Rifle","Iron Sheet"),"Weapon","Sniper Rifle",92,0,0,0,0,0,0,0,0.24,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2.5,0,0);
+weapons["Polaris"] = new GearStats("Polaris","Epic",1,new ItemRecipe("Railgun","White Powder"),"Weapon","Sniper Rifle",117,0.35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.03,0,2,0,0);
+weapons["The Deadly Ray"] = new GearStats("The Deadly Ray","Legendary",1,new ItemRecipe("Moonstone","Golden Rifle"),"Weapon","Sniper Rifle",100,0,0,0,0,0,0,0,0.33,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2.5,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
