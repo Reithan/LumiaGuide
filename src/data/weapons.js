@@ -119,5 +119,17 @@ weapons["Ballista"] = new GearStats("Ballista","Epic",1,new ItemRecipe("Heavy Cr
 weapons["Sniper Crossbow"] = new GearStats("Sniper Crossbow","Epic",1,new ItemRecipe("Laser Crossbow","Sniper Scope"),"Weapon","Crossbow",85,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3.5,0,0);
 weapons["The Golden Ghost"] = new GearStats("The Golden Ghost","Epic",1,new ItemRecipe("Power Crossbow","RDX"),"Weapon","Crossbow",70,0,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Sharanga"] = new GearStats("Sharanga","Legendary",1,new ItemRecipe("Force Core","Crossbow"),"Weapon","Crossbow",140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+// Pistols
+weapons["Walther PPK"] = new GearStats("Walther PPK","Common",1,null,"Weapon","Pistol",14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Beach",4],["Hotel",5],["Factory",4]]);
+weapons["Magnum-Python"] = new GearStats("Magnum-Python","Uncommon",1,new ItemRecipe("Walther PPK","Oil"),"Weapon","Pistol",15,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Beretta M92F"] = new GearStats("Beretta M92F","Uncommon",1,new ItemRecipe("Walther PPK","Leather"),"Weapon","Pistol",23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["FN57"] = new GearStats("FN57","Rare",1,new ItemRecipe("Beretta M92F","Laser Pointer"),"Weapon","Pistol",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,2.5,0,0);
+weapons["Double Revolver SP"] = new GearStats("Double Revolver SP","Rare",1,new ItemRecipe("Magnum-Python","Beretta M92F"),"Weapon","Pistol",40,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Magnum-Anaconda"] = new GearStats("Magnum-Anaconda","Rare",1,new ItemRecipe("Magnum-Python","Blueprint"),"Weapon","Pistol",43,0.1,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Devil's Marksman"] = new GearStats("Devil's Marksman","Epic",1,new ItemRecipe("Double Revolver SP","Ash"),"Weapon","Pistol",35,0.1,0,0,0,0,0,42,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Elegance"] = new GearStats("Elegance","Epic",1,new ItemRecipe("FN57","Feather Duster"),"Weapon","Pistol",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,5,0,0);
+weapons["Electron Blaster"] = new GearStats("Electron Blaster","Epic",1,new ItemRecipe("Beretta M92F","Ion Battery"),"Weapon","Pistol",61,0.5,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Magnum-Boa"] = new GearStats("Magnum-Boa","Epic",1,new ItemRecipe("Magnum-Anaconda","Steel"),"Weapon","Pistol",95,0.25,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.15,0,3.5,0,0);
+weapons["Kelte"] = new GearStats("Kelte","Legendary",1,new ItemRecipe("Force Core","Beretta M92F"),"Weapon","Pistol",120,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,1,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
