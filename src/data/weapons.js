@@ -20,5 +20,13 @@ weapons["Buddha's Palm"] = new GearStats("Buddha's Palm","Epic",1,new ItemRecipe
 weapons["Brasil Gauntlet"] = new GearStats("Brasil Gauntlet","Epic",1,new ItemRecipe("Bone Gauntlet","Oilcloth"),"Weapon","Glove",50,0.35,0,0,0,0,0,0,0,0,0,1.2,0,0,1.2,0,10,0,0,0,-0.05,0,0);
 weapons["White Claw Punch"] = new GearStats("White Claw Punch","Epic",1,new ItemRecipe("Glass Knuckles","White Powder"),"Weapon","Glove",55,0,0,0.22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Imperial Silk Gloves"] = new GearStats("Imperial Silk Gloves","Epic",1,new ItemRecipe("Mithril String","Leather Gloves"),"Weapon","Glove",85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0);
+// Tonfa
+weapons["Bamboo"] = new GearStats("Bamboo","Common",1,null,"Weapon","Tonfa",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",8],["Temple",6],["Archery Range",5],["Cemetary",7],["Forest",7]],null,[["Bat","Rarely"]]);
+weapons["Wooden Tonfa"] = new GearStats("Wooden Tonfa","Uncommon",1,new ItemRecipe("Bamboo","Branch"),"Weapon","Tonfa",23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0);
+weapons["Police Baton"] = new GearStats("Police Baton","Rare",1,new ItemRecipe("Wooden Tonfa","Stallion Medal"),"Weapon","Tonfa",31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0);
+weapons["Ryukyu Tonfa"] = new GearStats("Ryukyu Tonfa","Rare",1,new ItemRecipe("Wooden Tonfa","White Powder"),"Weapon","Tonfa",38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,0);
+weapons["Tactical Tonfa"] = new GearStats("Tactical Tonfa","Epic",1,new ItemRecipe("Police Baton","Blueprint"),"Weapon","Tonfa",74,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0);
+weapons["Mai Sok"] = new GearStats("Mai Sok","Epic",1,new ItemRecipe("Ryukyu Tonfa","Short Rod"),"Weapon","Tonfa",63,0,0,0,0,0,0,0,0,0,0,1.0,0,0,0,0,20,0,0,0,0,0,0);
+weapons["Plasma Tonfa"] = new GearStats("Plasma Tonfa","Epic",1,new ItemRecipe("Ryukyu Tonfa","Laser Pointer"),"Weapon","Tonfa",65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,2.5);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
