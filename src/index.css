@@ -5,6 +5,7 @@
 
 body {
   background-color: hsl(220, 10%, 10%);
+  color: lightgray;
   padding: 0px;
   text-align: center;
   overflow: hidden;
