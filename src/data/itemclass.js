@@ -5,6 +5,9 @@ export const ItemRarity = ["Common","Uncommon","Rare","Epic","Legendary"];
 
 export class ItemRecipe {
   constructor(part1,part2) {
+    if(toType(part1) != "string" || toType(part2) != "string") {
+      throw new TypeError("ItemRecipe requires 2 part names.");
+    }
     this.part1 = part1;
     this.part2 = part2;
   }
