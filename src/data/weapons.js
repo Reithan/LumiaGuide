@@ -151,5 +151,15 @@ weapons["Intervention"] = new GearStats("Intervention","Epic",1,new ItemRecipe("
 weapons["NTW-20"] = new GearStats("NTW-20","Epic",1,new ItemRecipe("Golden Rifle","Iron Sheet"),"Weapon","Sniper Rifle",92,0,0,0,0,0,0,0,0.24,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2.5,0,0);
 weapons["Polaris"] = new GearStats("Polaris","Epic",1,new ItemRecipe("Railgun","White Powder"),"Weapon","Sniper Rifle",117,0.35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.03,0,2,0,0);
 weapons["The Deadly Ray"] = new GearStats("The Deadly Ray","Legendary",1,new ItemRecipe("Moonstone","Golden Rifle"),"Weapon","Sniper Rifle",100,0,0,0,0,0,0,0,0.33,0,0,0,0,0,0,0,0,0,0,0,-0.07,0,2.5,0,0);
+// Hammers
+weapons["Hammer"] = new GearStats("Hammer","Common",1,null,"Weapon","Hammer",16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Beach",7],["Alley",11]],null,[["Wild Boar","Rarely"]]);
+weapons["Warhammer"] = new GearStats("Warhammer","Uncommon",1,new ItemRecipe("Hammer","Short Rod"),"Weapon","Hammer",40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Morning Star"] = new GearStats("Morning Star","Rare",1,new ItemRecipe("Warhammer","Iron Ball"),"Weapon","Hammer",55,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Black Stag Hammer"] = new GearStats("Black Stag Hammer","Rare",1,new ItemRecipe("Warhammer","Leather"),"Weapon","Hammer",56,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Fang Mace"] = new GearStats("Fang Mace","Epic",1,new ItemRecipe("Morning Star","Heated Stone"),"Weapon","Hammer",55,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Hammer of Dagda"] = new GearStats("Hammer of Dagda","Epic",1,new ItemRecipe("Black Stag Hammer","Saint's Relic"),"Weapon","Hammer",95,0,20,0,0,0,0,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Hammer of Thor"] = new GearStats("Hammer of Thor","Epic",1,new ItemRecipe("Black Stag Hammer","Ion Battery"),"Weapon","Hammer",120,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Evening Star"] = new GearStats("Evening Star","Epic",1,new ItemRecipe("Moonstone","Morning Star"),"Weapon","Hammer",145,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Magic Stick"] = new GearStats("Magic Stick","Epic",1,new ItemRecipe("Warhammer","Moonlight Pendant"),"Weapon","Hammer",60,0.0,0,0,0,0.3,0,0,0.27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
