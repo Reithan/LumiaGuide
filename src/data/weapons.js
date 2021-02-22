@@ -131,5 +131,14 @@ weapons["Elegance"] = new GearStats("Elegance","Epic",1,new ItemRecipe("FN57","F
 weapons["Electron Blaster"] = new GearStats("Electron Blaster","Epic",1,new ItemRecipe("Beretta M92F","Ion Battery"),"Weapon","Pistol",61,0.5,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Magnum-Boa"] = new GearStats("Magnum-Boa","Epic",1,new ItemRecipe("Magnum-Anaconda","Steel"),"Weapon","Pistol",95,0.25,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.15,0,3.5,0,0);
 weapons["Kelte"] = new GearStats("Kelte","Legendary",1,new ItemRecipe("Force Core","Beretta M92F"),"Weapon","Pistol",120,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,1,0,0);
+// Assault Rifles
+weapons["Fedorova"] = new GearStats("Fedorova","Common",1,null,"Weapon","Assault Rifle",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",4],["Factory",4]]);
+weapons["STG-44"] = new GearStats("STG-44","Uncommon",1,new ItemRecipe("Fedorova","Gunpowder"),"Weapon","Assault Rifle",18,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+weapons["AK-47"] = new GearStats("AK-47","Rare",1,new ItemRecipe("STG-44","Piano Wire"),"Weapon","Assault Rifle",29,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+weapons["M16A1"] = new GearStats("M16A1","Rare",1,new ItemRecipe("STG-44","Leather"),"Weapon","Assault Rifle",25,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+weapons["Machine Gun"] = new GearStats("Machine Gun","Epic",1,new ItemRecipe("STG-44","Motor"),"Weapon","Assault Rifle",20,0.1,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+weapons["Gatling Gun"] = new GearStats("Gatling Gun","Epic",1,new ItemRecipe("Machine Gun","Oil"),"Weapon","Assault Rifle",55,0.15,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.5,0,0);
+weapons["AK-12"] = new GearStats("AK-12","Epic",1,new ItemRecipe("AK-47","Glass Panel"),"Weapon","Assault Rifle",89,0,0,0.17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
+weapons["XCR"] = new GearStats("XCR","Epic",1,new ItemRecipe("M16A1","Magazine"),"Weapon","Assault Rifle",60,0,10,0,0,0,0,0,0,0,350,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
