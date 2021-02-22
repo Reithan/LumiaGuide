@@ -1,4 +1,4 @@
-[![LumiaGuide Version](https://img.shields.io/github/package-json/v/Reithan/LumiaGuide?label=LumiaGuide)](#) [![Eternal Return Version](https://img.shields.io/github/package-json/erbs/Reithan/LumiaGuide?label=Eternal%20Return)](#) [![Node.js CI](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml/badge.svg)](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml)
+[![LumiaGuide Version](https://img.shields.io/github/package-json/v/Reithan/LumiaGuide?label=LumiaGuide)](#) [![Eternal Return Version](https://img.shields.io/badge/dynamic/json?label=Eternal%20Return&prefix=v&query=erbs&url=https%3A%2F%2Fraw.githubusercontent.com%2FReithan%2FLumiaGuide%2Fmain%2Fpackage.json)](#) [![Node.js CI](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml/badge.svg)](https://github.com/Reithan/LumiaGuide/actions/workflows/node.js.yml)
 # LumiaGuide
 Open Source REACT App For Path Optimization in Eternal Return: Black Survival
 
