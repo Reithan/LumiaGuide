@@ -1,1 +1,3 @@
-import * as ItemClass from './itemclass.js'
+import { GearStats, ItemRecipe } from "./itemclass";
+
+export var armors = {};
