@@ -13,7 +13,7 @@ export class ItemRecipe {
   }
 }
 
-export const CollectType = ["Pile of Stones","Woodpile","Potato Vine","Sea Fishing","Freshwater Fishing","Ancient Tree"];
+export const CollectType = ["Pile of Stones","Woodpile","Water Source","Potato Vine","Sea Fishing","Freshwater Fishing","Ancient Tree"];
 export const HuntType = ["Chicken","Bat","Wild Dog","Wild Boar","Wolf","Bear","Wickeline"];
 export const HuntRarity = ["Always","Often","Rarely"];
 export const AirSupplyColor = ["Green","Blue","Purple","Yellow"];
