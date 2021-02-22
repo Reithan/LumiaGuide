@@ -9,7 +9,25 @@ test('All areas have map_adjacencies defined', ()=> {
 test('All hyperloop locations are valid', ()=> {
   for (const area in Map.hyperloop) {
     if (Object.hasOwnProperty.call(Map.hyperloop, area)) {
-        expect(Map.areas).toContain(area);      
+      expect(Map.areas).toContain(area);
+    }
+  }
+});
+
+test('All map locations are valid', ()=> {
+  for (const area in Map.map_adjacencies) {
+    if (Object.hasOwnProperty.call(Map.map_adjacencies, area)) {
+      expect(Map.areas).toContain(area);
+    }
+  }
+});
+
+test('All map adjacencies are valid', ()=> {
+  for (const area in Map.map_adjacencies) {
+    if (Object.hasOwnProperty.call(Map.map_adjacencies, area)) {
+      for (const adjacent of Map.map_adjacencies[area]) {
+        expect(Map.areas).toContain(adjacent);
+      }
     }
   }
 });
