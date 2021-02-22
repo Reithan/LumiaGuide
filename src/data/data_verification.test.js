@@ -1,4 +1,5 @@
 import * as Map from './map.js'
+import * as Items from './items.js'
 
 test('All areas have map_adjacencies defined', ()=> {
   for (const area of Map.areas) {
@@ -32,7 +33,7 @@ test('All map adjacencies are valid', ()=> {
   }
 });
 
-test('map area connections are all bi-di', () => {
+test('All map area connections are all bi-di', () => {
   for (const areaA in Map.map_adjacencies) {
     if (Object.hasOwnProperty.call(Map.map_adjacencies, areaA)) {
       const adjacencies = Map.map_adjacencies[areaA];
@@ -44,3 +45,15 @@ test('map area connections are all bi-di', () => {
     }
   }
 });
+
+test('All items have recipes defined', () => {});
+test('All items recipes are valid', () => {});
+test('All items have drop areas defined', () => {});
+test('All items drop areas are valid', () => {});
+test('All items have box types defined', () => {});
+test('All weapons and armors have stats defined', () => {});
+test('Weapon and armor stat limits are defined', () => {});
+test('Weapon and armor stat limits are valid', () => {});
+test('All consumables have stats defined', () => {});
+test('Consumable stat limits are defined', () => {});
+test('Consumable stat limits are valid', () => {});
