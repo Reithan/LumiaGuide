@@ -206,7 +206,7 @@ export class SummonStats extends ItemStats {
     if(effect != null && effect != "Vision" && (isNaN(effect_duration) || effect_duration <= 0.0)) {
       throw new EvalError("Effect duration must be greater than 0 if there is a non-null, non-vision effect for a Summon.");
     }
-    if(effect != "Vision" && (isNaN(value) || !Number.isInteger(value) || value <= 0)) {
+    if(effect != "Vision" && (isNaN(damage) || !Number.isInteger(damage) || damage <= 0)) {
       throw new EvalError("Damage must be a positive integer for non-vision Summons.");
     }
     this.effect = effect;
