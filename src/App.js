@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import map from './data/map.js';
+import * as Map from './data/map.js';
 import './App.css';
 
 function App() {
