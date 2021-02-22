@@ -1,6 +1,7 @@
 {
   "name": "lumiaguide",
   "version": "0.1.0",
+  "erbs": "0.26.0",
   "private": true,
   "homepage": "https://reithan.github.io/LumiaGuide/",
   "dependencies": {
