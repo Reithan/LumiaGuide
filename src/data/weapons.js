@@ -106,5 +106,18 @@ weapons["Golden-Ratio Bow"] = new GearStats("Golden-Ratio Bow","Epic",1,new Item
 weapons["Twinbow"] = new GearStats("Twinbow","Epic",1,new ItemRecipe("Strong Bow","Composite Bow"),"Weapon","Bow",70,0.55,0,0,0,0,0,0,0.2,0.15,0,0,0,0,0,0,0,0,0,0,0,0,1,-0.4,0);
 weapons["Elemental Bow"] = new GearStats("Elemental Bow","Epic",1,new ItemRecipe("Scorchbow","White Crane Fan"),"Weapon","Bow",60,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,-0.4,0);
 weapons["Failnaught"] = new GearStats("Failnaught","Legendary",1,new ItemRecipe("VF Blood Sample","Strong Bow"),"Weapon","Bow",100,0.2,0,0,0,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+// Crossbows
+weapons["Short Crossbow"] = new GearStats("Short Crossbow","Common",1,null,"Weapon","Crossbow",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Forest",4],["Factory",4]]);
+weapons["Long Crossbow"] = new GearStats("Long Crossbow","Uncommon",1,new ItemRecipe("Short Crossbow","Piano Wire"),"Weapon","Crossbow",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Crossbow"] = new GearStats("Crossbow","Uncommon",1,new ItemRecipe("Short Crossbow","Bamboo"),"Weapon","Crossbow",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Power Crossbow"] = new GearStats("Power Crossbow","Rare",1,new ItemRecipe("Long Crossbow","Rubber"),"Weapon","Crossbow",42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Laser Crossbow"] = new GearStats("Laser Crossbow","Rare",1,new ItemRecipe("Crossbow","Laser Pointer"),"Weapon","Crossbow",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.5,0,0);
+weapons["Heavy Crossbow"] = new GearStats("Heavy Crossbow","Rare",1,new ItemRecipe("Long Crossbow","Steel"),"Weapon","Crossbow",63,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
+weapons["Steel Bow"] = new GearStats("Steel Bow","Rare",1,new ItemRecipe("Crossbow","Iron Sheet"),"Weapon","Crossbow",60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["The Legend of The General"] = new GearStats("The Legend of The General","Epic",1,new ItemRecipe("Steel Bow","Oilcloth"),"Weapon","Crossbow",75,0.5,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Ballista"] = new GearStats("Ballista","Epic",1,new ItemRecipe("Heavy Crossbow","Short Spear"),"Weapon","Crossbow",115,-0.05,0,0,0,0,0,0,0.08,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Sniper Crossbow"] = new GearStats("Sniper Crossbow","Epic",1,new ItemRecipe("Laser Crossbow","Sniper Scope"),"Weapon","Crossbow",85,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3.5,0,0);
+weapons["The Golden Ghost"] = new GearStats("The Golden Ghost","Epic",1,new ItemRecipe("Power Crossbow","RDX"),"Weapon","Crossbow",70,0,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Sharanga"] = new GearStats("Sharanga","Legendary",1,new ItemRecipe("Force Core","Crossbow"),"Weapon","Crossbow",140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
