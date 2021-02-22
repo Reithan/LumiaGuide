@@ -1,5 +1,7 @@
 import * as Map from './map.js'
+import * as ItemClass from './itemclass.js'
 import * as Items from './items.js'
+import * as Util from '../util.js'
 
 test('All areas have map_adjacencies defined', ()=> {
   for (const area of Map.areas) {
