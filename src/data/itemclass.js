@@ -14,7 +14,7 @@ export class ItemRecipe {
 }
 
 export const CollectType = ["Pile of Stones","Woodpile","Potato Vine","Sea Fishing","Freshwater Fishing","Ancient Tree"];
-export const HuntType = ["Chicken","Bat","Boar","Wolf","Bear","Wickeline"];
+export const HuntType = ["Chicken","Bat","Wild Dog","Boar","Wolf","Bear","Wickeline"];
 export const HuntRarity = ["Always","Often","Rarely"];
 export const AirSupplyColor = ["Green","Blue","Purple","Yellow"];
 export const DropTypes = ["Collect","Hunt","Air Supplies","Region"];
@@ -138,6 +138,8 @@ export class GearStats extends ItemStats {
         move_speed,
         move_speed_peace,
         vision_range,
+        normal_attack_healing_reduction,
+        skill_healing_reduction,
         region, collect, hunt, airsupply
       ) {
     super(name, rarity, quantity, recipe, region, collect, hunt, airsupply);
@@ -179,6 +181,8 @@ export class GearStats extends ItemStats {
     this.move_speed = move_speed;
     this.move_speed_peace = move_speed_peace;
     this.vision_range = vision_range;
+    this.normal_attack_healing_reduction = normal_attack_healing_reduction;
+    this.skill_healing_reduction = skill_healing_reduction;
   }
 }
 
