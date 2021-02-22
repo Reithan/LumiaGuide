@@ -91,5 +91,20 @@ weapons["Wind and Fire Wheels"] = new GearStats("Wind and Fire Wheels","Epic",1,
 weapons["Death Rune"] = new GearStats("Death Rune","Epic",1,new ItemRecipe("Charm","Tree of Life"),"Weapon","Shuriken",80,0,0,0,0,0,0,0,0.23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Sudarsana"] = new GearStats("Sudarsana","Legendary",1,new ItemRecipe("Force Core","Throwing Stars"),"Weapon","Shuriken",130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Petal Torrent"] = new GearStats("Petal Torrent","Legendary",1,new ItemRecipe("Frost Venom Dart","Stingburst"),"Weapon","Shuriken",80,0,130,0,0.5,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+// Bows
+weapons["Bow"] = new GearStats("Bow","Common",1,null,"Weapon","Bow",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Archery Range",4],["Chapel",4]]);
+weapons["Wooden Bow"] = new GearStats("Wooden Bow","Uncommon",1,new ItemRecipe("Branch","Piano Wire"),"Weapon","Bow",26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Longbow"] = new GearStats("Longbow","Uncommon",1,new ItemRecipe("Bow","Rubber"),"Weapon","Bow",25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Composite Bow"] = new GearStats("Composite Bow","Rare",1,new ItemRecipe("Longbow","Nail"),"Weapon","Bow",25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4,0);
+weapons["Strong Bow"] = new GearStats("Strong Bow","Rare",1,new ItemRecipe("Wooden Bow","Oil"),"Weapon","Bow",26,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Stallion Bow"] = new GearStats("Stallion Bow","Rare",1,new ItemRecipe("Mighty Bow","Stallion Medal"),"Weapon","Bow",20,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Mighty Bow"] = new GearStats("Mighty Bow","Rare",1,new ItemRecipe("Longbow","Gunpowder"),"Weapon","Bow",25,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Pellet Bow"] = new GearStats("Pellet Bow","Rare",1,new ItemRecipe("Wooden Bow","Heated Stone"),"Weapon","Bow",55,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Scorchbow"] = new GearStats("Scorchbow","Rare",1,new ItemRecipe("Longbow","Lighter"),"Weapon","Bow",22,0,0,0,0,0,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Ancient Bolt"] = new GearStats("Ancient Bolt","Epic",1,new ItemRecipe("Stallion Bow","Bamboo"),"Weapon","Bow",55,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Golden-Ratio Bow"] = new GearStats("Golden-Ratio Bow","Epic",1,new ItemRecipe("Pellet Bow","Gold"),"Weapon","Bow",68,0,0,0,0,0,0,0,0.2,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Twinbow"] = new GearStats("Twinbow","Epic",1,new ItemRecipe("Strong Bow","Composite Bow"),"Weapon","Bow",70,0.55,0,0,0,0,0,0,0.2,0.15,0,0,0,0,0,0,0,0,0,0,0,0,1,-0.4,0);
+weapons["Elemental Bow"] = new GearStats("Elemental Bow","Epic",1,new ItemRecipe("Scorchbow","White Crane Fan"),"Weapon","Bow",60,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,-0.4,0);
+weapons["Failnaught"] = new GearStats("Failnaught","Legendary",1,new ItemRecipe("VF Blood Sample","Strong Bow"),"Weapon","Bow",100,0.2,0,0,0,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
