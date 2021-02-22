@@ -161,5 +161,12 @@ weapons["Hammer of Dagda"] = new GearStats("Hammer of Dagda","Epic",1,new ItemRe
 weapons["Hammer of Thor"] = new GearStats("Hammer of Thor","Epic",1,new ItemRecipe("Black Stag Hammer","Ion Battery"),"Weapon","Hammer",120,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Evening Star"] = new GearStats("Evening Star","Epic",1,new ItemRecipe("Moonstone","Morning Star"),"Weapon","Hammer",145,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Magic Stick"] = new GearStats("Magic Stick","Epic",1,new ItemRecipe("Warhammer","Moonlight Pendant"),"Weapon","Hammer",60,0.0,0,0,0,0.3,0,0,0.27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+// Axes
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
+// Two-Handed Swords
+// Dual Swords
+// Spears
+// Nunchaku
+// Rapiers
+// Guitars
