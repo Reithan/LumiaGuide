@@ -131,6 +131,54 @@ test('All items recipes are valid', () => {
   }
 });
 
+test('All gear stats are valid', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      const gearstat = Items.all_items[item];
+      if(gearstat instanceof ItemClass.GearStats) {
+        expect(ItemClass.GearType).toContain(gearstat.type);
+        expect(gearstat.type == "Weapon").not.toBe(gearstat.subtype == null);
+      }
+    }
+  }
+});
+
+test('All consumable stats are valid', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      const consumablestat = Items.all_items[item];
+      if(consumablestat instanceof ItemClass.ConsumableStats) {
+        expect(ItemClass.ConsumableType).toContain(consumablestat.type);
+        expect(consumablestat.value).not.toBeNaN();
+        expect(Number.isInteger(consumablestat.value)).toBe(true);
+        expect(consumablestat.value).toBeGreaterThanOrEqual(1);
+      }
+    }
+  }
+});
+
+test('All summon stats are valid', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      const summonstat = Items.all_items[item];
+      if(summonstat instanceof ItemClass.SummonStats) {
+        if(summonstat.effect != null) {
+          expect(ItemClass.EffectType).toContain(summonstat.effect);
+
+          if(summonstat.effect != "Vision") {
+            expect(summonstat.effect_duration).not.toBeNaN();
+            expect(summonstat.effect_duration).toBeGreaterThan(0.0);
+
+            expect(summonstat.damage).not.toBeNaN();
+            expect(Number.isInteger(summonstat.damage)).toBe(true);
+            expect(summonstat.damage).toBeGreaterThanOrEqual(1);    
+          }
+        }
+      }
+    }
+  }
+});
+
 // TODO - these test should be moved from constructors into tests for optimization
 test('All items drop areas are valid', () => {});
 test('All items collection data is valid', () => {});

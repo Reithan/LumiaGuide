@@ -86,16 +86,6 @@ export class GearStats extends ItemStats {
         region, collect, hunt, airsupply
       ) {
     super(name, rarity, 1, 1, recipe, region, collect, hunt, airsupply);
-    if(!GearType.includes(type)) {
-      throw new TypeError("GearStats expects type of GearType.")
-    }
-    if(type == "Weapon") {
-      if(!WeaponType.includes(subtype)) {
-        throw new TypeError("GearStats expects weapon subtype of WeaponType.")
-      }
-    } else if(subtype != null) {
-      throw new TypeError("GearStats expects null subtype except for weapons.")
-    }
     this.type = type;
     this.subtype = subtype;
     this.attack_power = attack_power;
@@ -132,12 +122,6 @@ export const ConsumableType = ["Food","Beverage"];
 export class ConsumableStats extends ItemStats {
   constructor(name, rarity, quantity, max_stack, recipe, type, value, region, collect, hunt, airsupply) {
     super(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply);
-    if(!ConsumableType.includes(type)) {
-      throw new TypeError("ConsumableStats expects effect of type ConsumableType.");
-    }
-    if(isNaN(value) || !Number.isInteger(value) || value <= 0) {
-      throw new TypeError("ConsumableStats expects a positive integer for value.");
-    }
     this.type = type;
     this.value = value;
   }
@@ -148,15 +132,6 @@ export const EffectType = ["Vision","Slow","Root","Stun","Delay"];
 export class SummonStats extends ItemStats {
   constructor(name, rarity, quantity, max_stack, recipe, effect, effect_duration, damage, region, collect, hunt, airsupply) {
     super(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply);
-    if(!(effect == null || EffectType.includes(effect))) {
-      throw new TypeError("SummonStats expects effect of type EffectType or null.");
-    }
-    if(effect != null && effect != "Vision" && (isNaN(effect_duration) || effect_duration <= 0.0)) {
-      throw new EvalError("Effect duration must be greater than 0 if there is a non-null, non-vision effect for a Summon.");
-    }
-    if(effect != "Vision" && (isNaN(damage) || !Number.isInteger(damage) || damage <= 0)) {
-      throw new EvalError("Damage must be a positive integer for non-vision Summons.");
-    }
     this.effect = effect;
     this.effect_duration = effect_duration;
     this.damage = damage;
