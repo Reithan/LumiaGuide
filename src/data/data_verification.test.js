@@ -67,12 +67,19 @@ test('All items recipes are valid', () => {
     }
   }
 });
-test('All items have drop areas defined', () => {});
+
+// TODO - these test should be moved from constructors into tests for optimization
 test('All items drop areas are valid', () => {});
-test('All items have box types defined', () => {});
-test('All weapons and armors have stats defined', () => {});
+test('All items collection data is valid', () => {});
+test('All items hunt data is valid', () => {});
+test('All items box types are valid', () => {});
+// TODO - any other tests that can be moved out of constructors should as well
+
 test('Weapon and armor stat limits are defined', () => {});
 test('Weapon and armor stat limits are valid', () => {});
 test('All consumables have stats defined', () => {});
 test('Consumable stat limits are defined', () => {});
 test('Consumable stat limits are valid', () => {});
+test('All summons have stats defined', () => {});
+test('Summon stat limits are defined', () => {});
+test('Summon stat limits are valid', () => {});
