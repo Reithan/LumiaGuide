@@ -20,7 +20,7 @@ export const AirSupplyColor = ["Green","Blue","Purple","Yellow"];
 export const DropTypes = ["Collect","Hunt","Air Supplies","Region"];
 
 export class ItemStats {
-  constructor(name, rarity, quantity, recipe, region, collect, hunt, airsupply) {
+  constructor(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply) {
     if(toType(name) != "string") {
       throw new TypeError("ItemStats name not a string.");
     }
@@ -29,6 +29,9 @@ export class ItemStats {
     }
     if(isNaN(quantity) || !Number.isInteger(quantity) || quantity < 1 || quantity > 5) {
       throw new TypeError("Quantity should be an integer value between 1 and 5.");
+    }
+    if(isNaN(max_stack) || !Number.isInteger(max_stack) || max_stack < 1 || max_stack > 5) {
+      throw new TypeError("Max Stack should be an integer value between 1 and 5.");
     }
     if(!(recipe == null || recipe instanceof ItemRecipe)) {
       throw new TypeError("ItemStats expects recipe of type ItemRecipe or null.");
@@ -77,6 +80,7 @@ export class ItemStats {
     this.name = name;
     this.rarity = rarity;
     this.quantity = quantity;
+    this.max_stack = max_stack;
     this.recipe = recipe;
     this.region = region;
     this.collect = collect;
@@ -110,7 +114,7 @@ export const WeaponType = [
 ];
 
 export class GearStats extends ItemStats {
-  constructor(name, rarity, quantity, recipe,
+  constructor(name, rarity, recipe,
         type, subtype,
         attack_power,
         attack_speed,
@@ -139,7 +143,7 @@ export class GearStats extends ItemStats {
         skill_healing_reduction,
         region, collect, hunt, airsupply
       ) {
-    super(name, rarity, quantity, recipe, region, collect, hunt, airsupply);
+    super(name, rarity, 1, 1, recipe, region, collect, hunt, airsupply);
     if(!GearType.includes(type)) {
       throw new TypeError("GearStats expects type of GearType.")
     }
@@ -149,9 +153,6 @@ export class GearStats extends ItemStats {
       }
     } else if(subtype != null) {
       throw new TypeError("GearStats expects null subtype except for weapons.")
-    }
-    if(isNaN(quantity) || quantity != 1) {
-      throw new TypeError("GearStats must have quantity 1.")
     }
     this.type = type;
     this.subtype = subtype;
@@ -186,8 +187,8 @@ export class GearStats extends ItemStats {
 export const ConsumableType = ["Food","Beverage"];
 
 export class ConsumableStats extends ItemStats {
-  constructor(name, rarity, quantity, recipe, type, value, region, collect, hunt, airsupply) {
-    super(name, rarity, quantity, recipe, region, collect, hunt, airsupply);
+  constructor(name, rarity, quantity, max_stack, recipe, type, value, region, collect, hunt, airsupply) {
+    super(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply);
     if(!ConsumableType.includes(type)) {
       throw new TypeError("ConsumableStats expects effect of type ConsumableType.");
     }
@@ -202,8 +203,8 @@ export class ConsumableStats extends ItemStats {
 export const EffectType = ["Vision","Slow","Root","Stun","Delay"];
 
 export class SummonStats extends ItemStats {
-  constructor(name, rarity, quantity, recipe, effect, effect_duration, damage, region, collect, hunt, airsupply) {
-    super(name, rarity, quantity, recipe, region, collect, hunt, airsupply);
+  constructor(name, rarity, quantity, max_stack, recipe, effect, effect_duration, damage, region, collect, hunt, airsupply) {
+    super(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply);
     if(!(effect == null || EffectType.includes(effect))) {
       throw new TypeError("SummonStats expects effect of type EffectType or null.");
     }
