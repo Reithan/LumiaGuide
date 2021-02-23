@@ -201,6 +201,12 @@ weapons["Hovud"] = new GearStats("Hovud","Epic",1,new ItemRecipe("Jewel Sword","
 weapons["Laevateinn"] = new GearStats("Laevateinn","Legendary",1,new ItemRecipe("True Samadhi Fire","Shamshir"),"Weapon","Two-Handed Sword",78,0,20,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0);
 weapons["Dáinsleif"] = new GearStats("Dáinsleif","Legendary",1,new ItemRecipe("VF Blood Sample","Katana"),"Weapon","Two-Handed Sword",80,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4,0);
 // Dual Swords
+weapons["Twin Swords"] = new GearStats("Twin Swords","Uncommon",1,new ItemRecipe("Kitchen Knife","Rusty Sword"),"Weapon","Dual Swords",18,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Florentine"] = new GearStats("Florentine","Rare",1,new ItemRecipe("Twin Swords","Blueprint"),"Weapon","Dual Swords",28,0.1,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Divine Dual Swords"] = new GearStats("Divine Dual Swords","Epic",1,new ItemRecipe("Florentine","Nail"),"Weapon","Dual Swords",49,0.1,0,0,0,0.18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
+weapons["Starsteel Twin Swords"] = new GearStats("Starsteel Twin Swords","Epic",1,new ItemRecipe("Twin Swords","Moonstone"),"Weapon","Dual Swords",60,0.5,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Dioscuri"] = new GearStats("Dioscuri","Epic",1,new ItemRecipe("Twin Swords","Ion Battery"),"Weapon","Dual Swords",46,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Lloigor & Zahr"] = new GearStats("Lloigor & Zahr","Epic",1,new ItemRecipe("Twin Swords","Poison"),"Weapon","Dual Swords",38,0.15,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Spears
 // Nunchaku
 // Rapiers
