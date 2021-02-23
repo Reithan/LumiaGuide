@@ -5,9 +5,6 @@ export const ItemRarity = ["Common","Uncommon","Rare","Epic","Legendary"];
 
 export class ItemRecipe {
   constructor(part1,part2) {
-    if(toType(part1) != "string" || toType(part2) != "string") {
-      throw new TypeError("ItemRecipe requires 2 part names.");
-    }
     this.part1 = part1;
     this.part2 = part2;
   }
@@ -21,62 +18,6 @@ export const DropTypes = ["Collect","Hunt","Air Supplies","Region"];
 
 export class ItemStats {
   constructor(name, rarity, quantity, max_stack, recipe, region, collect, hunt, airsupply) {
-    if(toType(name) != "string") {
-      throw new TypeError("ItemStats name not a string.");
-    }
-    if(!ItemRarity.includes(rarity)) {
-      throw new TypeError("ItemStats passed invalid rarity.");
-    }
-    if(isNaN(quantity) || !Number.isInteger(quantity) || quantity < 1 || quantity > 5) {
-      throw new TypeError("Quantity should be an integer value between 1 and 5.");
-    }
-    if(isNaN(max_stack) || !Number.isInteger(max_stack) || max_stack < 1 || max_stack > 5) {
-      throw new TypeError("Max Stack should be an integer value between 1 and 5.");
-    }
-    if(!(recipe == null || recipe instanceof ItemRecipe)) {
-      throw new TypeError("ItemStats expects recipe of type ItemRecipe or null.");
-    }
-    var droplists = [region,collect,hunt,airsupply];
-    for (const droplist of droplists) {
-      if(droplist != null && toType(droplist) != "array") {
-        throw new TypeError("ItemStats expects all drop locations to be an array of drops, or null");
-      }      
-    }
-    if(region != null) {
-      for (const regiondrop of region) {
-        if(!Map.areas.includes(regiondrop[0])) {
-          throw new TypeError("ItemStats region drop area is invalid.");
-        }
-        if(isNaN(regiondrop[1]) || !Number.isInteger(regiondrop[1]) || regiondrop[1] <= 0) {
-          throw new TypeError("ItemStats region drop amount expects a positive integer.");
-        }
-      }
-    }
-    if(collect != null) {
-      for (const collectdrop of collect) {
-        if(!CollectType.includes(collectdrop)) {
-          throw new TypeError("ItemStats collection drop type is invalid.");
-        }
-      }
-    }
-    if(hunt != null) {
-      for (const huntdrop of hunt) {
-        if(!HuntType.includes(huntdrop[0])) {
-          throw new TypeError("ItemStats hunt drop type is invalid.");
-        }
-        if(!HuntRarity.includes(huntdrop[1])) {
-          throw new TypeError("ItemStats hunt rarity is invalid.");
-        }
-      }
-    }
-    if(airsupply != null) {
-      for (const airsupplydrop of airsupply) {
-        if(!AirSupplyColor.includes(airsupplydrop)) {
-          throw new TypeError("ItemStats air supply drop color is invalid.");
-        }
-      }
-    }
-
     this.name = name;
     this.rarity = rarity;
     this.quantity = quantity;

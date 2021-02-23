@@ -48,6 +48,67 @@ test('All map area connections are all bi-di', () => {
   }
 });
 
+test('All item stats are valid', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      const itemstats = Items.all_items[item];
+      expect(Util.toType(itemstats.name)).toBe("string");
+      expect(ItemClass.ItemRarity).toContain(itemstats.rarity);
+
+      expect(itemstats.quantity).not.toBeNaN();
+      expect(Number.isInteger(itemstats.quantity)).toBe(true);
+      expect(itemstats.quantity).toBeGreaterThanOrEqual(1);
+      expect(itemstats.quantity).toBeLessThanOrEqual(6); // telephotos now stack to 6??!
+
+      expect(itemstats.max_stack).not.toBeNaN();
+      expect(Number.isInteger(itemstats.max_stack)).toBe(true);
+      expect(itemstats.max_stack).toBeGreaterThanOrEqual(1);
+      expect(itemstats.max_stack).toBeLessThanOrEqual(6); // telephotos now stack to 6??!
+
+      if(itemstats.recipe != null) {
+        expect(itemstats.recipe).toBeInstanceOf(ItemClass.ItemRecipe);
+      }
+
+      var droplists = [itemstats.region,itemstats.collect,itemstats.hunt,itemstats.airsupply];
+      for (const droplist of droplists) {
+        if(droplist != null) {
+          expect(Util.toType(droplist)).toBe("array");
+        }
+      }
+
+      if(itemstats.region != null) {
+        for (const regiondrop of itemstats.region) {
+          expect(Map.areas).toContain(regiondrop[0]);
+
+          expect(regiondrop[1]).not.toBeNaN();
+          expect(Number.isInteger(regiondrop[1])).toBe(true);
+          expect(regiondrop[1]).toBeGreaterThanOrEqual(1);
+        }
+      }
+
+      
+      if(itemstats.collect != null) {
+        for (const collectdrop of itemstats.collect) {
+          expect(ItemClass.CollectType).toContain(collectdrop);
+        }
+      }
+
+      if(itemstats.hunt != null) {
+        for (const huntdrop of itemstats.hunt) {
+          expect(ItemClass.HuntType).toContain(huntdrop[0]);
+          expect(ItemClass.HuntRarity).toContain(huntdrop[1]);
+        }
+      }      
+
+      if(itemstats.airsupply != null) {
+        for (const airdrop of itemstats.airsupply) {
+          expect(ItemClass.AirSupplyColor).toContain(airdrop);
+        }
+      }
+    }
+  }
+});
+
 test('All item stats names match their key', () => {
   for (const item in Items.all_items) {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
@@ -61,6 +122,8 @@ test('All items recipes are valid', () => {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
       const itemstats = Items.all_items[item];
       if(itemstats.recipe != null) {
+        expect(Util.toType(itemstats.recipe.part1)).toBe("string");
+        expect(Util.toType(itemstats.recipe.part2)).toBe("string");
         expect(Items.all_items).toHaveProperty(itemstats.recipe.part1);
         expect(Items.all_items).toHaveProperty(itemstats.recipe.part2);
       }
