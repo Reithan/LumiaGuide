@@ -176,6 +176,14 @@ weapons["Parashu"] = new GearStats("Parashu","Epic",1,new ItemRecipe("Light Hatc
 weapons["Harpe"] = new GearStats("Harpe","Epic",1,new ItemRecipe("Reaper's Scythe","White Crane Fan"),"Weapon","Axe",105,0,0,0,0,0,0.5,33,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,-0.4);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
+weapons["Fountain Pen"] = new GearStats("Fountain Pen","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Avenue",8],["School",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Kitchen Knife"] = new GearStats("Kitchen Knife","Common",1,null,"Weapon","Dagger",4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,[["Dock",6],["Hotel",5],["Temple",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Army Knife"] = new GearStats("Army Knife","Uncommon",1,new ItemRecipe("Kitchen Knife","Branch"),"Weapon","Dagger",14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0);
+weapons["Rose Knife"] = new GearStats("Rose Knife","Rare",1,new ItemRecipe("Rose Knife","Branch"),"Weapon","Dagger",20,0,0,0,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Carnwennan"] = new GearStats("Carnwennan","Epic",1,new ItemRecipe("Rose Knife","Saint's Relic"),"Weapon","Dagger",44,0,29,0,0,0,0,0,0,0.12,0,1.2,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Mount Slicer"] = new GearStats("Mount Slicer","Epic",1,new ItemRecipe("Rose Knife","Ash"),"Weapon","Dagger",35,0,0,0,0,0,0,30,0,0.12,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",1,new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",57,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Fragarach"] = new GearStats("Fragarach","Legendary",1,new ItemRecipe("Army Knife","Force Core"),"Weapon","Dagger",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
 // Two-Handed Swords
 // Dual Swords
 // Spears
