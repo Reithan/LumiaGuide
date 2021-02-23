@@ -230,4 +230,13 @@ weapons["Bleeder"] = new GearStats("Bleeder","Rare",1,new ItemRecipe("Nunchaku",
 weapons["The Smiting Dragon"] = new GearStats("The Smiting Dragon","Epic",1,new ItemRecipe("Sharper","Ash"),"Weapon","Nunchaku",50,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
 weapons["Vibro Nunchaku"] = new GearStats("Vibro Nunchaku","Epic",1,new ItemRecipe("Bleeder","Motor"),"Weapon","Nunchaku",65,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Rapiers
+weapons["Needle"] = new GearStats("Needle","Common",1,null,"Weapon","Rapier",3,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",6],["Hotel",5],["Hospital",6]],null,[["Bat","Rarely"]]);
+weapons["Fencing Rapier"] = new GearStats("Fencing Rapier","Uncommon",1,new ItemRecipe("Needle","Iron Ore"),"Weapon","Rapier",16,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Apricot Sword"] = new GearStats("Apricot Sword","Rare",1,new ItemRecipe("Fencing Rapier","Flower of Fate"),"Weapon","Rapier",21,0,0,0.1,0.25,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Sword of Justice"] = new GearStats("Sword of Justice","Epic",1,new ItemRecipe("Fencing Rapier","Covert Agent Uniform"),"Weapon","Rapier",30,0,0,0,0.25,0,0,0,0,0.12,0,1.5,0,0,0,2,0,0,0,0,0,0,1,0,0);
+weapons["Durendal Mk2"] = new GearStats("Durendal Mk2","Epic",1,new ItemRecipe("Apricot Sword","Laser Pointer"),"Weapon","Rapier",55,0,0,0.1,0.25,0.08,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0);
+weapons["Volticletto"] = new GearStats("Volticletto","Epic",1,new ItemRecipe("Apricot Sword","Electronic Parts"),"Weapon","Rapier",47,0.35,0,0.1,0.25,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Meteor Claymore"] = new GearStats("Meteor Claymore","Epic",1,new ItemRecipe("Apricot Sword","Meteorite"),"Weapon","Rapier",75,0,0,0.15,0.20,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Joyeuse"] = new GearStats("Joyeuse","Epic",1,new ItemRecipe("Fencing Rapier","Mithril"),"Weapon","Rapier",75,0.12,0,0,0.30,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
+weapons["Mistilteinn"] = new GearStats("Mistilteinn","Legendary",1,new ItemRecipe("Sword of Justice","Branch"),"Weapon","Rapier",30,0,0,0,0.25,0,0,0,0.15,0.12,0,1.5,0,0,0,2,0,0,0,0,0,0,1,0,0);
 // Guitars
