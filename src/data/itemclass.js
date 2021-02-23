@@ -136,6 +136,7 @@ export class GearStats extends ItemStats {
         less_attack_damage,
         less_skill_flat,
         less_skill_percent,
+        less_crit_percent,
         move_speed,
         move_speed_peace,
         vision_range,
@@ -176,6 +177,7 @@ export class GearStats extends ItemStats {
     this.less_attack_damage = less_attack_damage;
     this.less_skill_flat = less_skill_flat;
     this.less_skill_percent = less_skill_percent;
+    this.less_crit_percent = less_crit_percent;
     this.move_speed = move_speed;
     this.move_speed_peace = move_speed_peace;
     this.vision_range = vision_range;
