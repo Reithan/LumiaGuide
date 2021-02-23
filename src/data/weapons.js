@@ -185,6 +185,21 @@ weapons["Mount Slicer"] = new GearStats("Mount Slicer","Epic",1,new ItemRecipe("
 weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",1,new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",57,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Fragarach"] = new GearStats("Fragarach","Legendary",1,new ItemRecipe("Army Knife","Force Core"),"Weapon","Dagger",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
 // Two-Handed Swords
+weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",1,null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",6],["Archery Range",5],["Chapel",5]]);
+weapons["Shamshir"] = new GearStats("Shamshir","Uncommon",1,new ItemRecipe("Rusty Sword","Lighter"),"Weapon","Two-Handed Sword",27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Katana"] = new GearStats("Katana","Rare",1,new ItemRecipe("Rusty Sword","Iron Sheet"),"Weapon","Two-Handed Sword",35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Masamune"] = new GearStats("Masamune","Rare",1,new ItemRecipe("Katana","Oil"),"Weapon","Two-Handed Sword",40,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Muramasa"] = new GearStats("Muramasa","Rare",1,new ItemRecipe("Katana","Gemstone"),"Weapon","Two-Handed Sword",50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Bastard Sword"] = new GearStats("Bastard Sword","Rare",1,new ItemRecipe("Rusty Sword","Steel"),"Weapon","Two-Handed Sword",45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Jewel Sword"] = new GearStats("Jewel Sword","Rare",1,new ItemRecipe("Shamshir","Ruby"),"Weapon","Two-Handed Sword",35,0,0,0,0,0,0,0,0,0,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Thuận Thiên"] = new GearStats("Thuận Thiên","Rare",1,new ItemRecipe("Bastard Sword","Turtle Shell"),"Weapon","Two-Handed Sword",77,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0);
+weapons["Plasma Sword"] = new GearStats("Plasma Sword","Rare",1,new ItemRecipe("Bastard Sword","Laser Pointer"),"Weapon","Two-Handed Sword",75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0);
+weapons["Arondight"] = new GearStats("Arondight","Epic",1,new ItemRecipe("Masamune","Cross"),"Weapon","Two-Handed Sword",50,0.25,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Excalibur"] = new GearStats("Excalibur","Epic",1,new ItemRecipe("Jewel Sword","Holy Grail"),"Weapon","Two-Handed Sword",60,0.1,0,0,0,0,0,0,0,0,360,0,2,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Monohoshizao"] = new GearStats("Monohoshizao","Epic",1,new ItemRecipe("Muramasa","Blueprint"),"Weapon","Two-Handed Sword",77,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Hovud"] = new GearStats("Hovud","Epic",1,new ItemRecipe("Jewel Sword","Glass Pieces"),"Weapon","Two-Handed Sword",50,0,0,0.25,0,0,0,0,0,0,300,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Laevateinn"] = new GearStats("Laevateinn","Legendary",1,new ItemRecipe("True Samadhi Fire","Shamshir"),"Weapon","Two-Handed Sword",78,0,20,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0);
+weapons["Dáinsleif"] = new GearStats("Dáinsleif","Legendary",1,new ItemRecipe("VF Blood Sample","Katana"),"Weapon","Two-Handed Sword",80,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4,0);
 // Dual Swords
 // Spears
 // Nunchaku
