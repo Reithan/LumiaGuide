@@ -179,11 +179,29 @@ test('All summon stats are valid', () => {
   }
 });
 
-test('Weapon and armor stat limits are defined', () => {});
-test('Weapon and armor stat limits are valid', () => {});
-test('All consumables have stats defined', () => {});
-test('Consumable stat limits are defined', () => {});
-test('Consumable stat limits are valid', () => {});
-test('All summons have stats defined', () => {});
-test('Summon stat limits are defined', () => {});
-test('Summon stat limits are valid', () => {});
+test('Stat limits are valid', () => {
+  for (const itemname in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, itemname)) {
+      const itemstats = Items.all_items[itemname];
+      for (const key in itemstats) {
+        if (Object.hasOwnProperty.call(itemstats, key)) {
+          const itemstat = itemstats[key];
+          var totype = Util.toType(itemstat);
+          if(totype == "string" || totype == "array" || totype == "object" || totype == "undefined" || totype == "null") {
+            continue;
+          }
+          if(itemstats instanceof ItemClass.GearStats) {
+            expect(itemstat).toBeGreaterThanOrEqual(Items.gear_range[0][key]);
+            expect(itemstat).toBeLessThanOrEqual(Items.gear_range[1][key]);
+          } else if(itemstats instanceof ItemClass.ConsumableStats) {
+            expect(itemstat).toBeGreaterThanOrEqual(Items.consumable_range[0][key]);
+            expect(itemstat).toBeLessThanOrEqual(Items.consumable_range[1][key]);
+          } else if(itemstats instanceof ItemClass.SummonStats) {
+            expect(itemstat).toBeGreaterThanOrEqual(Items.summon_range[0][key]);
+            expect(itemstat).toBeLessThanOrEqual(Items.summon_range[1][key]);
+          }
+        }
+      }
+    }
+  }
+});
