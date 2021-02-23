@@ -56,7 +56,17 @@ test('All item stats names match their key', () => {
   }
 });
 
-test('All items recipes are valid', () => {});
+test('All items recipes are valid', () => {
+  for (const item in Items.all_items) {
+    if (Object.hasOwnProperty.call(Items.all_items, item)) {
+      const itemstats = Items.all_items[item];
+      if(itemstats.recipe != null) {
+        expect(Items.all_items).toHaveProperty(itemstats.recipe.part1);
+        expect(Items.all_items).toHaveProperty(itemstats.recipe.part2);
+      }
+    }
+  }
+});
 test('All items have drop areas defined', () => {});
 test('All items drop areas are valid', () => {});
 test('All items have box types defined', () => {});
