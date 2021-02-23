@@ -208,6 +208,20 @@ weapons["Starsteel Twin Swords"] = new GearStats("Starsteel Twin Swords","Epic",
 weapons["Dioscuri"] = new GearStats("Dioscuri","Epic",1,new ItemRecipe("Twin Swords","Ion Battery"),"Weapon","Dual Swords",46,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Lloigor & Zahr"] = new GearStats("Lloigor & Zahr","Epic",1,new ItemRecipe("Twin Swords","Poison"),"Weapon","Dual Swords",38,0.15,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Spears
+weapons["Short Spear"] = new GearStats("Short Spear","Common",1,null,"Weapon","Spear",15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",5],["Temple",4],["Forest",4]],null,[["Wild Boar","Rarely"]]);
+weapons["Bamboo Spear"] = new GearStats("Bamboo Spear","Uncommon",1,new ItemRecipe("Short Spear","Bamboo"),"Weapon","Spear",37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Bident"] = new GearStats("Bident","Rare",1,new ItemRecipe("Bamboo Spear","Kitchen Knife"),"Weapon","Spear",52,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Pike"] = new GearStats("Pike","Rare",1,new ItemRecipe("Short Spear","Steel"),"Weapon","Spear",53,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
+weapons["Halberd Axe"] = new GearStats("Halberd Axe","Rare",1,new ItemRecipe("Hatchet","Pike"),"Weapon","Spear",85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
+weapons["Sharpened Spear"] = new GearStats("Sharpened Spear","Rare",1,new ItemRecipe("Bamboo Spear","Feather"),"Weapon","Spear",40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Gentian Silver Gun"] = new GearStats("Gentian Silver Gun","Epic",1,new ItemRecipe("Sharpened Spear","White Powder"),"Weapon","Spear",105,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.15,0,0,0,0);
+weapons["Eighteen Foot Spear"] = new GearStats("Eighteen Foot Spear","Epic",1,new ItemRecipe("Sharpened Spear","Ion Battery"),"Weapon","Spear",100,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Cosmic Bident"] = new GearStats("Cosmic Bident","Epic",1,new ItemRecipe("Bident","Moonstone"),"Weapon","Spear",150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Lance of Poseidon"] = new GearStats("Lance of Poseidon","Epic",1,new ItemRecipe("Bident","Pike"),"Weapon","Spear",90,0,0,0,0,0,0,0,0.21,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Fangtian Huaji"] = new GearStats("Fangtian Huaji","Epic",1,new ItemRecipe("Halberd Axe","Gilded Quill Fan"),"Weapon","Spear",88,0,0,0,0,0,0,31,0,0.05,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,-0.4);
+weapons["Dragon Guandao"] = new GearStats("Dragon Guandao","Epic",1,new ItemRecipe("Halberd Axe","Iron Sheet"),"Weapon","Spear",118,0,0,0,0,0,0,0,0,0,320,0,0,0,0,0,0,0,0,0,-0.05,0,0,0,0);
+weapons["Blazing Lance"] = new GearStats("Blazing Lance","Legendary",1,new ItemRecipe("True Samadhi Fire","Bamboo Spear"),"Weapon","Spear",110,0,30,0,0,0,0,0,0,0,0,1.5,0,0,1.5,0,0,0,0,0,0,0,0,0,0);
+weapons["Spear of Longinus"] = new GearStats("Spear of Longinus","Legendary",1,new ItemRecipe("VF Blood Sample","Pike"),"Weapon","Spear",135,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Nunchaku
 // Rapiers
 // Guitars
