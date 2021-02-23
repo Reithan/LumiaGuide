@@ -33,9 +33,6 @@ export class ItemStats {
     if(!(recipe == null || recipe instanceof ItemRecipe)) {
       throw new TypeError("ItemStats expects recipe of type ItemRecipe or null.");
     }
-    if(rarity == "Common" && recipe != null) {
-      throw new TypeError("Common items shouldn't have any recipe.");
-    }
     var droplists = [region,collect,hunt,airsupply];
     for (const droplist of droplists) {
       if(droplist != null && toType(droplist) != "array") {
