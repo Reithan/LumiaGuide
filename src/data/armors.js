@@ -60,7 +60,30 @@ armors["Blazing Dress"] = new GearStats("Blazing Dress","Legendary",new ItemReci
 armors["Kabana"] = new GearStats("Kabana","Legendary",new ItemRecipe("Meteorite","Commander's Armor"),"Chest",null,0,0,0,0,0,0,0,0,0.22,0,0,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 armors["Queen of Hearts"] = new GearStats("Queen of Hearts","Legendary",new ItemRecipe("VF Blood Sample","Hanbok"),"Chest",null,0,0,0,0,0,0,0,0,0,0.25,0,3,0,0,0,0,37,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Arms
+armors["Watch"] = new GearStats("Watch","Common",null,"Arm",null,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Hotel",6],["Avenue",8]],null,[["Wild Dog","Rarely"]]);
 armors["Bandage"] = new GearStats("Bandage","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Hospital",6],["Factory",7],["School",7]],null,[["Bat","Rarely"]]);
+armors["Bracelet"] = new GearStats("Bracelet","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,220,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Alley",6]],null,[["Wild Dog","Rarely"]]);
+armors["Leather Shield"] = new GearStats("Leather Shield","Uncommon",new ItemRecipe("Turtle Shell","Leather"),"Arm",null,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
+armors["Squad Leader Armband"] = new GearStats("Squad Leader Armband","Uncommon",new ItemRecipe("Bandage","Needle"),"Arm",null,0,0,0,0,0.15,0,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
+armors["Bracer"] = new GearStats("Bracer","Uncommon",new ItemRecipe("Bandage","Leather"),"Arm",null,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,13,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
+armors["Broken Watch"] = new GearStats("Broken Watch","Uncommon",new ItemRecipe("Watch","Glue"),"Arm",null,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
+armors["Sheath"] = new GearStats("Sheath","Rare",new ItemRecipe("Leather","Iron Sheet"),"Arm",null,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,null,null,null,["Blue"]);
+armors["Golden Bracelet"] = new GearStats("Golden Bracelet","Rare",new ItemRecipe("Bracelet","Gold"),"Arm",null,0,0,0,0,0,0,0,0,0.12,0,0,0,0,220,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Blue"]);
+armors["Bazuband"] = new GearStats("Bazuband","Rare",new ItemRecipe("Bracer","Iron Sheet"),"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,8,0,0,0,0,0,0,0,0,null,null,null,["Blue"]);
+armors["Crimson Bracelet"] = new GearStats("Crimson Bracelet","Rare",new ItemRecipe("Bracelet","Spiked Plank"),"Arm",null,0,0,0,0,0,0,0,0,0,0,200,0,0,250,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Blue"]);
+armors["Steel Shield"] = new GearStats("Steel Shield","Rare",new ItemRecipe("Leather Shield","Steel"),"Arm",null,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,-0.05,0,0,0,0,null,null,null,["Blue"]);
+armors["Cube Watch"] = new GearStats("Cube Watch","Rare",new ItemRecipe("Watch","Moonstone"),"Arm",null,0,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Blue"]);
+armors["Sword Stopper"] = new GearStats("Sword Stopper","Epic",new ItemRecipe("Bazuband","Nail"),"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,11,0,0,0.1,0,0,0,-0.4,0,null,null,null,["Purple"]);
+armors["Draupnir"] = new GearStats("Draupnir","Epic",new ItemRecipe("Golden Bracelet","Bracer"),"Arm",null,0,0,0,0,0,0,0,0,0.17,0,0,1,0,240,0,0,10,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
+armors["Mithril Shield"] = new GearStats("Mithril Shield","Epic",new ItemRecipe("Mithril","Leather Shield"),"Arm",null,30,0.12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0.1,0,0,0,0,null,null,null,["Purple"]);
+armors["Vital Sign Sensor"] = new GearStats("Vital Sign Sensor","Epic",new ItemRecipe("Watch","Cell Phone"),"Arm",null,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
+armors["Creed of the Knight"] = new GearStats("Creed of the Knight","Epic",new ItemRecipe("Steel Shield","Squad Leader Armband"),"Arm",null,30,0,0,0,0.25,0,0,0,0,0,0,1.5,0,0,0,0,20,0,0,0,0,-0.05,0,0,0,0,null,null,null,["Purple"]);
+armors["Sheath of Shah Jahan"] = new GearStats("Sheath of Shah Jahan","Epic",new ItemRecipe("Sheath","Ruby"),"Arm",null,28,0,0,0,0,0,0,0,0,0,260,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
+armors["Burnished Aegis"] = new GearStats("Burnished Aegis","Epic",new ItemRecipe("Crimson Bracelet","Leather Shield"),"Arm",null,10,0,0,0,0,0,0,0,0,0,260,0,0,250,0,0,10,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
+armors["Tindalos Band"] = new GearStats("Tindalos Band","Epic",new ItemRecipe("Golden Bracelet","Broken Watch"),"Arm",null,0,0,0,0,0,0,0,0,0.12,0.12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
+armors["Braclet of Skadi"] = new GearStats("Braclet of Skadi","Legendary",new ItemRecipe("Glacial Ice","Crimson Bracelet"),"Arm",null,0,0,0,0,0,0,0,20,0,0,200,1.5,0,250,1.5,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
+armors["Radar"] = new GearStats("Radar","Legendary",new ItemRecipe("Vital Sign Sensor","Glass Panel"),"Arm",null,0,0.4,0,0.24,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
+armors["Auto-arms"] = new GearStats("Auto-arms","Legendary",new ItemRecipe("Bracer","Force Core"),"Arm",null,45,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,35,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Legs
 // Accessories
 armors["Feather"] = new GearStats("Feather","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.06,0,0,0,0,[["Hospital",6],["Cemetary",8],["Forest",8]],null,[["Wild Boar","Rarely"]]);
