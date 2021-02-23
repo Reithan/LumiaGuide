@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/LumiaGuide/static/css/main.5968da3f.chunk.css",
-    "main.js": "/LumiaGuide/static/js/main.dafb1bd9.chunk.js",
-    "main.js.map": "/LumiaGuide/static/js/main.dafb1bd9.chunk.js.map",
+    "main.css": "/LumiaGuide/static/css/main.fa222d69.chunk.css",
+    "main.js": "/LumiaGuide/static/js/main.2988e523.chunk.js",
+    "main.js.map": "/LumiaGuide/static/js/main.2988e523.chunk.js.map",
     "runtime-main.js": "/LumiaGuide/static/js/runtime-main.dd3abe5c.js",
     "runtime-main.js.map": "/LumiaGuide/static/js/runtime-main.dd3abe5c.js.map",
     "static/js/2.a992e091.chunk.js": "/LumiaGuide/static/js/2.a992e091.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.f42f33e4.chunk.js": "/LumiaGuide/static/js/3.f42f33e4.chunk.js",
     "static/js/3.f42f33e4.chunk.js.map": "/LumiaGuide/static/js/3.f42f33e4.chunk.js.map",
     "index.html": "/LumiaGuide/index.html",
-    "static/css/main.5968da3f.chunk.css.map": "/LumiaGuide/static/css/main.5968da3f.chunk.css.map",
+    "static/css/main.fa222d69.chunk.css.map": "/LumiaGuide/static/css/main.fa222d69.chunk.css.map",
     "static/js/2.a992e091.chunk.js.LICENSE.txt": "/LumiaGuide/static/js/2.a992e091.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dd3abe5c.js",
     "static/js/2.a992e091.chunk.js",
-    "static/css/main.5968da3f.chunk.css",
-    "static/js/main.dafb1bd9.chunk.js"
+    "static/css/main.fa222d69.chunk.css",
+    "static/js/main.2988e523.chunk.js"
   ]
 }
