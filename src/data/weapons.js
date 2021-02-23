@@ -162,6 +162,18 @@ weapons["Hammer of Thor"] = new GearStats("Hammer of Thor","Epic",1,new ItemReci
 weapons["Evening Star"] = new GearStats("Evening Star","Epic",1,new ItemRecipe("Moonstone","Morning Star"),"Weapon","Hammer",145,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Magic Stick"] = new GearStats("Magic Stick","Epic",1,new ItemRecipe("Warhammer","Moonlight Pendant"),"Weapon","Hammer",60,0.0,0,0,0,0.3,0,0,0.27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Axes
+weapons["Pickaxe"] = new GearStats("Pickaxe","Common",1,null,"Weapon","Axe",15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",8],["Beach",7],["Cemetary",8],["Forest",8]],null,[["Bat","Rarely"]]);
+weapons["Hatchet"] = new GearStats("Hatchet","Common",1,null,"Weapon","Axe",25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",4],["Beach",5],["Factory",4]],null,[["Wild Dog","Rarely"]]);
+weapons["Chain Scythe"] = new GearStats("Chain Scythe","Uncommon",1,new ItemRecipe("Pickaxe","Steel Chain"),"Weapon","Axe",50,0,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Battle Axe"] = new GearStats("Battle Axe","Uncommon",1,new ItemRecipe("Hatchet","Bamboo"),"Weapon","Axe",47,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Light Hatchet"] = new GearStats("Light Hatchet","Rare",1,new ItemRecipe("Battle Axe","Feather"),"Weapon","Axe",61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Reaper's Scythe"] = new GearStats("Reaper's Scythe","Rare",1,new ItemRecipe("Chain Scythe","Short Rod"),"Weapon","Axe",80,0,0,0,0,0,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Gigantic Axe"] = new GearStats("Gigantic Axe","Rare",1,new ItemRecipe("Battle Axe","Steel"),"Weapon","Axe",110,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
+weapons["Beam Axe"] = new GearStats("Beam Axe","Epic",1,new ItemRecipe("Gigantic Axe","Laser Pointer"),"Weapon","Axe",127,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0);
+weapons["Santa Muerte"] = new GearStats("Santa Muerte","Epic",1,new ItemRecipe("Reaper's Scythe","Ruby"),"Weapon","Axe",100,0,0,0,0,0.15,0.5,0,0,0,410,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Scythe"] = new GearStats("Scythe","Epic",1,new ItemRecipe("Reaper's Scythe","Gold"),"Weapon","Axe",120,0,0,0,0,0,1,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Parashu"] = new GearStats("Parashu","Epic",1,new ItemRecipe("Light Hatchet","Buddha Sarira"),"Weapon","Axe",115,0,0,0,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Harpe"] = new GearStats("Harpe","Epic",1,new ItemRecipe("Reaper's Scythe","White Crane Fan"),"Weapon","Axe",105,0,0,0,0,0,0.5,33,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,-0.4);
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",1,null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
 // Two-Handed Swords
