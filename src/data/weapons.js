@@ -223,5 +223,11 @@ weapons["Dragon Guandao"] = new GearStats("Dragon Guandao","Epic",1,new ItemReci
 weapons["Blazing Lance"] = new GearStats("Blazing Lance","Legendary",1,new ItemRecipe("True Samadhi Fire","Bamboo Spear"),"Weapon","Spear",110,0,30,0,0,0,0,0,0,0,0,1.5,0,0,1.5,0,0,0,0,0,0,0,0,0,0);
 weapons["Spear of Longinus"] = new GearStats("Spear of Longinus","Legendary",1,new ItemRecipe("VF Blood Sample","Pike"),"Weapon","Spear",135,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Nunchaku
+weapons["Steel Chain"] = new GearStats("Steel Chain","Common",1,null,"Weapon","Nunchaku",13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Beach",7],["Alley",7],["Cemetary",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Nunchaku"] = new GearStats("Nunchaku","Uncommon",1,new ItemRecipe("Steel Chain","Scrap Metal"),"Weapon","Nunchaku",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Sharper"] = new GearStats("Sharper","Rare",1,new ItemRecipe("Nunchaku","Nail"),"Weapon","Nunchaku",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
+weapons["Bleeder"] = new GearStats("Bleeder","Rare",1,new ItemRecipe("Nunchaku","Razor"),"Weapon","Nunchaku",38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["The Smiting Dragon"] = new GearStats("The Smiting Dragon","Epic",1,new ItemRecipe("Sharper","Ash"),"Weapon","Nunchaku",50,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.4);
+weapons["Vibro Nunchaku"] = new GearStats("Vibro Nunchaku","Epic",1,new ItemRecipe("Bleeder","Motor"),"Weapon","Nunchaku",65,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Rapiers
 // Guitars
