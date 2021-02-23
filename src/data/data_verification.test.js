@@ -179,13 +179,6 @@ test('All summon stats are valid', () => {
   }
 });
 
-// TODO - these test should be moved from constructors into tests for optimization
-test('All items drop areas are valid', () => {});
-test('All items collection data is valid', () => {});
-test('All items hunt data is valid', () => {});
-test('All items box types are valid', () => {});
-// TODO - any other tests that can be moved out of constructors should as well
-
 test('Weapon and armor stat limits are defined', () => {});
 test('Weapon and armor stat limits are valid', () => {});
 test('All consumables have stats defined', () => {});
