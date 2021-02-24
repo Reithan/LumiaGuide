@@ -1,8 +1,8 @@
-import * as Solver from '../inventory.js'
+import * as Inventory from '../inventory.js'
 import * as Items from '../data/items.js'
 
 test('Adding one item adds the item', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   expect(inventory.size()).toBe(0);
   inventory.addItem(Items.all_items["Stone"]);
   expect(inventory.haveItem("Stone")).toBe(true);
@@ -12,7 +12,7 @@ test('Adding one item adds the item', () => {
 });
 
 test('Adding multiple items adds the items', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   expect(inventory.size()).toBe(0);
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Glass Bottle"],[Items.all_items["Nail"],4]]);
   expect(inventory.haveItem("Stone")).toBe(true);
@@ -44,7 +44,7 @@ test('Adding multiple items adds the items', () => {
 });
 
 test('Adding a negative item removes the item', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItem(Items.all_items["Stone"]);
   inventory.addItem(Items.all_items["Stone"], -1);
   expect(inventory.size()).toBe(0);
@@ -72,7 +72,7 @@ test('Adding a negative item removes the item', () => {
 });
 
 test('Adding negative items removes the items', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Nail"]]);
   inventory.addItems([[Items.all_items["Stone"],-1],[Items.all_items["Nail"],-1]]);
   expect(inventory.size()).toBe(0);
@@ -87,7 +87,7 @@ test('Adding negative items removes the items', () => {
 });
 
 test('Adding gear equips it', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   expect(inventory.size()).toBe(0);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
@@ -96,7 +96,7 @@ test('Adding gear equips it', () => {
 });
 
 test('Adding gear swaps to the highest rarity gear', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
   inventory.addItem(Items.all_items["Iron Knuckles"]);
@@ -110,7 +110,7 @@ test('Adding gear swaps to the highest rarity gear', () => {
 });
 
 test('Removing gear unequips it', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   inventory.addItem(Items.all_items["Brass Knuckles"], -1);
   expect(inventory.getGearStats("Weapon")).toBe(null);
@@ -119,7 +119,7 @@ test('Removing gear unequips it', () => {
 });
 
 test('Removing gear equips the next highest rarity gear', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItem(Items.all_items["Divine Fist"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Divine Fist"]);
   inventory.addItem(Items.all_items["Gauntlet"]);
@@ -135,7 +135,7 @@ test('Removing gear equips the next highest rarity gear', () => {
 });
 
 test('Crafting gear removes the ingredients and adds the result.', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Lighter"]]);
   expect(inventory.size()).toBe(2);
   expect(inventory.haveItem("Stone")).toBe(true);
@@ -154,14 +154,14 @@ test('Crafting gear removes the ingredients and adds the result.', () => {
 });
 
 test('Crafting gear equips the result to an empty slot.', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItems([Items.all_items["Brass Knuckles"],Items.all_items["Iron Ore"]]);
   expect(inventory.craftItem(Items.all_items["Iron Knuckles"])).toBe(true);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Iron Knuckles"]);
 });
 
 test('Crafting gear equips the result if it\'s higher rarity.', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItems([[Items.all_items["Brass Knuckles"], 2],Items.all_items["Iron Ore"]]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
   expect(inventory.getInventory().length).toBe(2);
@@ -175,7 +175,7 @@ test('Crafting gear equips the result if it\'s higher rarity.', () => {
 });
 
 test('Removing items returns the remaining negative if there were not enough items to remove.', () => {
-  var inventory = new Solver.Inventory();
+  var inventory = new Inventory.Inventory();
   inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
   expect(inventory.getInventory().length).toBe(2);
   expect(inventory.haveItem("Water",2)).toBe(true);

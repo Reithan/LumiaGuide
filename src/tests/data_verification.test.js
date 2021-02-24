@@ -1,5 +1,4 @@
 import * as Map from '../data/map.js'
-//import * as Items.ItemClass from '../data/Items.ItemClass.js'
 import * as Items from '../data/items.js'
 import * as Util from '../util.js'
 

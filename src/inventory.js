@@ -1,6 +1,5 @@
 import * as Map from './data/map.js'
 import * as Items from './data/items.js'
-//import * as Items.ItemClass from './data/itemclass.js'
 import * as Util from './util.js'
 
 // Popluate All Areas with Drops
