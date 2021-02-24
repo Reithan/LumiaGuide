@@ -81,7 +81,7 @@ armors["Creed of the Knight"] = new GearStats("Creed of the Knight","Epic",new I
 armors["Sheath of Shah Jahan"] = new GearStats("Sheath of Shah Jahan","Epic",new ItemRecipe("Sheath","Ruby"),"Arm",null,28,0,0,0,0,0,0,0,0,0,260,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
 armors["Burnished Aegis"] = new GearStats("Burnished Aegis","Epic",new ItemRecipe("Crimson Bracelet","Leather Shield"),"Arm",null,10,0,0,0,0,0,0,0,0,0,260,0,0,250,0,0,10,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
 armors["Tindalos Band"] = new GearStats("Tindalos Band","Epic",new ItemRecipe("Golden Bracelet","Broken Watch"),"Arm",null,0,0,0,0,0,0,0,0,0.12,0.12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Purple"]);
-armors["Braclet of Skadi"] = new GearStats("Braclet of Skadi","Legendary",new ItemRecipe("Glacial Ice","Crimson Bracelet"),"Arm",null,0,0,0,0,0,0,0,20,0,0,200,1.5,0,250,1.5,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
+armors["Bracelet of Skadi"] = new GearStats("Bracelet of Skadi","Legendary",new ItemRecipe("Glacial Ice","Crimson Bracelet"),"Arm",null,0,0,0,0,0,0,0,20,0,0,200,1.5,0,250,1.5,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 armors["Radar"] = new GearStats("Radar","Legendary",new ItemRecipe("Vital Sign Sensor","Glass Panel"),"Arm",null,0,0.4,0,0.24,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 armors["Auto-arms"] = new GearStats("Auto-arms","Legendary",new ItemRecipe("Bracer","Force Core"),"Arm",null,45,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,35,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Legs
