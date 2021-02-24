@@ -85,4 +85,6 @@ export class Pathfinder {
     }
     this.#shopping_list.push([itemname,1]);
   }
+
+  getCurrentShoppingList() { return [...this.#shopping_list]; }
 }
