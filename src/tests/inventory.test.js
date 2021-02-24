@@ -91,7 +91,7 @@ test('Adding gear equips it', () => {
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   expect(inventory.size()).toBe(0);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
-  expect(inventory.getInventory().length).toBe(0);
+  expect(inventory.getInventory()).toHaveLength(0);
   expect(inventory.getAllItems()).toContainEqual([Items.all_items["Brass Knuckles"],1]);
 });
 
@@ -114,8 +114,8 @@ test('Removing gear unequips it', () => {
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   inventory.addItem(Items.all_items["Brass Knuckles"], -1);
   expect(inventory.getGearStats("Weapon")).toBe(null);
-  expect(inventory.getInventory().length).toBe(0);
-  expect(inventory.getAllItems().length).toBe(0);
+  expect(inventory.getInventory()).toHaveLength(0);
+  expect(inventory.getAllItems()).toHaveLength(0);
 });
 
 test('Removing gear equips the next highest rarity gear', () => {
@@ -126,12 +126,12 @@ test('Removing gear equips the next highest rarity gear', () => {
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Divine Fist"]);
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Divine Fist"]);
-  expect(inventory.getInventory().length).toBe(2);
-  expect(inventory.getAllItems().length).toBe(3);
+  expect(inventory.getInventory()).toHaveLength(2);
+  expect(inventory.getAllItems()).toHaveLength(3);
   inventory.addItem(Items.all_items["Divine Fist"], -1);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Gauntlet"]);
-  expect(inventory.getInventory().length).toBe(1);
-  expect(inventory.getAllItems().length).toBe(2);
+  expect(inventory.getInventory()).toHaveLength(1);
+  expect(inventory.getAllItems()).toHaveLength(2);
 });
 
 test('Crafting gear removes the ingredients and adds the result.', () => {
@@ -164,30 +164,30 @@ test('Crafting gear equips the result if it\'s higher rarity.', () => {
   var inventory = new Inventory.Inventory();
   inventory.addItems([[Items.all_items["Brass Knuckles"], 2],Items.all_items["Iron Ore"]]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
-  expect(inventory.getInventory().length).toBe(2);
-  expect(inventory.getAllItems().length).toBe(2);
+  expect(inventory.getInventory()).toHaveLength(2);
+  expect(inventory.getAllItems()).toHaveLength(2);
   expect(inventory.haveItem("Brass Knuckles",2)).toBe(true);
 
   inventory.craftItem(Items.all_items["Iron Knuckles"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Iron Knuckles"]);
-  expect(inventory.getInventory().length).toBe(1);
-  expect(inventory.getAllItems().length).toBe(2);
+  expect(inventory.getInventory()).toHaveLength(1);
+  expect(inventory.getAllItems()).toHaveLength(2);
 });
 
 test('Removing items returns the remaining negative if there were not enough items to remove.', () => {
   var inventory = new Inventory.Inventory();
   inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
-  expect(inventory.getInventory().length).toBe(2);
+  expect(inventory.getInventory()).toHaveLength(2);
   expect(inventory.haveItem("Water",2)).toBe(true);
   expect(inventory.haveItem("Water",3)).toBe(true);
   expect(inventory.haveItem("Water",4)).toBe(false);
 
   expect(inventory.addItem(Items.all_items["Water"],-1)).toBe(0);
-  expect(inventory.getInventory().length).toBe(2);
+  expect(inventory.getInventory()).toHaveLength(2);
   expect(inventory.haveItem("Water",2)).toBe(true);
   expect(inventory.haveItem("Water",3)).toBe(false);
 
   expect(inventory.addItem(Items.all_items["Water"],-5)).toBe(-3);
-  expect(inventory.getInventory().length).toBe(1);
+  expect(inventory.getInventory()).toHaveLength(1);
   expect(inventory.haveItem("Water",1)).toBe(false);
 });
