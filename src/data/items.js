@@ -9,20 +9,13 @@ import { toType } from '../util.js';
 export var all_items = {};
 var item_collections = [weapons, armors, consumables, summons, materials];
 
-for (const collection of item_collections) {
-  for (const item in collection) {
-    if (Object.hasOwnProperty.call(collection, item)) {
-      if(all_items[item] != null) {
-        throw new MediaError("Item exists twice in data.");
-      }
-      all_items[item] = collection[item];
-    }
-  }  
-}
-
 var find_min_max = (items, min, max) => {
   for (const item in items) {
     if (Object.hasOwnProperty.call(items, item)) {
+      if(all_items[item] != null) {
+        throw new MediaError("Item exists twice in data.");
+      }
+      all_items[item] = items[item];
       for (const key in items[item]) {
         if (Object.hasOwnProperty.call(items[item], key)) {
           const stat = items[item][key];
@@ -64,3 +57,12 @@ find_min_max(summons, summon_min, summon_max);
 export const gear_range = [gear_min,gear_max];
 export const consumable_range = [consumable_min,consumable_max];
 export const summon_range = [summon_min,summon_max];
+
+for (const item in materials) {
+  if (Object.hasOwnProperty.call(materials, item)) {
+    if(all_items[item] != null) {
+      throw new MediaError("Item exists twice in data.");
+    }
+    all_items[item] = materials[item];
+  }
+}  
