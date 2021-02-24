@@ -19,7 +19,6 @@ for (const itemname in Items.all_items) {
   }
 }
 
-
 export class Pathfinder {
   #goal = {};
   #shopping_list = [];
@@ -130,8 +129,8 @@ export class Pathfinder {
     }
     return (totalitemsavailable / totalitemsneeded);
   }
-
-  // what's the highest percentage of an area resource our current shopping list clear out in this area?
+  
+  // what's the highest percentage of an area resource our current shopping list clears out in this area?
   percentAreaClear(area) {
     var highest_drop_clear = 0.0;
     for (const itementry of this.#shopping_list) {
@@ -188,5 +187,50 @@ export class Pathfinder {
       }
     }
     return highest_drop_clear;
+  }
+
+  expectedPercentItemsAcquired(area, step) {
+    var items_needed = 0;
+    var items_acquired = 0;
+    for (const itementry of this.#shopping_list) {
+      items_needed += itementry[1];
+      var items_available = 0;
+
+      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+        items_available += Math.floor(region_drops[area][itementry[0]] * 0.6 ** step); // SWAG dwindling supply & lazy checking
+      }
+      if(Items.all_items[itementry[0]].collect != null) {
+        for (const collectiontype of Items.all_items[itementry[0]].collect) {
+          var collect_amount = Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collectiontype)];
+          if(collect_amount > 0) {
+            items_available += Math.floor(collect_amount * 0.75 ** (step - 1));
+          }
+        }
+      }
+      if(Items.all_items[itementry[0]].hunt != null) {
+        var hunt_amount = 0;
+        for (const huntentry of Items.all_items[itementry[0]].hunt) {
+          var rarity_mod = 1.0;
+          switch (Items.ItemClass.HuntRarity.indexOf(huntentry[1])) {
+            case 1:
+              rarity_mod = 0.5; // approx 40-60%
+              break;
+            case 2:
+              rarity_mod = 0.05; // Guesstimate SWAG
+              break;
+            case 0:
+            default:
+              rarity_mod = 1.0;
+              break;
+          }
+          hunt_amount += Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] * rarity_mod;
+        }
+        if(hunt_amount > 0) {
+          items_available += Math.floor(hunt_amount * 0.6 ** (step - 1));
+        }
+      }
+      items_acquired += (items_available > itementry[1])? itementry[1] : items_available;
+    }
+    return items_acquired / items_needed;
   }
 }

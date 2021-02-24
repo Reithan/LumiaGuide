@@ -1,4 +1,5 @@
 import * as Pathfinder from '../pathfinder.js';
+import * as Map from '../data/map.js'
 
 test('Setting goal requires <=6 items with <=1 of each type.', () => {
   var pathfinder = new Pathfinder.Pathfinder();
@@ -55,4 +56,19 @@ test('Precent drop clear in area is accurate for current shopping list', () => {
   pathfinder.setGoal(["Leather Gloves"]);
 
   expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1 / 3.5);
+});
+
+test('Test possible heuristic function approximating dwindling resources during search', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Vibroblade"]);
+  for (const area of Map.areas) {
+    if(area == "Research Center") {
+      continue;
+    }
+    expect(pathfinder.expectedPercentItemsAcquired(area,1)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,2));
+    expect(pathfinder.expectedPercentItemsAcquired(area,2)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,3));
+    expect(pathfinder.expectedPercentItemsAcquired(area,3)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,4));
+    expect(pathfinder.expectedPercentItemsAcquired(area,4)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,5));
+    expect(pathfinder.expectedPercentItemsAcquired(area,5)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,6));
+  }
 });
