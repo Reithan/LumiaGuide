@@ -3,8 +3,22 @@ import * as Items from './data/items.js'
 import * as Util from './util.js'
 import * as Inventory from './inventory.js'
 
+export var region_drops = {};
+for (const itemname in Items.all_items) {
+  if (Object.hasOwnProperty.call(Items.all_items, itemname)) {
+    const itemstats = Items.all_items[itemname];
+    if(itemstats.region != null) {
+      for (const region of itemstats.region) {
+        region_drops[region[0]] = [itemstats.name,region[1]];
+      }
+    }
+  }
+}
+
 export class Pathfinder {
   #goal = {};
+  #shopping_list = [];
+  #current_inventory = new Inventory.Inventory();
 
   getGoal() { return {...this.#goal}; }
   setGoal(new_goal) {
@@ -30,6 +44,45 @@ export class Pathfinder {
       return false;
     }
     this.#goal = build_goal;
+    return this.buildShoppingList();
+  }
+
+  buildShoppingList() {
+    this.#shopping_list = [];
+    if(Object.keys(this.#goal) == undefined || Object.keys(this.#goal).length == 0) {
+      return false;
+    }
+    for (const slotname in this.#goal) {
+      if (Object.hasOwnProperty.call(this.#goal, slotname)) {
+        const slot = this.#goal[slotname];
+        if(!this.recurseItemForList(slot)) {
+          return false;
+        }
+      }
+    }
     return true;
+  }
+
+  recurseItemForList(itemstats) {
+    if(itemstats.recipe != null) {
+      return this.recurseItemForList(Items.all_items[itemstats.recipe.part1]) &&
+          this.recurseItemForList(Items.all_items[itemstats.recipe.part2]);
+    } else if(itemstats.region != null || itemstats.collect != null || itemstats.hunt != null) {
+      this.addItemToList(itemstats.name);
+      return true;
+    } else {
+      // DEBUG throw new EvalError("Unobtainable item encountered: '"+itemstats.name+"'.");
+      return false;
+    }
+  }
+
+  addItemToList(itemname) {
+    for (const itementry of this.#shopping_list) {
+      if(itementry[0] == itemname) {
+        ++itementry[1];
+        return;
+      }
+    }
+    this.#shopping_list.push([itemname,1]);
   }
 }
