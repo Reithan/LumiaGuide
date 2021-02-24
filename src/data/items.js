@@ -65,4 +65,14 @@ for (const item in materials) {
     }
     all_items[item] = materials[item];
   }
-}  
+}
+
+export var recipes = {};
+for (const itemname in all_items) {
+  if (Object.hasOwnProperty.call(all_items, itemname)) {
+    const itemstats = all_items[itemname];
+    if(itemstats.recipe != null) {
+      recipes[itemname] = itemstats.recipe;
+    }
+  }
+}
