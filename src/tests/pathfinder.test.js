@@ -46,3 +46,13 @@ test('Precent items in area is accurate for current shopping list', () => {
   pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
   expect(pathfinder.percentItemsInArea("Cemetary")).toBeCloseTo(6 / 8);
 });
+
+test('Precent drop clear in area is accurate for current shopping list', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
+  expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1.0);
+
+  pathfinder.setGoal(["Leather Gloves"]);
+
+  expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1 / 3.5);
+});
