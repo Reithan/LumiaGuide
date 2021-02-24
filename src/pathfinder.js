@@ -22,6 +22,7 @@ for (const itemname in Items.all_items) {
 export class Pathfinder {
   #goal = {};
   #shopping_list = [];
+  #original_list_length = 0;
   #current_inventory = new Inventory.Inventory();
 
   getGoal() { return {...this.#goal}; }
@@ -48,7 +49,35 @@ export class Pathfinder {
       return false;
     }
     this.#goal = build_goal;
-    return this.buildShoppingList();
+    if(this.buildShoppingList()) {
+      this.#original_list_length = this.#shopping_list.length;
+      return true;
+    }
+    return false;
+  }
+
+  getCurrentInventory() { return this.#current_inventory.getInventory(); }
+  getAllCurrentItems() { return this.#current_inventory.getAllItems(); }
+  getCurrentGearStats(slot) { return this.#current_inventory.getGearStats(slot); }
+
+  doAllCrafts() {
+    for (const goalslot in this.#goal) {
+      if (Object.hasOwnProperty.call(this.#goal, goalslot)) {
+        const goalitemstats = this.#goal[goalslot];
+        while(this.#recurseCraft(goalitemstats)); //<= body purposely left blank
+      }
+    }
+  }
+
+  #recurseCraft = function(craftitem) {
+    if(craftitem.recipe != null) {
+      if(this.#current_inventory.craftItem(craftitem)) {
+        return true;
+      }
+      return this.#recurseCraft(Items.all_items[craftitem.recipe.part1]) ||
+             this.#recurseCraft(Items.all_items[craftitem.recipe.part2]);
+    }
+    return false;
   }
 
   buildShoppingList() {
@@ -59,7 +88,7 @@ export class Pathfinder {
     for (const slotname in this.#goal) {
       if (Object.hasOwnProperty.call(this.#goal, slotname)) {
         const slot = this.#goal[slotname];
-        if(!this.recurseItemForList(slot)) {
+        if(!this.#recurseItemForList(slot)) {
           return false;
         }
       }
@@ -67,12 +96,12 @@ export class Pathfinder {
     return true;
   }
 
-  recurseItemForList(itemstats) {
+  #recurseItemForList = function(itemstats) {
     if(itemstats.recipe != null) {
-      return this.recurseItemForList(Items.all_items[itemstats.recipe.part1]) &&
-          this.recurseItemForList(Items.all_items[itemstats.recipe.part2]);
+      return this.#recurseItemForList(Items.all_items[itemstats.recipe.part1]) &&
+          this.#recurseItemForList(Items.all_items[itemstats.recipe.part2]);
     } else if(itemstats.region != null || itemstats.collect != null || itemstats.hunt != null) {
-      this.addItemToList(itemstats.name);
+      this.#addItemToList(itemstats.name);
       return true;
     } else {
       // DEBUG throw new EvalError("Unobtainable item encountered: '"+itemstats.name+"'.");
@@ -80,7 +109,7 @@ export class Pathfinder {
     }
   }
 
-  addItemToList(itemname) {
+  #addItemToList = function(itemname) {
     for (const itementry of this.#shopping_list) {
       if(itementry[0] == itemname) {
         ++itementry[1];
@@ -90,9 +119,13 @@ export class Pathfinder {
     this.#shopping_list.push([itemname,1]);
   }
 
-  // TODO - possibly rethink remove function
-  #removeItemFromList = function(itemname) {
-    //this.#shopping_list = this.#shopping_list.filter(itempair => itempair[0] != itemname);
+  #removeItemFromList = function(itemname, itemamount) {
+    for (const itementry of this.#shopping_list) {
+      if(itementry[0] == itemname) {
+        itementry[1] -= itemamount;
+      }
+    }
+    this.#shopping_list = this.#shopping_list.filter(pair => pair[1] > 0);
   }
 
   getCurrentShoppingList() { return [...this.#shopping_list]; }
@@ -232,5 +265,38 @@ export class Pathfinder {
       items_acquired += (items_available > itementry[1])? itementry[1] : items_available;
     }
     return items_acquired / items_needed;
+  }
+
+  collectAllInArea(area) {
+    for (const itementry of this.#shopping_list) {
+      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+        this.#current_inventory.addItem(Items.all_items[itementry[0]],itementry[1]);
+        this.#removeItemFromList(itementry[0],itementry[1]);
+        continue;
+      }
+      if(Items.all_items[itementry[0]].collect != null) {
+        for (const collectiontype of Items.all_items[itementry[0]].collect) {
+          var collect_amount = Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collectiontype)];
+          if(collect_amount > 0) {
+            this.#current_inventory.addItem(Items.all_items[itementry[0]],itementry[1]);
+            this.#removeItemFromList(itementry[0],itementry[1]);
+          }
+        }
+        continue;
+      }
+      if(Items.all_items[itementry[0]].hunt != null) {
+        var found = false;
+        for (const huntentry of Items.all_items[itementry[0]].hunt) {
+          if(huntentry[1] != "Rarely" && Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] > 0) {
+            found = true;
+            break;
+          }
+        }
+        if(found) {
+          this.#current_inventory.addItem(Items.all_items[itementry[0]],itementry[1]);
+          this.#removeItemFromList(itementry[0],itementry[1]);
+        }
+      }
+    }
   }
 }

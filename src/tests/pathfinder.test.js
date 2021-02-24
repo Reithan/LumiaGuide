@@ -72,3 +72,31 @@ test('Test possible heuristic function approximating dwindling resources during 
     expect(pathfinder.expectedPercentItemsAcquired(area,5)).toBeGreaterThanOrEqual(pathfinder.expectedPercentItemsAcquired(area,6));
   }
 });
+
+test('Test item collection & crafting', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Vibroblade"]);
+  pathfinder.collectAllInArea("Hotel");
+  var current_inventory = pathfinder.getAllCurrentItems();
+  expect(current_inventory).toHaveLength(4);
+  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Kitchen Knife");
+  var shoppinglist = pathfinder.getCurrentShoppingList();
+  expect(shoppinglist).toHaveLength(1);
+  expect(shoppinglist).toContainEqual(["Battery",1]);
+
+  pathfinder.doAllCrafts();
+  current_inventory = pathfinder.getAllCurrentItems();
+  expect(current_inventory).toHaveLength(3);
+  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Army Knife");
+  shoppinglist = pathfinder.getCurrentShoppingList();
+  expect(shoppinglist).toHaveLength(1);
+  expect(shoppinglist).toContainEqual(["Battery",1]);
+
+  pathfinder.collectAllInArea("Dock");
+  shoppinglist = pathfinder.getCurrentShoppingList();
+  expect(shoppinglist).toHaveLength(0);
+  pathfinder.doAllCrafts();
+  current_inventory = pathfinder.getAllCurrentItems();
+  expect(current_inventory).toHaveLength(1);
+  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
+});
