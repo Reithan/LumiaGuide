@@ -9,11 +9,16 @@ for (const itemname in Items.all_items) {
     const itemstats = Items.all_items[itemname];
     if(itemstats.region != null) {
       for (const region of itemstats.region) {
-        region_drops[region[0]] = [itemstats.name,region[1]];
+        if(region_drops[region[0]] == undefined) {
+          region_drops[region[0]] = { itemname: region[1] };
+        } else {
+          region_drops[region[0]][itemname] = region[1];
+        }
       }
     }
   }
 }
+
 
 export class Pathfinder {
   #goal = {};
@@ -86,5 +91,43 @@ export class Pathfinder {
     this.#shopping_list.push([itemname,1]);
   }
 
+  // TODO - possibly rethink remove function
+  #removeItemFromList = function(itemname) {
+    //this.#shopping_list = this.#shopping_list.filter(itempair => itempair[0] != itemname);
+  }
+
   getCurrentShoppingList() { return [...this.#shopping_list]; }
+
+  percentItemsInArea(area) {
+    var totalitemsneeded = this.#shopping_list.length;
+    var totalitemsavailable = 0;
+    for (const itementry of this.#shopping_list) {
+      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+        ++totalitemsavailable;
+        continue;
+      }
+      if(Items.all_items[itementry[0]].collect != null) {
+        var foundcollection = false;
+        for (const collectiontype of Items.all_items[itementry[0]].collect) {
+          if(Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collectiontype)] > 0) {
+            ++totalitemsavailable;
+            foundcollection = true;
+            break;
+          }
+        }
+        if(foundcollection) {
+          continue;
+        }
+      }
+      if(Items.all_items[itementry[0]].hunt != null) {
+        for (const huntentry of Items.all_items[itementry[0]].hunt) {
+          if(Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] > 0) {
+            ++totalitemsavailable;
+            break;
+          }
+        }
+      }
+    }
+    return (totalitemsavailable / totalitemsneeded);
+  }
 }
