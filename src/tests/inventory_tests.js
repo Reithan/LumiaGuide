@@ -1,5 +1,5 @@
-import * as Solver from './solver.js'
-import * as Items from './data/items.js'
+import * as Solver from '../solver.js'
+import * as Items from '../data/items.js'
 
 test('Adding one item adds the item', () => {
   var inventory = new Solver.Inventory();
