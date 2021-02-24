@@ -130,4 +130,63 @@ export class Pathfinder {
     }
     return (totalitemsavailable / totalitemsneeded);
   }
+
+  // what's the highest percentage of an area resource our current shopping list clear out in this area?
+  percentAreaClear(area) {
+    var highest_drop_clear = 0.0;
+    for (const itementry of this.#shopping_list) {
+      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+        var clear = itementry[1] / region_drops[area][itementry[0]];
+        if(clear > highest_drop_clear) {
+          highest_drop_clear = clear;
+        }
+        continue;
+      }
+      if(Items.all_items[itementry[0]].collect != null) {
+        var foundcollection = false;
+        for (const collectiontype of Items.all_items[itementry[0]].collect) {
+          var collect_amount = Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collectiontype)];
+          if(collect_amount > 0) {
+            var clear = itementry[1] / collect_amount;
+            if(clear > highest_drop_clear) {
+              highest_drop_clear = clear;
+            }
+            foundcollection = true;
+            break;
+          }
+        }
+        if(foundcollection) {
+          continue;
+        }
+      }
+      if(Items.all_items[itementry[0]].hunt != null) {
+        var hunt_amount = 0;
+        for (const huntentry of Items.all_items[itementry[0]].hunt) {
+          var rarity_mod = 1.0;
+          switch (Items.ItemClass.HuntRarity.indexOf(huntentry[1])) {
+            case 1:
+              rarity_mod = 0.5; // approx 40-60%
+              break;
+            case 2:
+              rarity_mod = 0.05; // Guesstimate SWAG
+              break;
+            case 0:
+            default:
+              rarity_mod = 1.0;
+              break;
+          }
+          hunt_amount += Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] * rarity_mod;
+        }
+        if(hunt_amount > 0) {
+          var clear = itementry[1] / hunt_amount;
+          clear = clear > 1.0 ? 1 : clear;
+          if(clear > highest_drop_clear) {
+            highest_drop_clear = clear;
+          }
+          break;
+        }
+      }
+    }
+    return highest_drop_clear;
+  }
 }
