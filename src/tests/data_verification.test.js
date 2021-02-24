@@ -1,5 +1,5 @@
 import * as Map from '../data/map.js'
-import * as ItemClass from '../data/itemclass.js'
+//import * as Items.ItemClass from '../data/Items.ItemClass.js'
 import * as Items from '../data/items.js'
 import * as Util from '../util.js'
 
@@ -53,7 +53,7 @@ test('All item stats are valid', () => {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
       const itemstats = Items.all_items[item];
       expect(Util.toType(itemstats.name)).toBe("string");
-      expect(ItemClass.ItemRarity).toContain(itemstats.rarity);
+      expect(Items.ItemClass.ItemRarity).toContain(itemstats.rarity);
 
       expect(itemstats.quantity).not.toBeNaN();
       expect(Number.isInteger(itemstats.quantity)).toBe(true);
@@ -66,7 +66,7 @@ test('All item stats are valid', () => {
       expect(itemstats.max_stack).toBeLessThanOrEqual(6); // telephotos now stack to 6??!
 
       if(itemstats.recipe != null) {
-        expect(itemstats.recipe).toBeInstanceOf(ItemClass.ItemRecipe);
+        expect(itemstats.recipe).toBeInstanceOf(Items.ItemClass.ItemRecipe);
       }
 
       var droplists = [itemstats.region,itemstats.collect,itemstats.hunt,itemstats.airsupply];
@@ -89,20 +89,20 @@ test('All item stats are valid', () => {
       
       if(itemstats.collect != null) {
         for (const collectdrop of itemstats.collect) {
-          expect(ItemClass.CollectType).toContain(collectdrop);
+          expect(Items.ItemClass.CollectType).toContain(collectdrop);
         }
       }
 
       if(itemstats.hunt != null) {
         for (const huntdrop of itemstats.hunt) {
-          expect(ItemClass.HuntType).toContain(huntdrop[0]);
-          expect(ItemClass.HuntRarity).toContain(huntdrop[1]);
+          expect(Items.ItemClass.HuntType).toContain(huntdrop[0]);
+          expect(Items.ItemClass.HuntRarity).toContain(huntdrop[1]);
         }
       }      
 
       if(itemstats.airsupply != null) {
         for (const airdrop of itemstats.airsupply) {
-          expect(ItemClass.AirSupplyColor).toContain(airdrop);
+          expect(Items.ItemClass.AirSupplyColor).toContain(airdrop);
         }
       }
     }
@@ -135,8 +135,8 @@ test('All gear stats are valid', () => {
   for (const item in Items.all_items) {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
       const gearstat = Items.all_items[item];
-      if(gearstat instanceof ItemClass.GearStats) {
-        expect(ItemClass.GearType).toContain(gearstat.type);
+      if(gearstat instanceof Items.ItemClass.GearStats) {
+        expect(Items.ItemClass.GearType).toContain(gearstat.type);
         expect(gearstat.type == "Weapon").not.toBe(gearstat.subtype == null);
       }
     }
@@ -147,8 +147,8 @@ test('All consumable stats are valid', () => {
   for (const item in Items.all_items) {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
       const consumablestat = Items.all_items[item];
-      if(consumablestat instanceof ItemClass.ConsumableStats) {
-        expect(ItemClass.ConsumableType).toContain(consumablestat.type);
+      if(consumablestat instanceof Items.ItemClass.ConsumableStats) {
+        expect(Items.ItemClass.ConsumableType).toContain(consumablestat.type);
         expect(consumablestat.value).not.toBeNaN();
         expect(Number.isInteger(consumablestat.value)).toBe(true);
         expect(consumablestat.value).toBeGreaterThanOrEqual(1);
@@ -161,9 +161,9 @@ test('All summon stats are valid', () => {
   for (const item in Items.all_items) {
     if (Object.hasOwnProperty.call(Items.all_items, item)) {
       const summonstat = Items.all_items[item];
-      if(summonstat instanceof ItemClass.SummonStats) {
+      if(summonstat instanceof Items.ItemClass.SummonStats) {
         if(summonstat.effect != null) {
-          expect(ItemClass.EffectType).toContain(summonstat.effect);
+          expect(Items.ItemClass.EffectType).toContain(summonstat.effect);
 
           if(summonstat.effect != "Vision") {
             expect(summonstat.effect_duration).not.toBeNaN();
@@ -190,13 +190,13 @@ test('Stat limits are valid', () => {
           if(totype == "string" || totype == "array" || totype == "object" || totype == "undefined" || totype == "null") {
             continue;
           }
-          if(itemstats instanceof ItemClass.GearStats) {
+          if(itemstats instanceof Items.ItemClass.GearStats) {
             expect(itemstat).toBeGreaterThanOrEqual(Items.gear_range[0][key]);
             expect(itemstat).toBeLessThanOrEqual(Items.gear_range[1][key]);
-          } else if(itemstats instanceof ItemClass.ConsumableStats) {
+          } else if(itemstats instanceof Items.ItemClass.ConsumableStats) {
             expect(itemstat).toBeGreaterThanOrEqual(Items.consumable_range[0][key]);
             expect(itemstat).toBeLessThanOrEqual(Items.consumable_range[1][key]);
-          } else if(itemstats instanceof ItemClass.SummonStats) {
+          } else if(itemstats instanceof Items.ItemClass.SummonStats) {
             expect(itemstat).toBeGreaterThanOrEqual(Items.summon_range[0][key]);
             expect(itemstat).toBeLessThanOrEqual(Items.summon_range[1][key]);
           }

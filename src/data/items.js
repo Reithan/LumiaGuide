@@ -4,6 +4,7 @@ import { consumables } from './consumables.js';
 import { summons } from './summons.js';
 import { materials } from './materials.js';
 import * as ItemClass from './itemclass.js'
+export * as ItemClass from './itemclass.js'
 import { toType } from '../util.js';
 
 export var all_items = {};

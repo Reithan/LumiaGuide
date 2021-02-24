@@ -1,7 +1,4 @@
 // import logo from './logo.svg';
-import * as Map from './data/map.js';
-import * as Items from './data/items.js';
-import * as Solver from './solver.js'
 import './App.css';
 
 function App() {

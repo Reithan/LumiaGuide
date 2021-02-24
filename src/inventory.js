@@ -1,6 +1,6 @@
 import * as Map from './data/map.js'
 import * as Items from './data/items.js'
-import * as ItemClass from './data/itemclass.js'
+//import * as Items.ItemClass from './data/itemclass.js'
 import * as Util from './util.js'
 
 // Popluate All Areas with Drops
@@ -26,7 +26,7 @@ export class Inventory {
   size() { return this.#inventory.length; }
 
   getGearStats(type) {
-    if(Util.toType(type) != "string" || !ItemClass.GearType.includes(type)) {
+    if(Util.toType(type) != "string" || !Items.ItemClass.GearType.includes(type)) {
       throw new TypeError("getGearStats takes a string specifying a GearType as an argument.");
     }
     if(this.#gear_slots[type] == undefined || this.#gear_slots[type] == null) {
@@ -61,12 +61,12 @@ export class Inventory {
   }
 
   cleanInventory() {
-    for (const geartype of ItemClass.GearType) {
+    for (const geartype of Items.ItemClass.GearType) {
       if(this.#gear_slots[geartype] == null || this.#gear_slots[geartype] == undefined) {
         var best = null;
         for (const slot of this.#inventory) {
           if(slot[0].type == geartype) {
-            if(best == null || (slot[1] > 0 && ItemClass.ItemRarity.indexOf(best[0].rarity) < ItemClass.ItemRarity.indexOf(slot[0].rarity))) {
+            if(best == null || (slot[1] > 0 && Items.ItemClass.ItemRarity.indexOf(best[0].rarity) < Items.ItemClass.ItemRarity.indexOf(slot[0].rarity))) {
               best = slot;
             }
           }
@@ -82,16 +82,16 @@ export class Inventory {
   }
 
   addItem(itemstats, number = 1) {
-    if(!((itemstats instanceof ItemClass.ItemStats) && Number.isInteger(number))) {
+    if(!((itemstats instanceof Items.ItemClass.ItemStats) && Number.isInteger(number))) {
       throw new TypeError("addItem takes an item and optional quantity as an arguments.");
     }
 
-    if(itemstats instanceof ItemClass.GearStats) {
+    if(itemstats instanceof Items.ItemClass.GearStats) {
       if(number > 0) {
         if(this.#gear_slots[itemstats.type] == null || this.#gear_slots[itemstats.type] == undefined) {
           this.#gear_slots[itemstats.type] = itemstats;
           --number;
-        } else if (ItemClass.ItemRarity.indexOf(this.#gear_slots[itemstats.type].rarity) < ItemClass.ItemRarity.indexOf(itemstats.rarity)) {
+        } else if (Items.ItemClass.ItemRarity.indexOf(this.#gear_slots[itemstats.type].rarity) < Items.ItemClass.ItemRarity.indexOf(itemstats.rarity)) {
           this.addItem(this.#gear_slots[itemstats.type]);
           this.#gear_slots[itemstats.type] = itemstats;
           --number;
@@ -167,7 +167,7 @@ export class Inventory {
   }
 
   craftItem(itemstats) {
-    if(!(itemstats.recipe instanceof ItemClass.ItemRecipe)) {
+    if(!(itemstats.recipe instanceof Items.ItemClass.ItemRecipe)) {
       throw new TypeError("craftItem takes an ItemStats with a defined ItemRecipe as an argument.");
     }
     var part1 = Items.all_items[itemstats.recipe.part1];
@@ -180,31 +180,5 @@ export class Inventory {
       return true;
     }
     return false;
-  }
-}
-
-export class Pathfinder {
-  #goal = {};
-
-  getGoal() { return {...this.#goal}; }
-  setGoal(new_goal) {
-    var validated = true;
-    validated = validated && (Util.toType(new_goal) != "array" );
-    validated = valdiated && (new_goal.length <= 6);
-    var build_goal = {};
-    if(validated) {
-      for (const slot of new_goal) {
-        if(build_goal[Items.all_items[slot].type] == undefined) {
-          build_goal[Items.all_items[slot].type] = Items.all_items[slot];
-        } else {
-          validated = false;
-          break;
-        }
-      }
-    }
-    if(!validated) {
-      throw new TypeError("setGoal takes an array of <=6 gear piece names of <=1 of each type.");
-    }
-    this.#goal = build_goal;
   }
 }

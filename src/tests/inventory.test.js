@@ -1,4 +1,4 @@
-import * as Solver from '../solver.js'
+import * as Solver from '../inventory.js'
 import * as Items from '../data/items.js'
 
 test('Adding one item adds the item', () => {
