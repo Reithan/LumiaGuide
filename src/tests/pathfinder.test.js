@@ -28,13 +28,21 @@ test('Shopping list is populated by goal items\' constituent parts.', () => {
   expect(shoppinglist).toContainEqual(["Iron Ball",1]);
   expect(shoppinglist).toContainEqual(["Turtle Shell",1]);
 
-  pathfinder.setGoal(["Bracelet of Skadi"]);
+  pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
   shoppinglist = pathfinder.getCurrentShoppingList();
-  expect(shoppinglist).toHaveLength(6);
-  expect(shoppinglist).toContainEqual(["Bracelet",1]);
-  expect(shoppinglist).toContainEqual(["Mousetrap",1]);
-  expect(shoppinglist).toContainEqual(["Nail",1]);
+  expect(shoppinglist).toHaveLength(8);
   expect(shoppinglist).toContainEqual(["Tree of Life",1]);
   expect(shoppinglist).toContainEqual(["Stone",1]);
   expect(shoppinglist).toContainEqual(["Ice",1]);
+  expect(shoppinglist).toContainEqual(["Bracelet",1]);
+  expect(shoppinglist).toContainEqual(["Mousetrap",1]);
+  expect(shoppinglist).toContainEqual(["Nail",1]);
+  expect(shoppinglist).toContainEqual(["Cotton Gloves",1]);
+  expect(shoppinglist).toContainEqual(["Leather",1]);
+});
+
+test('Precent items in area is accurate for current shopping list', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
+  expect(pathfinder.percentItemsInArea("Cemetary")).toBeCloseTo(6 / 8);
 });
