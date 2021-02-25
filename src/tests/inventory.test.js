@@ -5,7 +5,7 @@ test('Adding one item adds the item', () => {
   var inventory = new Inventory.Inventory();
   expect(inventory.size()).toBe(0);
   inventory.addItem(Items.all_items["Stone"]);
-  expect(inventory.haveItem("Stone")).toBe(true);
+  expect(inventory.haveItem("Stone")).toBe(1);
   expect(inventory.size()).toBe(1);
   expect(inventory.getInventory()).toContainEqual([Items.all_items["Stone"],1]);
   expect(inventory.getAllItems()).toContainEqual([Items.all_items["Stone"],1]);
@@ -15,9 +15,9 @@ test('Adding multiple items adds the items', () => {
   var inventory = new Inventory.Inventory();
   expect(inventory.size()).toBe(0);
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Glass Bottle"],[Items.all_items["Nail"],4]]);
-  expect(inventory.haveItem("Stone")).toBe(true);
-  expect(inventory.haveItem("Glass Bottle",1)).toBe(true);
-  expect(inventory.haveItem("Nail",4)).toBe(true);
+  expect(inventory.haveItem("Stone")).toBe(1);
+  expect(inventory.haveItem("Glass Bottle")).toBe(1);
+  expect(inventory.haveItem("Nail")).toBe(4);
   expect(inventory.size()).toBe(4);
   var inventory_out = inventory.getInventory();
   expect(inventory_out).toContainEqual([Items.all_items["Stone"],1]);
@@ -138,18 +138,17 @@ test('Crafting gear removes the ingredients and adds the result.', () => {
   var inventory = new Inventory.Inventory();
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Lighter"]]);
   expect(inventory.size()).toBe(2);
-  expect(inventory.haveItem("Stone")).toBe(true);
-  expect(inventory.haveItem("Lighter")).toBe(true);
-  expect(inventory.haveItem("Heated Stone")).toBe(false);
+  expect(inventory.haveItem("Stone")).toBe(1);
+  expect(inventory.haveItem("Lighter")).toBe(1);
+  expect(inventory.haveItem("Heated Stone")).toBe(0);
   var craft_result = inventory.craftItem(Items.all_items["Heated Stone"]);
   expect(craft_result).toBe(true);
   expect(inventory.size()).toBe(1);
-  expect(inventory.haveItem("Stone")).toBe(false);
-  expect(inventory.haveItem("Lighter")).toBe(false);
-  expect(inventory.haveItem("Heated Stone")).toBe(true);
+  expect(inventory.haveItem("Stone")).toBe(0);
+  expect(inventory.haveItem("Lighter")).toBe(0);
+  expect(inventory.haveItem("Heated Stone")).toBe(3);
 
   var inventory_out = inventory.getInventory();
-  expect(inventory.haveItem("Heated Stone",3)).toBe(true);
   expect(inventory_out).toContainEqual([Items.all_items["Heated Stone"],3]);
 });
 
@@ -166,7 +165,7 @@ test('Crafting gear equips the result if it\'s higher rarity.', () => {
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
   expect(inventory.getInventory()).toHaveLength(2);
   expect(inventory.getAllItems()).toHaveLength(2);
-  expect(inventory.haveItem("Brass Knuckles",2)).toBe(true);
+  expect(inventory.haveItem("Brass Knuckles")).toBe(2);
 
   inventory.craftItem(Items.all_items["Iron Knuckles"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Iron Knuckles"]);
@@ -178,18 +177,15 @@ test('Removing items returns the remaining negative if there were not enough ite
   var inventory = new Inventory.Inventory();
   inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
   expect(inventory.getInventory()).toHaveLength(2);
-  expect(inventory.haveItem("Water",2)).toBe(true);
-  expect(inventory.haveItem("Water",3)).toBe(true);
-  expect(inventory.haveItem("Water",4)).toBe(false);
+  expect(inventory.haveItem("Water")).toBe(3);
 
   expect(inventory.addItem(Items.all_items["Water"],-1)).toBe(0);
   expect(inventory.getInventory()).toHaveLength(2);
-  expect(inventory.haveItem("Water",2)).toBe(true);
-  expect(inventory.haveItem("Water",3)).toBe(false);
+  expect(inventory.haveItem("Water")).toBe(2);
 
   expect(inventory.addItem(Items.all_items["Water"],-5)).toBe(-3);
   expect(inventory.getInventory()).toHaveLength(1);
-  expect(inventory.haveItem("Water",1)).toBe(false);
+  expect(inventory.haveItem("Water")).toBe(0);
 });
 
 test('Inventory clone test', () => {

@@ -148,21 +148,22 @@ export class Inventory {
     return remaining;
   }
 
-  haveItem(itemname, quantity = 1) {
+  haveItem(itemname) {
+    var total = 0;
     for (const slot in this.#gear_slots) {
       if (Object.hasOwnProperty.call(this.#gear_slots, slot)) {
         const gear = this.#gear_slots[slot];
         if(gear != undefined && gear != null && gear.name == itemname) {
-          --quantity;
+          ++total;
         }
       }
     }
     for (const slot of this.#inventory) {
       if(slot[0].name == itemname) {
-        quantity -= slot[1];
+        total += slot[1];
       }
     }
-    return (quantity <= 0);
+    return total;
   }
 
   craftItem(itemstats) {
