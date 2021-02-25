@@ -268,7 +268,7 @@ export class Pathfinder {
     return items_acquired / items_needed;
   }
 
-  collectAllInArea(area) {
+  collectAllShoppingInArea(area) {
     for (const itementry of this.#shopping_list) {
       if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
         this.#current_inventory.addItem(Items.all_items[itementry[0]],itementry[1]);
@@ -325,5 +325,41 @@ export class Pathfinder {
       scores.push([area,func(area, step)]);
     }
     return scores;
+  }
+
+  collectAllInArea(area) {
+    for (const itemname in Items.all_items) {
+      if (Object.hasOwnProperty.call(Items.all_items, itemname)) {
+        const itemstats = Items.all_items[itemname];
+        if(itemstats.region != null) {
+          for (const drop of itemstats.region) {
+            if(drop[0] == area) {
+              var amount = itemstats.quantity;
+              if(region_drops[area] != undefined && region_drops[area][itemname] != undefined) {
+                amount *= region_drops[area][itemname];
+              }
+              this.#current_inventory.addItem(itemstats, amount);
+            }
+          }
+        }
+        if(itemstats.collect != null) {
+          for (const collect of itemstats.collect) {
+            var collect_amount = Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collect)];
+            if(collect_amount > 0) {
+              this.#current_inventory.addItem(itemstats, collect_amount);
+            }
+          }
+        }
+        if(itemstats.hunt != null) {
+          for (const hunt of itemstats.hunt) {
+            var hunt_amount = Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(hunt[0])];
+            hunt_amount *= (hunt[1] == "Always" ? 1 : ((hunt[1] == "Often" ? 0.5 : 0))); // ignore rare drops
+          }
+          if(hunt_amount > 0) {
+            this.#current_inventory.addItem(itemstats, hunt_amount);
+          }
+        }
+      }
+    }
   }
 }

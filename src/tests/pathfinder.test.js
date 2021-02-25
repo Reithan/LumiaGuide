@@ -75,7 +75,7 @@ test('Test possible heuristic function approximating dwindling resources during 
 test('Test item collection & crafting', () => {
   var pathfinder = new Pathfinder.Pathfinder();
   pathfinder.setGoal(["Vibroblade"]);
-  pathfinder.collectAllInArea("Hotel");
+  pathfinder.collectAllShoppingInArea("Hotel");
   var current_inventory = pathfinder.getAllCurrentItems();
   expect(current_inventory).toHaveLength(4);
   expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Kitchen Knife");
@@ -91,7 +91,7 @@ test('Test item collection & crafting', () => {
   expect(shoppinglist).toHaveLength(1);
   expect(shoppinglist).toContainEqual(["Battery",1]);
 
-  pathfinder.collectAllInArea("Dock");
+  pathfinder.collectAllShoppingInArea("Dock");
   shoppinglist = pathfinder.getCurrentShoppingList();
   expect(shoppinglist).toHaveLength(0);
   pathfinder.doAllCrafts();
@@ -103,7 +103,7 @@ test('Test item collection & crafting', () => {
 test('Pathfinder clone test', () => {
   var pathfinder = new Pathfinder.Pathfinder();
   pathfinder.setGoal(["Vibroblade"]);
-  pathfinder.collectAllInArea("Hotel");
+  pathfinder.collectAllShoppingInArea("Hotel");
   var pathfinder_clone = pathfinder.clone();
   expect(pathfinder.getGoal()).toStrictEqual(pathfinder_clone.getGoal());
   expect(pathfinder.getCurrentShoppingList()).toStrictEqual(pathfinder_clone.getCurrentShoppingList());
@@ -128,11 +128,30 @@ test('Traverse area test', () => {
     test_scores = scores;
     scores.sort(Pathfinder.Pathfinder.isScoreGreaterThan);
     areas.push(scores[0]);
-    pathfinder.collectAllInArea(scores[0][0]);
+    pathfinder.collectAllShoppingInArea(scores[0][0]);
     pathfinder.doAllCrafts();
   }
 
   expect(pathfinder.getAllCurrentItems()).toHaveLength(2);
   expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
   expect(pathfinder.getCurrentGearStats("Chest").name).toBe("Optical Camouflage Suit");
+});
+
+test('Test full area collect function', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.collectAllInArea("Factory");
+  var itemlist = [];
+  for (const itementry of pathfinder.getAllCurrentItems()) {
+    itemlist.push([itementry[0].name,itementry[1]]);
+  }
+  
+  const expected_itemlist = [["Branch",7],["Bandage",7],["Binoculars",7],["Iron Ball",1],
+      ["Chalk",7],["Short Crossbow",4],["Walther PPK",4],["Fedorova",4],["Hatchet",4],
+      ["Curry Powder",6],["Stone",4],["Nail",8],["Turtle Shell",8],["Scrap Metal",10],
+      ["Lighter",10],["Battery",10],["Alcohol",6],["Oil",8],["Glue",7]];
+
+  const sortlistalphabetically = (e1,e2) => e1[0] > e2[0] ? 1 : e1[0] < e2[0] ? -1 : 0;
+  itemlist.sort(sortlistalphabetically);
+  expected_itemlist.sort(sortlistalphabetically);
+  expect(itemlist).toStrictEqual(expected_itemlist);
 });
