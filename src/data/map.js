@@ -46,6 +46,10 @@ map_adjacencies["School"] = ["Alley","Archery Range","Avenue","Hotel","Forest"];
 map_adjacencies["Temple"] = ["Alley","Avenue","Pond"];
 map_adjacencies["Uptown"] = ["Beach","Chapel","Dock","Forest"];
 
+export function areAreasAdjacent(areaA, areaB) {
+  return map_adjacencies[areaA].includes(areaB);
+}
+
 export var hunt_spawns = {};
 // ["Chicken","Bat","Wild Boar","Wild Dog","Wolf","Bear","Wickeline"];
 hunt_spawns["Alley"] =           [8,0,0,0,4,3,0];

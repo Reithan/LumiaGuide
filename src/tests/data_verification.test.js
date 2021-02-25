@@ -29,6 +29,9 @@ test('All map adjacencies are valid', ()=> {
     if (Object.hasOwnProperty.call(Map.map_adjacencies, area)) {
       for (const adjacent of Map.map_adjacencies[area]) {
         expect(Map.areas).toContain(adjacent);
+        expect(Map.map_adjacencies[adjacent]).toContain(area);
+        expect(Map.areAreasAdjacent(adjacent,area)).toBe(true);
+        expect(Map.areAreasAdjacent(area,adjacent)).toBe(true);
       }
     }
   }
