@@ -191,3 +191,11 @@ test('Removing items returns the remaining negative if there were not enough ite
   expect(inventory.getInventory()).toHaveLength(1);
   expect(inventory.haveItem("Water",1)).toBe(false);
 });
+
+test('Inventory clone test', () => {
+  var inventory = new Inventory.Inventory();
+  inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
+  var inventory_clone = inventory.clone();
+  expect(inventory.getAllItems()).toStrictEqual(inventory_clone.getAllItems());
+  expect(inventory.getInventory()).toStrictEqual(inventory_clone.getInventory());
+});
