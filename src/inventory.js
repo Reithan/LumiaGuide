@@ -21,6 +21,13 @@ for (const itemname in Items.all_items) {
 export class Inventory {
   #inventory = [];
   #gear_slots = {};
+  #weapon_type = null;
+
+  constructor(weapon_type) {
+    this.#weapon_type = weapon_type;
+  }
+
+  getWeaponType() { return (' '+this.#weapon_type).slice(1); }
 
   size() { return this.#inventory.length; }
 
@@ -64,7 +71,7 @@ export class Inventory {
       if(this.#gear_slots[geartype] == null || this.#gear_slots[geartype] == undefined) {
         var best = null;
         for (const slot of this.#inventory) {
-          if(slot[0].type == geartype) {
+          if(slot[0].type == geartype && (geartype != "Weapon" || slot[0].subtype == this.#weapon_type)) {
             if(best == null || (slot[1] > 0 && Items.ItemClass.ItemRarity.indexOf(best[0].rarity) < Items.ItemClass.ItemRarity.indexOf(slot[0].rarity))) {
               best = slot;
             }
@@ -91,7 +98,7 @@ export class Inventory {
       throw new TypeError("addItem takes an item name or stats object and optional quantity as an arguments.");
     }
 
-    if(itemstats instanceof Items.ItemClass.GearStats) {
+    if(itemstats instanceof Items.ItemClass.GearStats && (itemstats.type != "Weapon" || itemstats.subtype == this.#weapon_type)) {
       if(number > 0) {
         if(this.#gear_slots[itemstats.type] == null || this.#gear_slots[itemstats.type] == undefined) {
           this.#gear_slots[itemstats.type] = itemstats;
@@ -198,6 +205,7 @@ export class Inventory {
         copy.#gear_slots[key] = this.#gear_slots[key];
       }
     }
+    copy.#weapon_type = this.#weapon_type;
     return copy;
   }
 

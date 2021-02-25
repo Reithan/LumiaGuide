@@ -2,7 +2,7 @@ import * as Inventory from '../inventory.js'
 import * as Items from '../data/items.js'
 
 test('Adding one item adds the item', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   expect(inventory.size()).toBe(0);
   inventory.addItem(Items.all_items["Stone"]);
   expect(inventory.haveItem("Stone")).toBe(1);
@@ -12,7 +12,7 @@ test('Adding one item adds the item', () => {
 });
 
 test('Adding multiple items adds the items', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   expect(inventory.size()).toBe(0);
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Glass Bottle"],[Items.all_items["Nail"],4]]);
   expect(inventory.haveItem("Stone")).toBe(1);
@@ -44,7 +44,7 @@ test('Adding multiple items adds the items', () => {
 });
 
 test('Adding a negative item removes the item', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItem(Items.all_items["Stone"]);
   inventory.addItem(Items.all_items["Stone"], -1);
   expect(inventory.size()).toBe(0);
@@ -72,7 +72,7 @@ test('Adding a negative item removes the item', () => {
 });
 
 test('Adding negative items removes the items', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Nail"]]);
   inventory.addItems([[Items.all_items["Stone"],-1],[Items.all_items["Nail"],-1]]);
   expect(inventory.size()).toBe(0);
@@ -87,7 +87,7 @@ test('Adding negative items removes the items', () => {
 });
 
 test('Adding gear equips it', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   expect(inventory.size()).toBe(0);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
@@ -96,21 +96,29 @@ test('Adding gear equips it', () => {
 });
 
 test('Adding gear swaps to the highest rarity gear', () => {
-  var inventory = new Inventory.Inventory();
-  inventory.addItem(Items.all_items["Brass Knuckles"]);
-  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
-  inventory.addItem(Items.all_items["Iron Knuckles"]);
-  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Iron Knuckles"]);
-  inventory.addItem(Items.all_items["Bone Gauntlet"]);
-  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Bone Gauntlet"]);
-  inventory.addItem(Items.all_items["One Inch Punch"]);
-  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["One Inch Punch"]);
+  var inventory = new Inventory.Inventory("Bat");
+  inventory.addItem(Items.all_items["Branch"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Branch"]);
+  inventory.addItem(Items.all_items["Long Rod"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Long Rod"]);
+  inventory.addItem(Items.all_items["Umbrella"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Umbrella"]);
+  inventory.addItem(Items.all_items["Mallet"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Mallet"]);
   inventory.addItem(Items.all_items["Monkey King Bar"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Monkey King Bar"]);
 });
 
+test('Adding a weapon of the wrong type doesn\t equip it.', () => {
+  var inventory = new Inventory.Inventory("Glove");
+  inventory.addItem(Items.all_items["Brass Knuckles"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
+  inventory.addItem(Items.all_items["Monkey King Bar"]);
+  expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
+});
+
 test('Removing gear unequips it', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItem(Items.all_items["Brass Knuckles"]);
   inventory.addItem(Items.all_items["Brass Knuckles"], -1);
   expect(inventory.getGearStats("Weapon")).toBe(null);
@@ -119,7 +127,7 @@ test('Removing gear unequips it', () => {
 });
 
 test('Removing gear equips the next highest rarity gear', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItem(Items.all_items["Divine Fist"]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Divine Fist"]);
   inventory.addItem(Items.all_items["Gauntlet"]);
@@ -135,7 +143,7 @@ test('Removing gear equips the next highest rarity gear', () => {
 });
 
 test('Crafting gear removes the ingredients and adds the result.', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([Items.all_items["Stone"],Items.all_items["Lighter"]]);
   expect(inventory.size()).toBe(2);
   expect(inventory.haveItem("Stone")).toBe(1);
@@ -152,15 +160,23 @@ test('Crafting gear removes the ingredients and adds the result.', () => {
   expect(inventory_out).toContainEqual([Items.all_items["Heated Stone"],3]);
 });
 
-test('Crafting gear equips the result to an empty slot.', () => {
-  var inventory = new Inventory.Inventory();
+test('Crafting gear equips the result to an empty slot if it\'s the correct type.', () => {
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([Items.all_items["Brass Knuckles"],Items.all_items["Iron Ore"]]);
   expect(inventory.craftItem(Items.all_items["Iron Knuckles"])).toBe(true);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Iron Knuckles"]);
+  expect(inventory.getAllItems()).toStrictEqual([[Items.all_items["Iron Knuckles"],1]]);
+  inventory.addItem("Iron Knuckles",-1);
+  
+  
+  inventory.addItems([Items.all_items["Short Rod"],Items.all_items["Bamboo"]]);
+  expect(inventory.craftItem(Items.all_items["Long Rod"])).toBe(true);
+  expect(inventory.getGearStats("Weapon")).not.toBe(Items.all_items["Long Rod"]);
+  expect(inventory.getAllItems()).toStrictEqual([[Items.all_items["Long Rod"],1]]);
 });
 
 test('Crafting gear equips the result if it\'s higher rarity.', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([[Items.all_items["Brass Knuckles"], 2],Items.all_items["Iron Ore"]]);
   expect(inventory.getGearStats("Weapon")).toBe(Items.all_items["Brass Knuckles"]);
   expect(inventory.getInventory()).toHaveLength(2);
@@ -174,7 +190,7 @@ test('Crafting gear equips the result if it\'s higher rarity.', () => {
 });
 
 test('Removing items returns the remaining negative if there were not enough items to remove.', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
   expect(inventory.getInventory()).toHaveLength(2);
   expect(inventory.haveItem("Water")).toBe(3);
@@ -189,7 +205,7 @@ test('Removing items returns the remaining negative if there were not enough ite
 });
 
 test('Inventory clone test', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   inventory.addItems([[Items.all_items["Stone"], 2],[Items.all_items["Water"],3]]);
   var inventory_clone = inventory.clone();
   expect(inventory.getAllItems()).toStrictEqual(inventory_clone.getAllItems());
@@ -197,7 +213,7 @@ test('Inventory clone test', () => {
 });
 
 test('Get total equipped gear stats test', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Dagger");
   const build_items = [Items.all_items["Vibroblade"],Items.all_items["Optical Camouflage Suit"]];
   inventory.addItems(build_items);
   var total_stats = inventory.getTotalEquippedStats();
@@ -208,7 +224,7 @@ test('Get total equipped gear stats test', () => {
 });
 
 test('Test all possible craft output', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Glove");
   const all_factory_items = [["Branch",7],["Bandage",7],["Binoculars",7],
       ["Iron Ball",1],["Chalk",7],["Short Crossbow",4],["Walther PPK",4],
       ["Fedorova",4],["Hatchet",4],["Curry Powder",6],["Stone",4],["Nail",8],
@@ -228,7 +244,7 @@ test('Test all possible craft output', () => {
 });
 
 test('Test gear stat ratings', () => {
-  var inventory = new Inventory.Inventory();
+  var inventory = new Inventory.Inventory("Dagger");
   inventory.addItems(["Vibroblade","Optical Camouflage Suit"]);
 
   var weapon_rating = inventory.rateGearSlot("Weapon");

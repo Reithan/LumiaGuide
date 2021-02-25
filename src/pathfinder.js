@@ -23,7 +23,11 @@ export class Pathfinder {
   #goal = {};
   #shopping_list = [];
   #original_list_length = 0;
-  #current_inventory = new Inventory.Inventory();
+  #current_inventory = null;
+  constructor(weapon_type) {
+    this.#current_inventory = new Inventory.Inventory(weapon_type);
+    this.#current_inventory.addItem(Items.starter_weapons[weapon_type]);
+  }
 
   getGoal() { return {...this.#goal}; }
   setGoal(new_goal) {
@@ -56,9 +60,7 @@ export class Pathfinder {
     return false;
   }
 
-  getCurrentInventory() { return this.#current_inventory.getInventory(); }
-  getAllCurrentItems() { return this.#current_inventory.getAllItems(); }
-  getCurrentGearStats(slot) { return this.#current_inventory.getGearStats(slot); }
+  getCurrentInventory() { return this.#current_inventory; }
 
   doAllCrafts() {
     for (const goalslot in this.#goal) {
@@ -92,6 +94,9 @@ export class Pathfinder {
           return false;
         }
       }
+    }
+    for (const invslot of this.#current_inventory.getAllItems()) {
+      this.#removeItemFromList(invslot[0].name,invslot[1]);
     }
     return true;
   }
@@ -134,7 +139,7 @@ export class Pathfinder {
     var totalitemsneeded = this.#shopping_list.length;
     var totalitemsavailable = 0;
     for (const itementry of this.#shopping_list) {
-      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+      if(region_drops[area] != undefined && region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
         ++totalitemsavailable;
         continue;
       }
@@ -168,7 +173,7 @@ export class Pathfinder {
   percentAreaClear(area) {
     var highest_drop_clear = 0.0;
     for (const itementry of this.#shopping_list) {
-      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+      if(region_drops[area] != undefined && region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
         var clear = itementry[1] / region_drops[area][itementry[0]];
         if(clear > highest_drop_clear) {
           highest_drop_clear = clear;
@@ -226,18 +231,28 @@ export class Pathfinder {
   expectedPercentItemsAcquired(area, step) {
     var items_needed = 0;
     var items_acquired = 0;
+    // assume any amount dwindled below 1 is still at least 1
+    var floorMinOne = (amount) => {
+      if(amount > 0) {
+        amount = Math.floor(amount);
+        if(amount <= 0) {
+          amount = 1;
+        }
+      }
+      return amount;
+    }
     for (const itementry of this.#shopping_list) {
       items_needed += itementry[1];
       var items_available = 0;
 
       if(region_drops[area] != undefined && region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
-        items_available += Math.floor(region_drops[area][itementry[0]] * 0.6 ** step); // SWAG dwindling supply & lazy checking
+        items_available += floorMinOne(region_drops[area][itementry[0]] * 0.6 ** step); // SWAG dwindling supply & lazy checking
       }
       if(Items.all_items[itementry[0]].collect != null) {
         for (const collectiontype of Items.all_items[itementry[0]].collect) {
           var collect_amount = Map.collection_spawns[area][Items.ItemClass.CollectType.indexOf(collectiontype)];
           if(collect_amount > 0) {
-            items_available += Math.floor(collect_amount * 0.75 ** (step - 1));
+            items_available += floorMinOne(collect_amount * 0.75 ** (step - 1));
           }
         }
       }
@@ -260,7 +275,7 @@ export class Pathfinder {
           hunt_amount += Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] * rarity_mod;
         }
         if(hunt_amount > 0) {
-          items_available += Math.floor(hunt_amount * 0.6 ** (step - 1));
+          items_available += floorMinOne(hunt_amount * 0.6 ** (step - 1));
         }
       }
       items_acquired += (items_available > itementry[1])? itementry[1] : items_available;
@@ -270,7 +285,7 @@ export class Pathfinder {
 
   collectAllShoppingInArea(area) {
     for (const itementry of this.#shopping_list) {
-      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+      if(region_drops[area] != undefined && region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
         this.#current_inventory.addItem(Items.all_items[itementry[0]],itementry[1]);
         this.#removeItemFromList(itementry[0],itementry[1]);
         continue;
@@ -302,7 +317,7 @@ export class Pathfinder {
   }
 
   clone() {
-    var copy = new Pathfinder();
+    var copy = new Pathfinder(this.#current_inventory.getWeaponType());
     for (const key in this.#goal) {
       if (Object.hasOwnProperty.call(this.#goal, key)) {
         copy.#goal[key] = this.#goal[key];

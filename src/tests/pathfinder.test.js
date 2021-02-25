@@ -2,7 +2,7 @@ import * as Pathfinder from '../pathfinder.js';
 import * as Map from '../data/map.js'
 
 test('Setting goal requires <=6 items with <=1 of each type.', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   expect(pathfinder.setGoal(["Brass Knuckles","Close Helm","Bulletproof Vest","Heelys"])).toBe(true);
   expect(pathfinder.setGoal(["Brass Knuckles","Close Helm","Bulletproof Vest","Sheath","Heelys","Glass Pieces"])).toBe(true);
   expect(pathfinder.setGoal(["Brass Knuckles","Brass Knuckles","Bulletproof Vest","Sheath","Heelys","Glass Pieces"])).toBe(false);
@@ -12,7 +12,7 @@ test('Setting goal requires <=6 items with <=1 of each type.', () => {
 });
 
 test('Shopping list is populated by goal items\' constituent parts.', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Brass Knuckles","Heelys"]);
   var shoppinglist = pathfinder.getCurrentShoppingList();
   expect(shoppinglist).toHaveLength(3);
@@ -43,13 +43,13 @@ test('Shopping list is populated by goal items\' constituent parts.', () => {
 });
 
 test('Precent items in area is accurate for current shopping list', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
   expect(pathfinder.percentItemsInArea("Cemetary")).toBeCloseTo(5 / 8);
 });
 
 test('Precent drop clear in area is accurate for current shopping list', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
   expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1.0);
 
@@ -58,7 +58,7 @@ test('Precent drop clear in area is accurate for current shopping list', () => {
 });
 
 test('Test possible heuristic function approximating dwindling resources during search', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Vibroblade"]);
   for (const area of Map.areas) {
     if(area == "Research Center") {
@@ -73,20 +73,20 @@ test('Test possible heuristic function approximating dwindling resources during 
 });
 
 test('Test item collection & crafting', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Vibroblade"]);
   pathfinder.collectAllShoppingInArea("Hotel");
-  var current_inventory = pathfinder.getAllCurrentItems();
+  var current_inventory = pathfinder.getCurrentInventory().getAllItems();
   expect(current_inventory).toHaveLength(4);
-  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Kitchen Knife");
+  expect(pathfinder.getCurrentInventory().getGearStats("Weapon").name).toBe("Kitchen Knife");
   var shoppinglist = pathfinder.getCurrentShoppingList();
   expect(shoppinglist).toHaveLength(1);
   expect(shoppinglist).toContainEqual(["Battery",1]);
 
   pathfinder.doAllCrafts();
-  current_inventory = pathfinder.getAllCurrentItems();
+  current_inventory = pathfinder.getCurrentInventory().getAllItems();
   expect(current_inventory).toHaveLength(3);
-  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Army Knife");
+  expect(pathfinder.getCurrentInventory().getGearStats("Weapon").name).toBe("Army Knife");
   shoppinglist = pathfinder.getCurrentShoppingList();
   expect(shoppinglist).toHaveLength(1);
   expect(shoppinglist).toContainEqual(["Battery",1]);
@@ -95,34 +95,34 @@ test('Test item collection & crafting', () => {
   shoppinglist = pathfinder.getCurrentShoppingList();
   expect(shoppinglist).toHaveLength(0);
   pathfinder.doAllCrafts();
-  current_inventory = pathfinder.getAllCurrentItems();
+  current_inventory = pathfinder.getCurrentInventory().getAllItems();
   expect(current_inventory).toHaveLength(1);
-  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
+  expect(pathfinder.getCurrentInventory().getGearStats("Weapon").name).toBe("Vibroblade");
 });
 
 test('Pathfinder clone test', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Vibroblade"]);
   pathfinder.collectAllShoppingInArea("Hotel");
   var pathfinder_clone = pathfinder.clone();
   expect(pathfinder.getGoal()).toStrictEqual(pathfinder_clone.getGoal());
   expect(pathfinder.getCurrentShoppingList()).toStrictEqual(pathfinder_clone.getCurrentShoppingList());
-  expect(pathfinder.getCurrentInventory()).toStrictEqual(pathfinder_clone.getCurrentInventory());
-  expect(pathfinder.getAllCurrentItems()).toStrictEqual(pathfinder_clone.getAllCurrentItems());
+  expect(pathfinder.getCurrentInventory().getInventory()).toStrictEqual(pathfinder_clone.getCurrentInventory().getInventory());
+  expect(pathfinder.getCurrentInventory().getAllItems()).toStrictEqual(pathfinder_clone.getCurrentInventory().getAllItems());
 });
 
 test('Test area score generation', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Vibroblade"]);
   var scores = pathfinder.generateAreaScores(pathfinder.expectedPercentItemsAcquired.bind(pathfinder), 3);
   expect(scores[0][0]).toBe("Dock");
-  expect(scores[0][1]).toBe(0.8);
-  expect(scores[2][0]).toBe("Factory");
-  expect(scores[2][1]).toBe(0.6);
+  expect(scores[0][1]).toBe(0.75);
+  expect(scores[2][0]).toBe("Hotel");
+  expect(scores[2][1]).toBe(0.75);
 });
 
 test('Traverse area test', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.setGoal(["Vibroblade","Optical Camouflage Suit"]);
 
   var areas = [];
@@ -133,24 +133,25 @@ test('Traverse area test', () => {
     areas.push(scores[0]);
     pathfinder.collectAllShoppingInArea(scores[0][0]);
     pathfinder.doAllCrafts();
+    console.log(pathfinder.getCurrentInventory().getGearStats("Weapon").name);
   }
 
-  expect(pathfinder.getAllCurrentItems()).toHaveLength(2);
-  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
-  expect(pathfinder.getCurrentGearStats("Chest").name).toBe("Optical Camouflage Suit");
+  expect(pathfinder.getCurrentInventory().getAllItems()).toHaveLength(2);
+  expect(pathfinder.getCurrentInventory().getGearStats("Weapon").name).toBe("Vibroblade");
+  expect(pathfinder.getCurrentInventory().getGearStats("Chest").name).toBe("Optical Camouflage Suit");
 });
 
 test('Test full area collect function', () => {
-  var pathfinder = new Pathfinder.Pathfinder();
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
   pathfinder.collectAllInArea("Factory");
   var itemlist = [];
-  for (const itementry of pathfinder.getAllCurrentItems()) {
+  for (const itementry of pathfinder.getCurrentInventory().getAllItems()) {
     itemlist.push([itementry[0].name,itementry[1]]);
   }
   
-  const expected_itemlist = [["Branch",7],["Bandage",7],["Binoculars",7],["Iron Ball",1],
-      ["Chalk",7],["Short Crossbow",4],["Walther PPK",4],["Fedorova",4],["Hatchet",4],
-      ["Curry Powder",6],["Stone",4],["Nail",8],["Turtle Shell",8],["Scrap Metal",10],
+  const expected_itemlist = [["Kitchen Knife",1],["Branch",7],["Bandage",7],["Binoculars",7],
+      ["Iron Ball",1],["Chalk",7],["Short Crossbow",4],["Walther PPK",4],["Fedorova",4],
+      ["Hatchet",4],["Curry Powder",6],["Stone",4],["Nail",8],["Turtle Shell",8],["Scrap Metal",10],
       ["Lighter",10],["Battery",10],["Alcohol",6],["Oil",8],["Glue",7],["Leather",9],["Meat",5]];
 
   const sortlistalphabetically = (e1,e2) => e1[0] > e2[0] ? 1 : e1[0] < e2[0] ? -1 : 0;

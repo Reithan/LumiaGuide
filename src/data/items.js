@@ -77,3 +77,25 @@ for (const itemname in all_items) {
     }
   }
 }
+
+export var starter_weapons = {};
+starter_weapons["Assault Rifle"] = weapons["Fedorova"];
+starter_weapons["Axe"] = weapons["Hatchet"];
+starter_weapons["Bat"] = weapons["Short Rod"];
+starter_weapons["Bow"] = weapons["Bow"];
+starter_weapons["Crossbow"] = weapons["Short Crossbow"];
+starter_weapons["Dagger"] = weapons["Kitchen Knife"];
+starter_weapons["Dual Swords"] = null;
+starter_weapons["Glove"] = weapons["Cotton Gloves"];
+starter_weapons["Guitar"] = weapons["Starter Guitar"];
+starter_weapons["Hammer"] = weapons["Hammer"];
+starter_weapons["Nunchaku"] = weapons["Steel Chain"];
+starter_weapons["Pistol"] = weapons["Walther PPK"];
+starter_weapons["Rapier"] = weapons["Needle"];
+starter_weapons["Sniper Rifle"] = weapons["Long Rifle"];
+starter_weapons["Spear"] = weapons["Short Spear"];
+starter_weapons["Throw"] = weapons["Baseball"];
+starter_weapons["Tonfa"] = weapons["Bamboo"];
+starter_weapons["Two-Handed Sword"] = weapons["Rusty Sword"];
+starter_weapons["Shuriken"] = weapons["Razor"];
+starter_weapons["Whip"] = weapons["Whip"];
