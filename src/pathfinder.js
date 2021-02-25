@@ -351,12 +351,14 @@ export class Pathfinder {
           }
         }
         if(itemstats.hunt != null) {
+          var total_hunt = 0;
           for (const hunt of itemstats.hunt) {
             var hunt_amount = Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(hunt[0])];
             hunt_amount *= (hunt[1] == "Always" ? 1 : ((hunt[1] == "Often" ? 0.5 : 0))); // ignore rare drops
+            total_hunt += hunt_amount;
           }
-          if(hunt_amount > 0) {
-            this.#current_inventory.addItem(itemstats, hunt_amount);
+          if(total_hunt > 0) {
+            this.#current_inventory.addItem(itemstats, Math.floor(total_hunt));
           }
         }
       }
