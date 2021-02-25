@@ -153,7 +153,8 @@ export class Pathfinder {
       }
       if(Items.all_items[itementry[0]].hunt != null) {
         for (const huntentry of Items.all_items[itementry[0]].hunt) {
-          if(Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] > 0) {
+          if(Map.hunt_spawns[area][Items.ItemClass.HuntType.indexOf(huntentry[0])] > 0 && huntentry[1] != "Rarely") {
+            // Don't include rare drops for heuristic
             ++totalitemsavailable;
             break;
           }
@@ -194,13 +195,13 @@ export class Pathfinder {
       if(Items.all_items[itementry[0]].hunt != null) {
         var hunt_amount = 0;
         for (const huntentry of Items.all_items[itementry[0]].hunt) {
-          var rarity_mod = 1.0;
+          var rarity_mod = 0;
           switch (Items.ItemClass.HuntRarity.indexOf(huntentry[1])) {
             case 1:
               rarity_mod = 0.5; // approx 40-60%
               break;
             case 2:
-              rarity_mod = 0.05; // Guesstimate SWAG
+              rarity_mod = 0.0; // Don't count rare drops for heuristic
               break;
             case 0:
             default:
@@ -229,7 +230,7 @@ export class Pathfinder {
       items_needed += itementry[1];
       var items_available = 0;
 
-      if(region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
+      if(region_drops[area] != undefined && region_drops[area][itementry[0]] != undefined && region_drops[area][itementry[0]] > 0) {
         items_available += Math.floor(region_drops[area][itementry[0]] * 0.6 ** step); // SWAG dwindling supply & lazy checking
       }
       if(Items.all_items[itementry[0]].collect != null) {
@@ -243,13 +244,13 @@ export class Pathfinder {
       if(Items.all_items[itementry[0]].hunt != null) {
         var hunt_amount = 0;
         for (const huntentry of Items.all_items[itementry[0]].hunt) {
-          var rarity_mod = 1.0;
+          var rarity_mod = 0.0;
           switch (Items.ItemClass.HuntRarity.indexOf(huntentry[1])) {
             case 1:
               rarity_mod = 0.5; // approx 40-60%
               break;
             case 2:
-              rarity_mod = 0.05; // Guesstimate SWAG
+              rarity_mod = 0.0; // Don't count rare drops for heuristic
               break;
             case 0:
             default:
@@ -314,5 +315,15 @@ export class Pathfinder {
     copy.#original_list_length = this.#original_list_length;
 
     return copy;
+  }
+
+  static isScoreGreaterThan = (e1,e2) =>  (e1[1] < e2[1]? 1 : (e1[1] > e2[1]? -1 : 0));
+
+  generateAreaScores(func, step) {
+    var scores = [];
+    for (const area of Map.areas) {
+      scores.push([area,func(area, step)]);
+    }
+    return scores;
   }
 }

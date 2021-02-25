@@ -45,7 +45,7 @@ test('Shopping list is populated by goal items\' constituent parts.', () => {
 test('Precent items in area is accurate for current shopping list', () => {
   var pathfinder = new Pathfinder.Pathfinder();
   pathfinder.setGoal(["Bracelet of Skadi","Leather Gloves"]);
-  expect(pathfinder.percentItemsInArea("Cemetary")).toBeCloseTo(6 / 8);
+  expect(pathfinder.percentItemsInArea("Cemetary")).toBeCloseTo(5 / 8);
 });
 
 test('Precent drop clear in area is accurate for current shopping list', () => {
@@ -54,7 +54,6 @@ test('Precent drop clear in area is accurate for current shopping list', () => {
   expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1.0);
 
   pathfinder.setGoal(["Leather Gloves"]);
-
   expect(pathfinder.percentAreaClear("Cemetary")).toBeCloseTo(1 / 3.5);
 });
 
@@ -112,3 +111,28 @@ test('Pathfinder clone test', () => {
   expect(pathfinder.getAllCurrentItems()).toStrictEqual(pathfinder_clone.getAllCurrentItems());
 });
 
+test('Test area score generation', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Vibroblade"]);
+  var scores = pathfinder.generateAreaScores(pathfinder.expectedPercentItemsAcquired.bind(pathfinder), 3);
+});
+
+test('Traverse area test', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Vibroblade","Optical Camouflage Suit"]);
+
+  var areas = [];
+  var test_scores = null;
+  for (let step = 1; step <= 3; ++step) {
+    var scores = pathfinder.generateAreaScores(pathfinder.expectedPercentItemsAcquired.bind(pathfinder), step);
+    test_scores = scores;
+    scores.sort(Pathfinder.Pathfinder.isScoreGreaterThan);
+    areas.push(scores[0]);
+    pathfinder.collectAllInArea(scores[0][0]);
+    pathfinder.doAllCrafts();
+  }
+
+  expect(pathfinder.getAllCurrentItems()).toHaveLength(2);
+  expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
+  expect(pathfinder.getCurrentGearStats("Chest").name).toBe("Optical Camouflage Suit");
+});
