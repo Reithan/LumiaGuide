@@ -259,3 +259,14 @@ test('Test gear stat ratings', () => {
   expect(total_rating).toBeCloseTo(0.1488);
   expect(function_rating).toBeCloseTo(0.1417);
 });
+
+test('Craft equal rarity equipment', () => {
+  var inventory = new Inventory.Inventory("Dagger");
+  inventory.addItems(["Chain Coif","Hairband","Feather"]);
+  inventory.craftItem(Items.all_items["Mask"]);
+
+  expect(inventory.haveItem("Chain Coif")).toBe(1);
+  expect(inventory.haveItem("Mask")).toBe(1);
+  expect(inventory.haveItem("Hairband")).toBe(0);
+  expect(inventory.haveItem("Feather")).toBe(0);
+});
