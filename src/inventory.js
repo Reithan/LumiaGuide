@@ -193,4 +193,17 @@ export class Inventory {
     }
     return copy;
   }
+
+  getTotalEquippedStats() {
+    var total_stats = new Items.ItemClass.GearStats();
+    total_stats.name = "Build Stats";
+    for (const slot in this.#gear_slots) {
+      if (Object.hasOwnProperty.call(this.#gear_slots, slot) && this.#gear_slots[slot] != undefined) {
+        for (const stat of Items.ItemClass.GearStatTypes) {
+          total_stats[stat] += this.#gear_slots[slot][stat];
+        }
+      }
+    }
+    return total_stats;
+  }
 }

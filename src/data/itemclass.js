@@ -86,32 +86,32 @@ export const GearStatTypes = [
 export class GearStats extends ItemStats {
   constructor(name, rarity, recipe,
         type, subtype,
-        attack_power,
-        attack_speed,
-        extra_attack_damage,
-        crit_rate,
-        crit_damage,
-        life_steal,
-        attack_range,
-        skill_amp_flat,
-        skill_amp_percent,
-        cooldown_reduction,
-        health,
-        health_regen_flat,
-        health_regen,
-        stamina,
-        stamina_regen_flat,
-        stamina_regen,
-        defense,
-        less_attack_damage,
-        less_skill_flat,
-        less_skill_percent,
-        less_crit_percent,
-        move_speed,
-        move_speed_peace,
-        vision_range,
-        normal_attack_healing_reduction,
-        skill_healing_reduction,
+        attack_power = 0,
+        attack_speed = 0,
+        extra_attack_damage = 0,
+        crit_rate = 0,
+        crit_damage = 0,
+        life_steal = 0,
+        attack_range = 0,
+        skill_amp_flat = 0,
+        skill_amp_percent = 0,
+        cooldown_reduction = 0,
+        health = 0,
+        health_regen_flat = 0,
+        health_regen = 0,
+        stamina = 0,
+        stamina_regen_flat = 0,
+        stamina_regen = 0,
+        defense = 0,
+        less_attack_damage = 0,
+        less_skill_flat = 0,
+        less_skill_percent = 0,
+        less_crit_percent = 0,
+        move_speed = 0,
+        move_speed_peace = 0,
+        vision_range = 0,
+        normal_attack_healing_reduction = 0,
+        skill_healing_reduction = 0,
         region, collect, hunt, airsupply
       ) {
     super(name, rarity, 1, 1, recipe, region, collect, hunt, airsupply);
@@ -128,10 +128,10 @@ export class GearStats extends ItemStats {
     this.skill_amp_percent = skill_amp_percent;
     this.cooldown_reduction = cooldown_reduction;
     this.health = health;
-    this.health_regen = health_regen_flat;
+    this.health_regen_flat = health_regen_flat;
     this.health_regen = health_regen;
     this.stamina = stamina;
-    this.stamina_regen = stamina_regen_flat;
+    this.stamina_regen_flat = stamina_regen_flat;
     this.stamina_regen = stamina_regen;
     this.defense = defense;
     this.less_attack_damage = less_attack_damage;

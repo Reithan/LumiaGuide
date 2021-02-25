@@ -199,3 +199,14 @@ test('Inventory clone test', () => {
   expect(inventory.getAllItems()).toStrictEqual(inventory_clone.getAllItems());
   expect(inventory.getInventory()).toStrictEqual(inventory_clone.getInventory());
 });
+
+test('Get total equipped gear stats test', () => {
+  var inventory = new Inventory.Inventory();
+  const build_items = [Items.all_items["Vibroblade"],Items.all_items["Optical Camouflage Suit"]];
+  inventory.addItems(build_items);
+  var total_stats = inventory.getTotalEquippedStats();
+  
+  for (const stat of Items.ItemClass.GearStatTypes) {
+    expect(total_stats[stat]).toBe(build_items[0][stat] + build_items[1][stat]);
+  }
+});
