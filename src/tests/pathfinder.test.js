@@ -167,29 +167,23 @@ test('Test full area collect function', () => {
 
 test('Craft multi-tier item in steps', () => {
   var pathfinder = new Pathfinder.Pathfinder("Dagger");
-  pathfinder.setGoal(["Vibroblade"]);
+  pathfinder.setGoal(["Imperial Burgonet"]);
 
-  pathfinder.collectAllShoppingInArea("Temple");
+  pathfinder.collectAllShoppingInArea("Pond");
   pathfinder.doAllCrafts();
   var itemlist = makeItemList(pathfinder);
-  expect(itemlist).toContainEqual(["Army Knife",1]);
-  expect(itemlist).not.toContainEqual(["Motor",1]);
-  expect(itemlist).not.toContainEqual(["Vibroblade",1]);
+  var expected_itemlist = [["Kitchen Knife",1],["Hat",1],["Gold",1]];
+  expect(itemlist).toStrictEqual(expected_itemlist);
 
   pathfinder.collectAllShoppingInArea("Avenue");
-  pathfinder.collectAllShoppingInArea("Chapel");
   pathfinder.doAllCrafts();
   var itemlist = makeItemList(pathfinder);
-  expect(itemlist).toContainEqual(["Army Knife",1]);
-  expect(itemlist).toContainEqual(["Electronic Parts",1]);
-  expect(itemlist).not.toContainEqual(["Motor",1]);
-  expect(itemlist).not.toContainEqual(["Vibroblade",1]);
+  expected_itemlist = [["Kitchen Knife",1],["Hat",1],["Gold",1],["Hairband",1]];
+  expect(itemlist).toStrictEqual(expected_itemlist);
 
-  pathfinder.collectAllShoppingInArea("Factory");
+  pathfinder.collectAllShoppingInArea("Cemetary");
   pathfinder.doAllCrafts();
   var itemlist = makeItemList(pathfinder);
-  expect(itemlist).not.toContainEqual(["Army Knife",1]);
-  expect(itemlist).not.toContainEqual(["Electronic Parts",1]);
-  expect(itemlist).not.toContainEqual(["Motor",1]);
-  expect(itemlist).toContainEqual(["Vibroblade",1]);
+  expected_itemlist = [["Kitchen Knife",1],["Imperial Burgonet",1]];
+  expect(itemlist).toStrictEqual(expected_itemlist);
 });
