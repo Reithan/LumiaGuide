@@ -80,8 +80,9 @@ export class Pathfinder {
         this.#removeItemFromList(craftitem.name,craftitem.quantity);
         return true;
       }
-      return this.#recurseCraft(Items.all_items[craftitem.recipe.part1]) ||
-             this.#recurseCraft(Items.all_items[craftitem.recipe.part2]);
+      var crafted = this.#recurseCraft(Items.all_items[craftitem.recipe.part1]);
+      crafted = this.#recurseCraft(Items.all_items[craftitem.recipe.part2]) || crafted;
+      return crafted;
     }
     return false;
   }

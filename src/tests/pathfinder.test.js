@@ -140,13 +140,19 @@ test('Traverse area test', () => {
   expect(pathfinder.getCurrentInventory().getGearStats("Chest").name).toBe("Optical Camouflage Suit");
 });
 
-test('Test full area collect function', () => {
-  var pathfinder = new Pathfinder.Pathfinder("Dagger");
-  pathfinder.collectAllInArea("Factory");
+
+function makeItemList(pathfinder) {
   var itemlist = [];
   for (const itementry of pathfinder.getCurrentInventory().getAllItems()) {
     itemlist.push([itementry[0].name,itementry[1]]);
   }
+  return itemlist;
+}
+
+test('Test full area collect function', () => {
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
+  pathfinder.collectAllInArea("Factory");
+  var itemlist = makeItemList(pathfinder);
   
   const expected_itemlist = [["Kitchen Knife",1],["Branch",7],["Bandage",7],["Binoculars",7],
       ["Iron Ball",1],["Chalk",7],["Short Crossbow",4],["Walther PPK",4],["Fedorova",4],
@@ -157,4 +163,33 @@ test('Test full area collect function', () => {
   itemlist.sort(sortlistalphabetically);
   expected_itemlist.sort(sortlistalphabetically);
   expect(itemlist).toStrictEqual(expected_itemlist);
+});
+
+test('Craft multi-tier item in steps', () => {
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
+  pathfinder.setGoal(["Vibroblade"]);
+
+  pathfinder.collectAllShoppingInArea("Temple");
+  pathfinder.doAllCrafts();
+  var itemlist = makeItemList(pathfinder);
+  expect(itemlist).toContainEqual(["Army Knife",1]);
+  expect(itemlist).not.toContainEqual(["Motor",1]);
+  expect(itemlist).not.toContainEqual(["Vibroblade",1]);
+
+  pathfinder.collectAllShoppingInArea("Avenue");
+  pathfinder.collectAllShoppingInArea("Chapel");
+  pathfinder.doAllCrafts();
+  var itemlist = makeItemList(pathfinder);
+  expect(itemlist).toContainEqual(["Army Knife",1]);
+  expect(itemlist).toContainEqual(["Electronic Parts",1]);
+  expect(itemlist).not.toContainEqual(["Motor",1]);
+  expect(itemlist).not.toContainEqual(["Vibroblade",1]);
+
+  pathfinder.collectAllShoppingInArea("Factory");
+  pathfinder.doAllCrafts();
+  var itemlist = makeItemList(pathfinder);
+  expect(itemlist).not.toContainEqual(["Army Knife",1]);
+  expect(itemlist).not.toContainEqual(["Electronic Parts",1]);
+  expect(itemlist).not.toContainEqual(["Motor",1]);
+  expect(itemlist).toContainEqual(["Vibroblade",1]);
 });
