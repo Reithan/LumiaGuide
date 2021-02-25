@@ -324,6 +324,7 @@ export class Pathfinder {
     for (const area of Map.areas) {
       scores.push([area,func(area, step)]);
     }
+    scores.sort(Pathfinder.isScoreGreaterThan);
     return scores;
   }
 

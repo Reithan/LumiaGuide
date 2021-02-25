@@ -115,6 +115,10 @@ test('Test area score generation', () => {
   var pathfinder = new Pathfinder.Pathfinder();
   pathfinder.setGoal(["Vibroblade"]);
   var scores = pathfinder.generateAreaScores(pathfinder.expectedPercentItemsAcquired.bind(pathfinder), 3);
+  expect(scores[0][0]).toBe("Dock");
+  expect(scores[0][1]).toBe(0.8);
+  expect(scores[2][0]).toBe("Factory");
+  expect(scores[2][1]).toBe(0.6);
 });
 
 test('Traverse area test', () => {
@@ -126,7 +130,6 @@ test('Traverse area test', () => {
   for (let step = 1; step <= 3; ++step) {
     var scores = pathfinder.generateAreaScores(pathfinder.expectedPercentItemsAcquired.bind(pathfinder), step);
     test_scores = scores;
-    scores.sort(Pathfinder.Pathfinder.isScoreGreaterThan);
     areas.push(scores[0]);
     pathfinder.collectAllShoppingInArea(scores[0][0]);
     pathfinder.doAllCrafts();
