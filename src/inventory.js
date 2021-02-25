@@ -241,4 +241,47 @@ export class Inventory {
     }
     return all_crafts;
   }
+
+  rateGearSlot(slot) {
+    var stats_rating = new Items.ItemClass.GearStats();
+    if (this.#gear_slots[slot] == null || this.#gear_slots[slot] == undefined) {
+      return stats_rating;
+    }
+    var slotstats = this.#gear_slots[slot];
+    for (const stat of Items.ItemClass.GearStatTypes) {
+      stats_rating[stat] = (slotstats[stat] - Items.gear_range[0][stat]) / Items.gear_range[1][stat];
+    }
+    return stats_rating;
+  }
+
+  rateBuildStats() {
+    var stats_rating = new Items.ItemClass.GearStats();
+    for (const slot of Items.ItemClass.GearType) {
+      var slotstats = this.rateGearSlot(slot);
+      for (const stat of Items.ItemClass.GearStatTypes) {
+        stats_rating[stat] += slotstats[stat] / 6;
+      }
+    }
+    return stats_rating;
+  }
+
+  generateOverallRating() {
+    var stats_rating = this.rateBuildStats();
+    var all_ratings = [];
+    for (const stat of Items.ItemClass.GearStatTypes) {
+      all_ratings.push(stats_rating[stat]);
+    }
+
+    all_ratings.sort((e1,e2) => (e1 < e2 ? 1 : (e1 > e2 ? -1 : 0)));
+    
+    // generate rating based on pareto principle
+    var total_rating = 0;
+    var ratio = 0.8;
+    for (let i = 0; i < all_ratings.length; i++) {
+      total_rating += all_ratings[i] * ratio;
+      ratio = (1 - ratio) * 0.8;
+    }
+
+    return total_rating;
+  }
 }

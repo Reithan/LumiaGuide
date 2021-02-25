@@ -226,3 +226,18 @@ test('Test all possible craft output', () => {
   all_fac_crafts.sort();
   expect(all_fac_crafts).toStrictEqual(all_fac_crafts_expected);
 });
+
+test('Test gear stat ratings', () => {
+  var inventory = new Inventory.Inventory();
+  inventory.addItems(["Vibroblade","Optical Camouflage Suit"]);
+
+  var weapon_rating = inventory.rateGearSlot("Weapon");
+  var build_rating = inventory.rateBuildStats();
+  var total_rating = inventory.generateOverallRating();
+
+  expect(weapon_rating["attack_power"]).toBeCloseTo(0.38);
+  expect(weapon_rating["attack_speed"]).toBeCloseTo(0.8181);
+  expect(build_rating["attack_speed"]).toBeCloseTo(0.1515);
+  expect(build_rating["crit_rate"]).toBeCloseTo(0.1466);
+  expect(total_rating).toBeCloseTo(0.3024);
+});
