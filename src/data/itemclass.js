@@ -54,6 +54,35 @@ export const WeaponType = [
   "Whip",
 ];
 
+export const GearStatTypes = [
+  "attack_power",
+  "attack_speed",
+  "extra_attack_damage",
+  "crit_rate",
+  "crit_damage",
+  "life_steal",
+  "attack_range",
+  "skill_amp_flat",
+  "skill_amp_percent",
+  "cooldown_reduction",
+  "health",
+  "health_regen_flat",
+  "health_regen",
+  "stamina",
+  "stamina_regen_flat",
+  "stamina_regen",
+  "defense",
+  "less_attack_damage",
+  "less_skill_flat",
+  "less_skill_percent",
+  "less_crit_percent",
+  "move_speed",
+  "move_speed_peace",
+  "vision_range",
+  "normal_attack_healing_reduction",
+  "skill_healing_reduction",
+];
+
 export class GearStats extends ItemStats {
   constructor(name, rarity, recipe,
         type, subtype,
