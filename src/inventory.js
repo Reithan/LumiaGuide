@@ -119,7 +119,9 @@ export class Inventory {
           this.#gear_slots[itemstats.type] = itemstats;
           --number;
         }
-      } else if (number < 0 && (this.#gear_slots[itemstats.type] != null && this.#gear_slots[itemstats.type] != undefined)) {
+      } else if (number < 0 && (this.#gear_slots[itemstats.type] != null &&
+            this.#gear_slots[itemstats.type] != undefined) &&
+            this.#gear_slots[itemstats.type] == itemstats) {
         this.#gear_slots[itemstats.type] = null;
         ++number;
       }
