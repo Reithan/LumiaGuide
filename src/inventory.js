@@ -213,4 +213,32 @@ export class Inventory {
     }
     return total_stats;
   }
+
+  getAllPossibleCrafts() {
+    var all_crafts = [];
+    var temp_inventory = this.clone();
+    var found_craft = true;
+    while(found_craft) {
+      found_craft = false;
+      for (const itemname in Items.all_items) {
+        if(all_crafts.includes(itemname)) {
+          continue;
+        }
+        if (Object.hasOwnProperty.call(Items.all_items, itemname)) {
+          const itemstats = Items.all_items[itemname];
+          if(itemstats.recipe != null) {
+            var part1 = temp_inventory.haveItem(itemstats.recipe.part1);
+            var part2 = temp_inventory.haveItem(itemstats.recipe.part2);
+            var num_crafts = (part1 > part2)? part2 : part1;
+            if(num_crafts > 0) {
+              temp_inventory.addItem(itemname, num_crafts);
+              all_crafts.push(itemname);
+              found_craft = true;
+            }
+          }
+        }
+      }
+    }
+    return all_crafts;
+  }
 }

@@ -206,3 +206,23 @@ test('Get total equipped gear stats test', () => {
     expect(total_stats[stat]).toBe(build_items[0][stat] + build_items[1][stat]);
   }
 });
+
+test('Test all possible craft output', () => {
+  var inventory = new Inventory.Inventory();
+  const all_factory_items = [["Branch",7],["Bandage",7],["Binoculars",7],
+      ["Iron Ball",1],["Chalk",7],["Short Crossbow",4],["Walther PPK",4],
+      ["Fedorova",4],["Hatchet",4],["Curry Powder",6],["Stone",4],["Nail",8],
+      ["Turtle Shell",8],["Scrap Metal",10],["Lighter",10],["Battery",10],
+      ["Alcohol",6],["Oil",8],["Glue",7],["Leather",9],["Meat",5]];
+  inventory.addItems(all_factory_items);
+
+  var all_fac_crafts_expected  = ["Magnum-Python","Beretta M92F",
+      "Double Revolver SP","Leather Shield","Bracer","Tandoori Chicken",
+      "Baiju","Kaoliang Liquor","Oilcloth","Heated Oil","White Powder",
+      "Heated Stone","Fried Chicken","Curry Croquette","Steak"];
+  var all_fac_crafts = inventory.getAllPossibleCrafts();
+
+  all_fac_crafts_expected.sort();
+  all_fac_crafts.sort();
+  expect(all_fac_crafts).toStrictEqual(all_fac_crafts_expected);
+});
