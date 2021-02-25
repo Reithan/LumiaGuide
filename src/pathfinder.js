@@ -299,4 +299,20 @@ export class Pathfinder {
       }
     }
   }
+
+  clone() {
+    var copy = new Pathfinder();
+    for (const key in this.#goal) {
+      if (Object.hasOwnProperty.call(this.#goal, key)) {
+        copy.#goal[key] = this.#goal[key];
+      }
+    }
+    copy.#current_inventory = this.#current_inventory.clone();
+    for (const iterator of this.#shopping_list) {
+      copy.#shopping_list.push([iterator[0],iterator[1]]);
+    }
+    copy.#original_list_length = this.#original_list_length;
+
+    return copy;
+  }
 }

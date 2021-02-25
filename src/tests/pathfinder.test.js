@@ -100,3 +100,15 @@ test('Test item collection & crafting', () => {
   expect(current_inventory).toHaveLength(1);
   expect(pathfinder.getCurrentGearStats("Weapon").name).toBe("Vibroblade");
 });
+
+test('Pathfinder clone test', () => {
+  var pathfinder = new Pathfinder.Pathfinder();
+  pathfinder.setGoal(["Vibroblade"]);
+  pathfinder.collectAllInArea("Hotel");
+  var pathfinder_clone = pathfinder.clone();
+  expect(pathfinder.getGoal()).toStrictEqual(pathfinder_clone.getGoal());
+  expect(pathfinder.getCurrentShoppingList()).toStrictEqual(pathfinder_clone.getCurrentShoppingList());
+  expect(pathfinder.getCurrentInventory()).toStrictEqual(pathfinder_clone.getCurrentInventory());
+  expect(pathfinder.getAllCurrentItems()).toStrictEqual(pathfinder_clone.getAllCurrentItems());
+});
+
