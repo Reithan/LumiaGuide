@@ -180,4 +180,17 @@ export class Inventory {
     }
     return false;
   }
+
+  clone() {
+    var copy = new Inventory();
+    for (const iterator of this.#inventory) {
+      copy.#inventory.push([iterator[0],iterator[1]]);
+    }
+    for (const key in this.#gear_slots) {
+      if (Object.hasOwnProperty.call(this.#gear_slots, key)) {
+        copy.#gear_slots[key] = this.#gear_slots[key];
+      }
+    }
+    return copy;
+  }
 }
