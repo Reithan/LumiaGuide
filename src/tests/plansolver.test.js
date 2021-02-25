@@ -1,4 +1,5 @@
 import * as PlanSolver from '../plansolver.js';
+import * as Items from '../data/items.js';
 
 test('Test Route Generation', ()=>{
   var plan_solver = new PlanSolver.PlanSolver("Sniper Rifle");

@@ -72,8 +72,12 @@ export class Pathfinder {
   }
 
   #recurseCraft = function(craftitem) {
+    if(this.#current_inventory.haveItem(craftitem.name)) {
+      return false;
+    }
     if(craftitem.recipe != null) {
       if(this.#current_inventory.craftItem(craftitem)) {
+        this.#removeItemFromList(craftitem.name,craftitem.quantity);
         return true;
       }
       return this.#recurseCraft(Items.all_items[craftitem.recipe.part1]) ||

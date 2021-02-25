@@ -26,7 +26,7 @@ export class PlanSolver {
           break;
         }
         curverating += plan_step[2] * ratio;
-        ratio = (1 - ratio) * 0.8;
+        ratio *= 0.2;
       }
       return curverating;
     };
@@ -55,7 +55,8 @@ export class PlanSolver {
       var new_plan = [[search_area[0],this.#pathfinder.clone(),0]];
       new_plan[0][1].collectAllShoppingInArea(new_plan[0][0]);
       new_plan[0][1].doAllCrafts();
-      new_plan[0][2] = new_plan[0][1].getCurrentInventory().generateOverallRating();
+      // new_plan[0][2] = new_plan[0][1].getCurrentInventory().generateOverallRating();
+      new_plan[0][2] = new_plan[0][1].getCurrentInventory().rateBuildStatsFunctional();
       plans.push(new_plan);
     }
     plans.sort(strategy);
@@ -73,9 +74,6 @@ export class PlanSolver {
         }
         var last_plan_step = plan[plan.length-1];
         var area_scores = last_plan_step[1].generateAreaScores(last_plan_step[1].expectedPercentItemsAcquired.bind(last_plan_step[1]), step);
-        if(step==6) {
-          console.log(area_scores);
-        }
         for (const plan_step of plan) {
           area_scores = area_scores.filter(areaentry => (areaentry[0] != plan_step[0] && areaentry[1] > 0));
         }
@@ -93,7 +91,8 @@ export class PlanSolver {
           var last = new_plan.length - 1;
           new_plan[last][1].collectAllShoppingInArea(new_plan[last][0]);
           new_plan[last][1].doAllCrafts();
-          new_plan[last][2] = new_plan[last][1].getCurrentInventory().generateOverallRating();
+          //new_plan[last][2] = new_plan[last][1].getCurrentInventory().generateOverallRating();
+          new_plan[last][2] = new_plan[last][1].getCurrentInventory().rateBuildStatsFunctional();
           new_plans.push(new_plan);
         }
         plan.push(null);

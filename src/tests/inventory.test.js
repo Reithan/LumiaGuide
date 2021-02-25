@@ -250,10 +250,12 @@ test('Test gear stat ratings', () => {
   var weapon_rating = inventory.rateGearSlot("Weapon");
   var build_rating = inventory.rateBuildStats();
   var total_rating = inventory.generateOverallRating();
+  var function_rating = inventory.rateBuildStatsFunctional();
 
   expect(weapon_rating["attack_power"]).toBeCloseTo(0.38);
   expect(weapon_rating["attack_speed"]).toBeCloseTo(0.8181);
   expect(build_rating["attack_speed"]).toBeCloseTo(0.1515);
   expect(build_rating["crit_rate"]).toBeCloseTo(0.1466);
-  expect(total_rating).toBeCloseTo(0.3024);
+  expect(total_rating).toBeCloseTo(0.1488);
+  expect(function_rating).toBeCloseTo(0.1417);
 });

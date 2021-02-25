@@ -42,6 +42,17 @@ export class Inventory {
   }
 
   getInventory() { return [...this.#inventory]; }
+  getBuild() {
+    var build = [];
+    for (const slot of Items.ItemClass.GearType) {
+      if(this.#gear_slots[slot] == undefined || this.#gear_slots[slot] == null) {
+        build.push("");
+      } else {
+        build.push(this.#gear_slots[slot].name);
+      }
+    }
+    return build;
+  }
 
   getAllItems() {
     var out_items = [];
@@ -197,6 +208,7 @@ export class Inventory {
 
   clone() {
     var copy = new Inventory();
+    copy.#weapon_type = this.#weapon_type;
     for (const iterator of this.#inventory) {
       copy.#inventory.push([iterator[0],iterator[1]]);
     }
@@ -205,7 +217,7 @@ export class Inventory {
         copy.#gear_slots[key] = this.#gear_slots[key];
       }
     }
-    copy.#weapon_type = this.#weapon_type;
+    copy.cleanInventory();
     return copy;
   }
 
@@ -287,9 +299,92 @@ export class Inventory {
     var ratio = 0.8;
     for (let i = 0; i < all_ratings.length; i++) {
       total_rating += all_ratings[i] * ratio;
-      ratio = (1 - ratio) * 0.8;
+      ratio *= 0.2;
     }
 
     return total_rating;
+  }
+
+  rateBuildStatsFunctional() {
+    var build_stats = new Items.ItemClass.GearStats();
+    // var max_build = new Items.ItemClass.GearStats();
+    var max_build = Items.gear_range[1];
+    for (const slot of Items.ItemClass.GearType) {
+      for (const stat of Items.ItemClass.GearStatTypes) {
+        if(this.#gear_slots[slot] != undefined && this.#gear_slots[slot] != null) {
+          build_stats[stat] += this.#gear_slots[slot][stat];
+        }
+        //max_build[stat] += Items.gear_range[1][stat];
+      }
+    }
+    // normal attack + crit
+    var normal_attack =
+      (build_stats["attack_power"] * (1 + build_stats["attack_speed"]) *
+      (100 / (100 + max_build["defense"])) * (1 + build_stats["crit_rate"] *
+      (2 + build_stats["crit_damage"] - max_build["less_crit_percent"])) +
+      build_stats["extra_attack_damage"] - max_build["less_attack_damage"]);
+    normal_attack = normal_attack > 0 ? normal_attack : 0.0001;
+    var normal_ttk = (1500 + max_build["health"] + 
+      15 * (max_build["health_regen_flat"] * (1 + max_build["health_regen"] -
+      build_stats["normal_attack_healing_reduction"]))) / normal_attack;
+    // skill
+    var skill_attack = 
+      (build_stats["attack_power"] * (1 / (1-build_stats["cooldown_reduction"])) * 
+      (100 / (100 + max_build["defense"])) + build_stats["skill_amp_flat"] -
+      max_build["less_skill_flat"]) * (1 + build_stats["skill_amp_percent"] -
+      max_build["less_skill_percent"]);
+    skill_attack = skill_attack > 0 ? skill_attack : 0.0001;
+    var skill_ttk = (1500 + max_build["health"] + 
+      15 * (max_build["health_regen_flat"] * (1 + max_build["health_regen"] -
+      build_stats["skill_healing_reduction"]))) / skill_attack;
+    // normal defense
+    var normal_defense =
+      (max_build["attack_power"] * (1 + max_build["attack_speed"]) *
+      (100 / (100 + build_stats["defense"])) * (1 + max_build["crit_rate"] *
+      (2 + max_build["crit_damage"]) - build_stats["less_crit_percent"]) +
+      max_build["extra_attack_damage"] - build_stats["less_attack_damage"]);
+    normal_defense = normal_defense > 0 ? normal_defense : 0.0001;
+    var normal_ttd = (1500 + build_stats["health"] + 
+      15 * (build_stats["health_regen_flat"] * (1 + build_stats["health_regen"] -
+      max_build["normal_attack_healing_reduction"]))) / normal_defense;
+    // skill
+    var skill_defense =
+      (max_build["attack_power"] * (1 / (1-max_build["cooldown_reduction"])) * 
+      (100 / (100 + build_stats["defense"])) + max_build["skill_amp_flat"] -
+      build_stats["less_skill_flat"]) * (1 + max_build["skill_amp_percent"] -
+      build_stats["less_skill_percent"]);
+    skill_defense = skill_defense > 0 ? skill_defense : 0.0001;
+    var skill_ttd = (1500 + build_stats["health"] + 
+      15 * (build_stats["health_regen_flat"] * (1 + build_stats["health_regen"] -
+      max_build["skill_healing_reduction"]))) / skill_defense;
+    // lifesteal adjust
+    normal_ttk += (normal_defense * 15 * (max_build["life_steal"] -
+      build_stats["normal_attack_healing_reduction"])) / normal_attack;
+    normal_ttd += (normal_attack * 15 * (build_stats["life_steal"] -
+      max_build["normal_attack_healing_reduction"])) / normal_defense;
+    skill_ttk += (normal_defense * 15 * (max_build["life_steal"] - 
+      build_stats["skill_healing_reduction"])) / skill_attack;
+    
+    // aggregate stats
+    var ratings = []
+    ratings.push(normal_attack / normal_defense);
+    ratings.push(skill_attack / skill_defense);
+    ratings.push(normal_ttd / normal_ttk);
+    ratings.push(skill_ttd / skill_ttk);
+    // arbitrary scaling
+    ratings.push(0.25 * (build_stats["move_speed"] + 0.2 *
+      build_stats["move_speed_peace"]) / (max_build["move_speed"] + 0.2 *
+      max_build["move_speed_peace"]));
+    ratings.push(0.2 * (build_stats["vision_range"] + build_stats["attack_range"]) / 
+      (max_build["vision_range"] + max_build["attack_range"]));
+      
+    var pareto_total = 0;
+    var ratio = 0.8;
+    ratings = ratings.sort().reverse();
+    for (const rating of ratings) {
+      pareto_total += rating * ratio;
+      ratio *= 0.2;
+    }
+    return pareto_total;
   }
 }

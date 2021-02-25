@@ -133,7 +133,6 @@ test('Traverse area test', () => {
     areas.push(scores[0]);
     pathfinder.collectAllShoppingInArea(scores[0][0]);
     pathfinder.doAllCrafts();
-    console.log(pathfinder.getCurrentInventory().getGearStats("Weapon").name);
   }
 
   expect(pathfinder.getCurrentInventory().getAllItems()).toHaveLength(2);
