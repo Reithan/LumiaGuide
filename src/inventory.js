@@ -80,9 +80,15 @@ export class Inventory {
     this.#inventory = this.#inventory.filter(slot => slot[1] > 0);
   }
 
-  addItem(itemstats, number = 1) {
-    if(!((itemstats instanceof Items.ItemClass.ItemStats) && Number.isInteger(number))) {
-      throw new TypeError("addItem takes an item and optional quantity as an arguments.");
+  addItem(item, number = 1) {
+    var itemstats = null;
+    if(item instanceof Items.ItemClass.ItemStats) {
+      itemstats = item;
+    } else if(Util.toType(item) == "string") {
+      itemstats = Items.all_items[item];
+    }
+    if(!Number.isInteger(number) || itemstats == null || itemstats == undefined) {
+      throw new TypeError("addItem takes an item name or stats object and optional quantity as an arguments.");
     }
 
     if(itemstats instanceof Items.ItemClass.GearStats) {
