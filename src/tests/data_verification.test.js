@@ -24,15 +24,10 @@ test('All map locations are valid', ()=> {
   }
 });
 
-test('All map adjacencies are valid', ()=> {
-  for (const area in Map.map_adjacencies) {
-    if (Object.hasOwnProperty.call(Map.map_adjacencies, area)) {
-      for (const adjacent of Map.map_adjacencies[area]) {
-        expect(Map.areas).toContain(adjacent);
-        expect(Map.map_adjacencies[adjacent]).toContain(area);
-        expect(Map.areAreasAdjacent(adjacent,area)).toBe(true);
-        expect(Map.areAreasAdjacent(area,adjacent)).toBe(true);
-      }
+test('Testing map adjacencies returns valid checks', ()=> {
+  for (const areaA of Map.areas) {
+    for (const areaB of Map.areas) {
+      expect(Map.map_adjacencies[areaA].includes(areaB)).toBe(Map.areAreasAdjacent(areaA,areaB));
     }
   }
 });
