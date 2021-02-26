@@ -27,6 +27,11 @@ export class Inventory {
     this.#weapon_type = weapon_type;
   }
 
+  reset() {
+    this.#gear_slots = {};
+    this.#inventory = [];
+  }
+
   getWeaponType() { return (' '+this.#weapon_type).slice(1); }
 
   size() { return this.#inventory.length; }

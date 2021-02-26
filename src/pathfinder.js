@@ -29,6 +29,11 @@ export class Pathfinder {
     this.#current_inventory.addItem(Items.starter_weapons[weapon_type]);
   }
 
+  reset() {
+    this.#current_inventory.reset();
+    this.buildShoppingList();
+  }
+
   getOriginalShoppingListLength() { return this.#original_list_length; }
   getGoal() { return {...this.#goal}; }
   setGoal(new_goal) {
