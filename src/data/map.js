@@ -46,8 +46,29 @@ map_adjacencies["School"] = ["Alley","Archery Range","Avenue","Hotel","Forest"];
 map_adjacencies["Temple"] = ["Alley","Avenue","Pond"];
 map_adjacencies["Uptown"] = ["Beach","Chapel","Dock","Forest"];
 
+export function createAreaBitcode(area) {
+  return (1 << areas.indexOf(area));
+}
+
+export function createAreasHash(areas) {
+  var hash = 0;
+  for (const area of areas) {
+    hash |= createAreaBitcode(area);
+  }
+  return hash;
+}
+
+export function doAreasHashesOverlap(areasA, areasB) {
+  return (areasA & areasB) != 0;
+}
+
 export function areAreasAdjacent(areaA, areaB) {
-  return map_adjacencies[areaA].includes(areaB);
+  return doAreasHashesOverlap(createAreaBitcode(areaB), area_adjacency_hashes[areaA]);
+}
+
+export var area_adjacency_hashes = {};
+for (const area of areas) {
+  area_adjacency_hashes[area] = createAreasHash(map_adjacencies[area]);
 }
 
 export var hunt_spawns = {};
