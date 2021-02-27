@@ -1,9 +1,11 @@
 import * as Pathfinder from './pathfinder.js';
 import * as Items from './data/items.js';
 import * as Map from './data/map.js';
+import { getNodeText } from '@testing-library/react';
 
 export class PlanSolver {
   #pathfinder = null;
+  static SOLUTION_LIMIT = 50;
   constructor(weapon_type) {
     this.#pathfinder = new Pathfinder.Pathfinder(weapon_type);
   }
@@ -25,164 +27,75 @@ export class PlanSolver {
     }
   }
 
+  #enqueue = function(queue, item, sort_comparison = (e1,e2) => e1 - e2) {
+    var spliced = false;
+    for (let i = 0; i < queue.length; ++i) {
+      if(sort_comparison(queue[i],item) >= 0) {
+        queue.splice(i,0,item);
+        spliced = true;
+        break;
+      }
+    }
+    if(!spliced) {
+      queue.push(item);
+    }
+  };
+  
+  #isHyperlinkedBiDi = function(areaA, areaB) {
+    if(Map.hyperloop[areaA] || Map.hyperloop[areaB]) {
+      return true;
+    }
+  }
+  
+
   static OptimizationCriteria = ["Power Curve","Collection Completion","Item Completion",];
-  generateRoutes(num_limit, scoring = PlanSolver.OptimizationCriteria[0], leftover_plans = null) {
-    var open_plans = [];
-    var closed_plans = [];
+  generateRoutes(step_limit, criteria, carry_over) {
+    const sortAscendingByLength = (e1,e2) => e1.length - e2.length;
+    const sortDescendingBySubZero = (e1,e2) => e2[0] - e1[0];
+    var area_scores = this.#pathfinder.generateAreaScores(this.#pathfinder.percentItemsInArea.bind(this.#pathfinder), 1);
+    var open_set = [];
+    var closed_set = [];
+    var area_hashes = {};
     var solutions = [];
-    const queue_limit = 50;
-
-    // strategies
-    var get_plan_power_curve = (plan) => {
-      var curverating = 0;
-      var ratio = 0.4;
-      for (let i = 1; i < plan.length; ++i) {
-        plan[i][2] = plan[i][1].getCurrentInventory().rateBuildStatsFunctional();
-        curverating += plan[i][2] * (ratio * (1-ratio) ** i);
-      }
-      return curverating;
-    };
-
-    var get_shopping_completion_curve = (plan) => {
-      var curverating = 0;
-      var ratio = 0.8;
-      for (let i = 1; i < plan.length; ++i) {
-        plan[i][2] = plan[i][1].getCurrentShoppingList().length / plan[i][1].getOriginalShoppingListLength();
-        curverating += plan[i][2] * (ratio * (1-ratio) ** i);
-      }
-      return curverating;
-    };
-
-    // select strategy
-    var heuristic = null;
-    var sort_comparison = null;
-    var final_score = null;
-    var final_sort = null;
-    switch (scoring) {
-      default:
-      case "Power Curve":
-        heuristic = "expectedPercentItemsAcquired";
-        sort_comparison = (e1,e2) => e1[0] == e2[0]? e1[1].length - e2.length : e1[0] - e2[0];
-        final_score = get_plan_power_curve;
-        final_sort = (e1,e2) => e1[0] == e2[0]? e1[1].length - e2.length : e2[0] - e1[0];
-        break;
-      case "Collection Completion":
-        heuristic = "percentItemsInArea";
-        sort_comparison = (e1,e2) => e1[0] == e2[0]? e1[1].length - e2.length : e1[0] - e2[0];
-        final_score = get_shopping_completion_curve;
-        final_sort = (e1,e2) => e1[0] == e2[0]? e1[1].length - e2.length : e1[0] - e2[0];
-        break;
-      case "Item Completion":
-        heuristic = "percentItemsInArea";
-        sort_comparison = (e1,e2) => final_score(e2) - final_score(e1);
-        final_score = (e1,e2) => get_plan_power_curve(e2) - get_plan_power_curve(e1); // TODO
-        final_sort = (e1,e2) => e1[0] == e2[0]? e1[1].length - e2.length : e1[0] - e2[0];
-        break;
-    }
-
-    var enqueue = (queue, item) => {
-      var spliced = false;
-      for (let i = 0; i < queue.length; ++i) {
-        if(sort_comparison(queue[i],item) >= 0) {
-          queue.splice(i,0,item);
-          spliced = true;
-          break;
-        }
-      }
-      if(!spliced) {
-        queue.push(item);
-      }
-    };
-
-    var queue_or_solve = (new_plan) => {
-      // queue new plan or mark solved
-      if (new_plan[new_plan.length-1][1].getCurrentShoppingList().length == 0) {
-        new_plan[0] = final_score(new_plan);
-        solutions.push(new_plan);
-      } else if(new_plan.length - 1 < num_limit) {
-        // insert new element in proper place to avoid sorting ( O(n) vs O(nlogn) )
-        enqueue(open_plans, new_plan);
-      } else {
-        enqueue(closed_plans, new_plan);
-      }
-    };
-
-    // carry over prior work
-    if(leftover_plans != null) {
-      if(leftover_plans[0]) {
-        solutions = leftover_plans[0];
-      }
-      if(leftover_plans[1] && leftover_plans[2] &&
-            leftover_plans[1].length > 0 && leftover_plans[2].length > 0) {
-        open_plans = [...leftover_plans[1],...leftover_plans[2]].sort(sort_comparison);
-      } else if (leftover_plans[1] && leftover_plans[1].length > 0) {
-        open_plans = leftover_plans[1];
-      } else if (leftover_plans[2] && leftover_plans[2].length > 0) {
-        open_plans = leftover_plans[2];
+    if(carry_over) {
+      solutions = carry_over[0];
+      open_set = carry_over[1];
+      area_hashes = carry_over[2];
+    } else {
+      for (const area of area_scores) {
+        area_hashes[Map.createAreaBitcode(area[0])] = true;
+        open_set.push([area[1],[area[0]]]);
       }
     }
-
-    if(open_plans.length == 0) {
-      // populate initial area scores
-      var area_scores = this.#pathfinder.generateAreaScores(this.#pathfinder[heuristic].bind(this.#pathfinder), 1);
-      area_scores = area_scores.filter(areaentry => areaentry[1] > 0);
-      for (const search_area of area_scores) {
-        var new_plan = [0,[search_area[0],this.#pathfinder.clone(),0]];
-        new_plan[1][1].collectAllShoppingInArea(new_plan[1][0]);
-        new_plan[1][1].doAllCrafts();
-        new_plan[0] = 1 + (1 / search_area[1] - 1); // <= fScore (gScore + h(n))
-        new_plan[1][2] = (1 / search_area[1] - 1); // <= h(n)
-
-        queue_or_solve(new_plan);
+    while(open_set.length > 0 && solutions.length < PlanSolver.SOLUTION_LIMIT) {
+      var plan = open_set.shift();
+      if(plan[1].length >= step_limit){
+        this.#enqueue(closed_set,plan,sortDescendingBySubZero);
+        continue;
       }
-    }
-    
-    if(num_limit < 2) {
-      console.log("Found "+solutions.length+" solutions from expanding "+closed_plans.length+" of "+(closed_plans.length+open_plans.length)+" visited nodes");
-      return [solutions.sort(final_sort),open_plans,closed_plans];
-    }
-
-    // do steps
-    while(open_plans.length > 0 && solutions.length < queue_limit) {
-      // branch each plan
-      var plan = open_plans.shift();
-      var last_plan_step = plan[plan.length-1];
-      var area_scores = last_plan_step[1].generateAreaScores(last_plan_step[1][heuristic].bind(last_plan_step[1]), plan.length);
-      for (const plan_step of plan) {
-        area_scores = area_scores.filter(areaentry => (areaentry[0] != plan_step[0] && areaentry[1] > 0));
+      this.#pathfinder.reset();
+      for (const area of plan[1]) {
+        this.#pathfinder.collectAllShoppingInArea(area);
+        this.#pathfinder.doAllCrafts();
       }
-
-      // add new areas
-      for (let i = 0; i < area_scores.length; ++i) {
-        if(!(Map.hyperloop[last_plan_step[0]] || Map.areAreasAdjacent(last_plan_step[0],area_scores[i][0]))) {
-          continue;
-        }
-        // clone current plan
-        var new_plan = [0];
-        for (const plan_step of plan) {
-          if(!isNaN(plan_step)){
-            continue;
+      area_scores = this.#pathfinder.generateAreaScores(this.#pathfinder.percentItemsInArea.bind(this.#pathfinder), plan[1].length + 1);
+      for (const area of area_scores) {
+        if(area[1] > 0 && (Map.areAreasAdjacent(plan[1][plan[1].length-1], area[0]) || this.#isHyperlinkedBiDi(plan[1][plan[1].length-1],area[0]))) {
+          var new_plan = [plan[0],[...plan[1]]];
+          new_plan[1].push(area[0]);
+          new_plan[0] = area[1];
+          if(!area_hashes[Map.createAreasHash(new_plan[1])]) {
+            area_hashes[Map.createAreasHash(new_plan[1])] = true;
+            if(new_plan[0] == 1) {
+              solutions.push(new_plan[1]);
+            } else {
+              this.#enqueue(open_set,new_plan,sortDescendingBySubZero);
+            }
           }
-          new_plan.push([plan_step[0],plan_step[1].clone(),plan_step[2]]);
         }
-
-        // add new area
-        new_plan.push([area_scores[i][0],last_plan_step[1].clone(),0]);
-        var last = new_plan.length - 1;
-        new_plan[last][1].collectAllShoppingInArea(new_plan[last][0]);
-        new_plan[last][1].doAllCrafts();
-        new_plan[0] = (new_plan.length-1) + (1 / area_scores[i][1] - 1); // <= fScore (gScore + h(n))
-        new_plan[last][2] = (1 / area_scores[i][1] - 1); // <= h(n)
-        
-        // queue or solve
-        queue_or_solve(new_plan);
       }
-      
-      plan[0] = final_score(plan);
-      enqueue(closed_plans, plan);
     }
-    
-    console.log("Found "+solutions.length+" solutions from expanding "+closed_plans.length+" of "+(closed_plans.length+open_plans.length)+" visited nodes");
-    return [solutions.sort(final_sort),open_plans,closed_plans];
+    solutions.sort(sortAscendingByLength);
+    return [solutions, closed_set, area_hashes];
   }
 };
