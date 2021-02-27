@@ -190,7 +190,7 @@ test('Craft multi-tier item in steps', () => {
 
 test('Test pathfinder reset.', () => {
   var pathfinder = new Pathfinder.Pathfinder("Dagger");
-  pathfinder.setGoal(["Imperial Burgonet"]);
+  pathfinder.setGoal(["Vibroblade","Optical Camouflage Suit"]);
 
   var area_scores = pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1);
   pathfinder.collectAllShoppingInArea("Pond");
@@ -200,11 +200,11 @@ test('Test pathfinder reset.', () => {
   pathfinder.doAllCrafts();
 
   var itemlist = makeItemList(pathfinder);
-  expect(itemlist).toHaveLength(4);
+  expect(itemlist).toHaveLength(3);
   expect(pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1)).not.toStrictEqual(area_scores);
 
   pathfinder.reset();
   itemlist = makeItemList(pathfinder);
-  expect(itemlist).toHaveLength(0);
+  expect(itemlist).toHaveLength(1); // <= starter weapon
   expect(pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1)).toStrictEqual(area_scores);
 });

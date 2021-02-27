@@ -31,6 +31,7 @@ export class Pathfinder {
 
   reset() {
     this.#current_inventory.reset();
+    this.#current_inventory.addItem(Items.starter_weapons[this.#current_inventory.getWeaponType()]);
     this.buildShoppingList();
   }
 
