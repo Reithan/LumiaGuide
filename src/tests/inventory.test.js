@@ -275,8 +275,11 @@ test('Test inventory reset', () => {
   var inventory = new Inventory.Inventory("Dagger");
   inventory.addItems(["Chain Coif","Hairband","Feather"]);
   inventory.craftItem(Items.all_items["Mask"]);
+
+  expect(inventory.getInventory()).toHaveLength(1);
+  expect(inventory.getAllItems()).toHaveLength(2);
+
   inventory.reset();
-  expect(inventory.getWeaponType()).toBe("Dagger");
   expect(inventory.getInventory()).toHaveLength(0);
   expect(inventory.getAllItems()).toHaveLength(0);
 });
