@@ -5,10 +5,9 @@ import { summons } from './summons.js';
 import { materials } from './materials.js';
 import * as ItemClass from './itemclass.js'
 export * as ItemClass from './itemclass.js'
-import { toType } from '../util.js';
+import * as Util from '../util.js';
 
 export var all_items = {};
-var item_collections = [weapons, armors, consumables, summons, materials];
 
 var find_min_max = (items, min, max) => {
   for (const item in items) {
@@ -20,8 +19,8 @@ var find_min_max = (items, min, max) => {
       for (const key in items[item]) {
         if (Object.hasOwnProperty.call(items[item], key)) {
           const stat = items[item][key];
-          var totype = toType(stat);
-          if(totype == "string" || totype == "array" || totype == "object" || totype == "null") {
+          var to_type = Util.toType(stat);
+          if(to_type == "string" || to_type == "array" || to_type == "object" || to_type == "null") {
             continue;
           }
           if(min[key] == undefined || min[key] == null) {
