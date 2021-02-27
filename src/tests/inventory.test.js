@@ -270,3 +270,13 @@ test('Craft equal rarity equipment', () => {
   expect(inventory.haveItem("Hairband")).toBe(0);
   expect(inventory.haveItem("Feather")).toBe(0);
 });
+
+test('Test inventory reset', () => {
+  var inventory = new Inventory.Inventory("Dagger");
+  inventory.addItems(["Chain Coif","Hairband","Feather"]);
+  inventory.craftItem(Items.all_items["Mask"]);
+  inventory.reset();
+  expect(inventory.getWeaponType()).toBe("Dagger");
+  expect(inventory.getInventory()).toHaveLength(0);
+  expect(inventory.getAllItems()).toHaveLength(0);
+});
