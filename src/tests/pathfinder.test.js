@@ -187,3 +187,24 @@ test('Craft multi-tier item in steps', () => {
   expected_itemlist = [["Kitchen Knife",1],["Imperial Burgonet",1]];
   expect(itemlist).toStrictEqual(expected_itemlist);
 });
+
+test('Test pathfinder reset.', () => {
+  var pathfinder = new Pathfinder.Pathfinder("Dagger");
+  pathfinder.setGoal(["Imperial Burgonet"]);
+
+  var area_scores = pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1);
+  pathfinder.collectAllShoppingInArea("Pond");
+  pathfinder.doAllCrafts();
+  pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),2);
+  pathfinder.collectAllShoppingInArea("Avenue");
+  pathfinder.doAllCrafts();
+
+  var itemlist = makeItemList(pathfinder);
+  expect(itemlist).toHaveLength(4);
+  expect(pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1)).not.toStrictEqual(area_scores);
+
+  pathfinder.reset();
+  itemlist = makeItemList(pathfinder);
+  expect(itemlist).toHaveLength(0);
+  expect(pathfinder.generateAreaScores(pathfinder.percentItemsInArea.bind(pathfinder),1)).toStrictEqual(area_scores);
+});
