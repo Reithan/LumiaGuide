@@ -27,6 +27,7 @@ hyperloop["Hospital"] = true;
 hyperloop["Hotel"] = true;
 hyperloop["Temple"] = true;
 hyperloop["Uptown"] = true;
+hyperloop["Beach"] = true; // <= very easy to use the Uptown tele
 
 export var map_adjacencies = {};
 map_adjacencies["Alley"] = ["Archery Range","Avenue","School","Temple"];
