@@ -47,9 +47,8 @@ export class PlanSolver {
     }
   }
   
-
   static OptimizationCriteria = ["Power Curve","Collection Completion","Item Completion",];
-  generateRoutes(step_limit, criteria, carry_over) {
+  generateRawRoutes(step_limit, criteria, carry_over) {
     const sortAscendingByLength = (e1,e2) => e1.length - e2.length;
     const sortDescendingBySubZero = (e1,e2) => e2[0] - e1[0];
     var area_scores = this.#pathfinder.generateAreaScores(this.#pathfinder.percentItemsInArea.bind(this.#pathfinder), 1);
