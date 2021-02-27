@@ -10,7 +10,7 @@ for (const itemname in Items.all_items) {
     if(itemstats.region != null) {
       for (const region of itemstats.region) {
         if(region_drops[region[0]] == undefined) {
-          region_drops[region[0]] = { itemname: region[1] };
+          region_drops[region[0]] = { [itemname] : region[1] };
         } else {
           region_drops[region[0]][itemname] = region[1];
         }
@@ -117,11 +117,11 @@ export class Pathfinder {
     if(itemstats.recipe != null) {
       return this.#recurseItemForList(Items.all_items[itemstats.recipe.part1]) &&
           this.#recurseItemForList(Items.all_items[itemstats.recipe.part2]);
-    } else if(itemstats.region != null || itemstats.collect != null || itemstats.hunt != null) {
+    } else if(itemstats.region != null || itemstats.collect != null || (itemstats.hunt != null && itemstats.hunt[1] != "Rarely")) {
       this.#addItemToList(itemstats.name);
       return true;
     } else {
-      // DEBUG throw new EvalError("Unobtainable item encountered: '"+itemstats.name+"'.");
+      /* DEBUG */ throw new EvalError("Unobtainable item encountered: '"+itemstats.name+"'.");
       return false;
     }
   }
