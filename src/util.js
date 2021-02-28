@@ -74,3 +74,17 @@ export function recursivePerm(elems) {
   }
   return perms;
 }
+
+export function paretoRating(elements, scoreFunc = (e) => e, start_ratio = 0.6) {
+  var score = 0;
+  var prev_score = 0;
+  var ratio = start_ratio;
+  for (const element of elements) {
+    var new_score = scoreFunc(element);
+    score += ratio * (new_score - prev_score);
+    prev_score = new_score;
+    ratio *= (1 - start_ratio);
+  }
+  score += ratio;
+  return score;
+}

@@ -256,8 +256,8 @@ test('Test gear stat ratings', () => {
   expect(weapon_rating["attack_speed"]).toBeCloseTo(0.8181);
   expect(build_rating["attack_speed"]).toBeCloseTo(0.1515);
   expect(build_rating["crit_rate"]).toBeCloseTo(0.1466);
-  expect(total_rating).toBeCloseTo(0.1488);
-  expect(function_rating).toBeCloseTo(0.1417);
+  expect(total_rating).toBeCloseTo(0.0848);
+  expect(function_rating).toBeCloseTo(0.0754);
 });
 
 test('Craft equal rarity equipment', () => {

@@ -299,17 +299,9 @@ export class Inventory {
       all_ratings.push(stats_rating[stat]);
     }
 
-    all_ratings.sort((e1,e2) => (e1 < e2 ? 1 : (e1 > e2 ? -1 : 0)));
-    
-    // generate rating based on pareto principle
-    var total_rating = 0;
-    var ratio = 0.8;
-    for (let i = 0; i < all_ratings.length; i++) {
-      total_rating += all_ratings[i] * ratio;
-      ratio *= 0.2;
-    }
+    all_ratings.sort((e1,e2) => e2 - e1);
 
-    return total_rating;
+    return Util.paretoRating(all_ratings,(e) => e);
   }
 
   rateBuildStatsFunctional() {
@@ -331,17 +323,17 @@ export class Inventory {
       (2 + build_stats["crit_damage"] - max_build["less_crit_percent"])) +
       build_stats["extra_attack_damage"] - max_build["less_attack_damage"]);
     normal_attack = normal_attack > 0 ? normal_attack : 0.0001;
-    var normal_ttk = (1500 + max_build["health"] + 
+    var normal_ttk = (1500 + max_build["health"] +
       15 * (max_build["health_regen_flat"] * (1 + max_build["health_regen"] -
       build_stats["normal_attack_healing_reduction"]))) / normal_attack;
     // skill
-    var skill_attack = 
-      (build_stats["attack_power"] * (1 / (1-build_stats["cooldown_reduction"])) * 
+    var skill_attack =
+      (build_stats["attack_power"] * (1 / (1-build_stats["cooldown_reduction"])) *
       (100 / (100 + max_build["defense"])) + build_stats["skill_amp_flat"] -
       max_build["less_skill_flat"]) * (1 + build_stats["skill_amp_percent"] -
       max_build["less_skill_percent"]);
     skill_attack = skill_attack > 0 ? skill_attack : 0.0001;
-    var skill_ttk = (1500 + max_build["health"] + 
+    var skill_ttk = (1500 + max_build["health"] +
       15 * (max_build["health_regen_flat"] * (1 + max_build["health_regen"] -
       build_stats["skill_healing_reduction"]))) / skill_attack;
     // normal defense
@@ -351,17 +343,17 @@ export class Inventory {
       (2 + max_build["crit_damage"]) - build_stats["less_crit_percent"]) +
       max_build["extra_attack_damage"] - build_stats["less_attack_damage"]);
     normal_defense = normal_defense > 0 ? normal_defense : 0.0001;
-    var normal_ttd = (1500 + build_stats["health"] + 
+    var normal_ttd = (1500 + build_stats["health"] +
       15 * (build_stats["health_regen_flat"] * (1 + build_stats["health_regen"] -
       max_build["normal_attack_healing_reduction"]))) / normal_defense;
     // skill
     var skill_defense =
-      (max_build["attack_power"] * (1 / (1-max_build["cooldown_reduction"])) * 
+      (max_build["attack_power"] * (1 / (1-max_build["cooldown_reduction"])) *
       (100 / (100 + build_stats["defense"])) + max_build["skill_amp_flat"] -
       build_stats["less_skill_flat"]) * (1 + max_build["skill_amp_percent"] -
       build_stats["less_skill_percent"]);
     skill_defense = skill_defense > 0 ? skill_defense : 0.0001;
-    var skill_ttd = (1500 + build_stats["health"] + 
+    var skill_ttd = (1500 + build_stats["health"] +
       15 * (build_stats["health_regen_flat"] * (1 + build_stats["health_regen"] -
       max_build["skill_healing_reduction"]))) / skill_defense;
     // lifesteal adjust
@@ -369,9 +361,9 @@ export class Inventory {
       build_stats["normal_attack_healing_reduction"])) / normal_attack;
     normal_ttd += (normal_attack * 15 * (build_stats["life_steal"] -
       max_build["normal_attack_healing_reduction"])) / normal_defense;
-    skill_ttk += (normal_defense * 15 * (max_build["life_steal"] - 
+    skill_ttk += (normal_defense * 15 * (max_build["life_steal"] -
       build_stats["skill_healing_reduction"])) / skill_attack;
-    
+
     // aggregate stats
     var ratings = []
     ratings.push(normal_attack / normal_defense);
@@ -382,16 +374,10 @@ export class Inventory {
     ratings.push(0.25 * (build_stats["move_speed"] + 0.2 *
       build_stats["move_speed_peace"]) / (max_build["move_speed"] + 0.2 *
       max_build["move_speed_peace"]));
-    ratings.push(0.2 * (build_stats["vision_range"] + build_stats["attack_range"]) / 
+    ratings.push(0.2 * (build_stats["vision_range"] + build_stats["attack_range"]) /
       (max_build["vision_range"] + max_build["attack_range"]));
-      
-    var pareto_total = 0;
-    var ratio = 0.8;
-    ratings = ratings.sort().reverse();
-    for (const rating of ratings) {
-      pareto_total += rating * ratio;
-      ratio *= 0.2;
-    }
-    return pareto_total;
+
+    ratings = ratings.sort((e1,e2) => e2 - e1);
+    return Util.paretoRating(ratings,(e) => e);
   }
 }
