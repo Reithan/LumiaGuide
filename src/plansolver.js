@@ -1,7 +1,8 @@
 import * as Pathfinder from './pathfinder.js';
 import * as Items from './data/items.js';
 import * as Map from './data/map.js';
-import { getNodeText } from '@testing-library/react';
+import * as Pathfinder from './pathfinder.js';
+import * as Util from './util.js';
 
 export class PlanSolver {
   #pathfinder = null;
