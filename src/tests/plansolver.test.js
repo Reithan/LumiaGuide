@@ -53,7 +53,7 @@ test('Test Route Generation', () => {
   expect(valid[0][1]).toStrictEqual(best_iterative);
   //
   
-  console.log("With raw limit "+PlanSolver.SOLUTION_LIMIT+".");
+  console.log("With raw limit "+PlanSolver.PlanSolver.SOLUTION_LIMIT+".");
   console.log("Generated "+result[0].length+" raw.");
   console.log("Generated "+valid.length+" valid.");
   console.log("Top 5");
