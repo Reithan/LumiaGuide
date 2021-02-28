@@ -69,8 +69,6 @@ export class PlanSolver {
       }
     }
 
-    const SOLUTION = ["Uptown","Factory","Cemetary","Pond","Avenue"];
-
     while(open_set.length > 0 && solutions.length < PlanSolver.SOLUTION_LIMIT) {
       var plan = open_set.shift();
       if(plan[1].length >= step_limit){
@@ -95,12 +93,12 @@ export class PlanSolver {
             // TODO Can we optimize this or foist this check off to another step that might be faster?
             // solved a path permutation that this path contains?
             var skip = false;
-            // for (const area_hash in area_hashes) {
-            //   if((area_hash & new_hash) == area_hash && area_hashes[area_hash] == SOLVED) {
-            //     skip = true;
-            //     break;
-            //   }
-            // }
+            for (const area_hash in area_hashes) {
+              if((area_hash & new_hash) == area_hash && area_hashes[area_hash] == SOLVED) {
+                skip = true;
+                break;
+              }
+            }
             if(!skip) {
               if(area[1] == 1) {
                 area_hashes[new_hash] = SOLVED;
@@ -146,6 +144,8 @@ export class PlanSolver {
     var new_routes = [];
     for (const route of raw_routes) {
       var unscored = this.#recurseValidLexicographicRoutePermutations(route);
+      if(unscored[0] == undefined)
+        continue;
       unscored.forEach((unscored_route, index, array) => {
         var score = 0;
         var ratio = 0.6;
@@ -162,7 +162,7 @@ export class PlanSolver {
         for (const area of unscored_route) {
           this.#pathfinder.collectAllShoppingInArea(area);
           this.#pathfinder.doAllCrafts();
-          if(false) {
+          if(false) { // collection curve
             var original = this.#pathfinder.getOriginalShoppingListLength();
             var found = original - this.#pathfinder.getCurrentShoppingList().length;
             var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
@@ -170,13 +170,15 @@ export class PlanSolver {
             var new_score = found / original;
             score += ratio * (new_score - prev_score);
             prev_score = new_score;
-          } else {
+          } else { // build functional strength curve
             var new_score = this.#pathfinder.getCurrentInventory().rateBuildStatsFunctional();
-            score += ratio * (new_score - prev_score);
+            var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
+            score += ratio * (new_score - prev_score) * (inv_size > 10 ? 10/inv_size : 1);
             ratio *= 0.4;
             prev_score = new_score;
           }
         }
+        score += ratio;
         array[index] = [score,unscored_route];
       });
       unscored.sort((e1,e2) => e2[0] - e1[0]);

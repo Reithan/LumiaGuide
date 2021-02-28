@@ -3,10 +3,10 @@ import * as Pathfinder from '../pathfinder.js';
 import * as Map from '../data/map.js';
 import * as Util from '../util.js';
 
-test('Test Route Generation', ()=>{
-  const ITERATIVE_TIME = 3500;
-  const SINGLE_TIME = 3000;
-  const PERMUTE_TIME = 13500;
+test('Test Route Generation', () => {
+  const ITERATIVE_TIME = 10000;
+  const SINGLE_TIME = 1000;
+  const PERMUTE_TIME = 15000;
   const MAX_STEPS = 6;
 
   var plan_solver = new PlanSolver.PlanSolver("Sniper Rifle");
@@ -23,7 +23,6 @@ test('Test Route Generation', ()=>{
       closed = result[1].length;
   }
   var iterative_t1 = performance.now();
-  console.log("Iterative: "+result[0].length+" solutions and "+closed+" closed in "+(iterative_t1-iterative_t0)/1000+" seconds.");
   expect(iterative_t1-iterative_t0).toBeLessThan(ITERATIVE_TIME);
   //
 
@@ -31,9 +30,8 @@ test('Test Route Generation', ()=>{
   var permute_t0 = performance.now();
   var valid = plan_solver.generateValidScoredRoutePermutations(result[0]);
   var permute_t1 = performance.now();
-  console.log("Permute: "+(permute_t1-permute_t0));
   expect(permute_t1-permute_t0).toBeLessThan(PERMUTE_TIME);
-  expect(valid[0][1]).toStrictEqual(["Uptown","Factory","Cemetary","Pond","Avenue"]);
+  var best_iterative = valid[0][1];
   //
 
   //
@@ -41,22 +39,24 @@ test('Test Route Generation', ()=>{
   result = null;
   result = plan_solver.generateRawRoutes(MAX_STEPS,null,result);
   var single_t1 = performance.now();
-  console.log("Single: "+result[0].length+" solutions and "+result[1].length+" closed in "+(single_t1-single_t0)/1000+" seconds.");
   expect(single_t1-single_t0).toBeLessThan(SINGLE_TIME);
   //
 
   // TODO continue benchmarking & improving these algorithms while maintaining result quality
-  expect(iterative_t1-iterative_t0).toBeGreaterThan(single_t1-single_t0); // interative currently slower overall
+  expect(iterative_t1-iterative_t0).toBeGreaterThan(single_t1-single_t0); // iterative currently slower overall
 
   //
   permute_t0 = performance.now();
   valid = plan_solver.generateValidScoredRoutePermutations(result[0]);
   permute_t1 = performance.now();
-  console.log("Permute: "+(permute_t1-permute_t0));
   expect(permute_t1-permute_t0).toBeLessThan(PERMUTE_TIME);
-  expect(valid[0][1]).toStrictEqual(["Uptown","Factory","Cemetary","Pond","Avenue"]);
+  expect(valid[0][1]).toStrictEqual(best_iterative);
   //
-
+  
+  console.log("With raw limit "+PlanSolver.SOLUTION_LIMIT+".");
+  console.log("Generated "+result[0].length+" raw.");
+  console.log("Generated "+valid.length+" valid.");
   console.log("Top 5");
   console.log(valid.slice(0,5));
+  expect(valid[0][1]).toStrictEqual([ 'Uptown', 'Factory', 'Cemetary', 'Pond', 'Avenue' ]);
 });
