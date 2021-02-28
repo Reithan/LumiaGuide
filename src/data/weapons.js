@@ -180,9 +180,9 @@ weapons["Fountain Pen"] = new GearStats("Fountain Pen","Common",null,"Weapon","D
 weapons["Kitchen Knife"] = new GearStats("Kitchen Knife","Common",null,"Weapon","Dagger",4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,[["Dock",6],["Hotel",5],["Temple",7]],null,[["Wild Boar","Rarely"]]);
 weapons["Army Knife"] = new GearStats("Army Knife","Uncommon",new ItemRecipe("Kitchen Knife","Branch"),"Weapon","Dagger",14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0);
 weapons["Rose Knife"] = new GearStats("Rose Knife","Rare",new ItemRecipe("Rose Knife","Branch"),"Weapon","Dagger",20,0,0,0,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
-weapons["Carnwennan"] = new GearStats("Carnwennan","Epic",new ItemRecipe("Rose Knife","Saint's Relic"),"Weapon","Dagger",44,0,29,0,0,0,0,0,0,0.12,0,1.2,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Carnwennan"] = new GearStats("Carnwennan","Epic",new ItemRecipe("Rose Knife","Saint's Relic"),"Weapon","Dagger",41,0,29,0,0,0,0,0,0,0.10,0,1.2,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Mount Slicer"] = new GearStats("Mount Slicer","Epic",new ItemRecipe("Rose Knife","Ash"),"Weapon","Dagger",35,0,0,0,0,0,0,30,0,0.12,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
-weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",57,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
+weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",55,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Fragarach"] = new GearStats("Fragarach","Legendary",new ItemRecipe("Army Knife","Force Core"),"Weapon","Dagger",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
 // Two-Handed Swords
 weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",6],["Archery Range",5],["Chapel",5]]);
