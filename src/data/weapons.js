@@ -214,14 +214,14 @@ weapons["Bident"] = new GearStats("Bident","Rare",new ItemRecipe("Bamboo Spear",
 weapons["Pike"] = new GearStats("Pike","Rare",new ItemRecipe("Short Spear","Steel"),"Weapon","Spear",53,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
 weapons["Halberd Axe"] = new GearStats("Halberd Axe","Rare",new ItemRecipe("Hatchet","Pike"),"Weapon","Spear",85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
 weapons["Sharpened Spear"] = new GearStats("Sharpened Spear","Rare",new ItemRecipe("Bamboo Spear","Feather"),"Weapon","Spear",40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
-weapons["Gentian Silver Gun"] = new GearStats("Gentian Silver Gun","Epic",new ItemRecipe("Sharpened Spear","White Powder"),"Weapon","Spear",105,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.15,0,0,0,0);
+weapons["Gentian Silver Gun"] = new GearStats("Gentian Silver Gun","Epic",new ItemRecipe("Sharpened Spear","White Powder"),"Weapon","Spear",105,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.12,0,0,0,0);
 weapons["Eighteen Foot Spear"] = new GearStats("Eighteen Foot Spear","Epic",new ItemRecipe("Sharpened Spear","Ion Battery"),"Weapon","Spear",100,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Cosmic Bident"] = new GearStats("Cosmic Bident","Epic",new ItemRecipe("Bident","Moonstone"),"Weapon","Spear",150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Lance of Poseidon"] = new GearStats("Lance of Poseidon","Epic",new ItemRecipe("Bident","Pike"),"Weapon","Spear",90,0,0,0,0,0,0,0,0.21,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Fangtian Huaji"] = new GearStats("Fangtian Huaji","Epic",new ItemRecipe("Halberd Axe","Gilded Quill Fan"),"Weapon","Spear",88,0,0,0,0,0,0,31,0,0.05,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0.4);
 weapons["Dragon Guandao"] = new GearStats("Dragon Guandao","Epic",new ItemRecipe("Halberd Axe","Iron Sheet"),"Weapon","Spear",118,0,0,0,0,0,0,0,0,0,320,0,0,0,0,0,0,0,0,0,0,-0.05,0,0,0,0);
-weapons["Blazing Lance"] = new GearStats("Blazing Lance","Legendary",new ItemRecipe("True Samadhi Fire","Bamboo Spear"),"Weapon","Spear",110,0,30,0,0,0,0,0,0,0,0,1.5,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0);
-weapons["Spear of Longinus"] = new GearStats("Spear of Longinus","Legendary",new ItemRecipe("VF Blood Sample","Pike"),"Weapon","Spear",135,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Blazing Lance"] = new GearStats("Blazing Lance","Legendary",new ItemRecipe("True Samadhi Fire","Bamboo Spear"),"Weapon","Spear",115,0,30,0,0,0,0,0,0,0,0,1.5,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0);
+weapons["Spear of Longinus"] = new GearStats("Spear of Longinus","Legendary",new ItemRecipe("VF Blood Sample","Pike"),"Weapon","Spear",130,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Nunchaku
 weapons["Steel Chain"] = new GearStats("Steel Chain","Common",null,"Weapon","Nunchaku",13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Beach",7],["Alley",7],["Cemetary",7]],null,[["Wild Boar","Rarely"]]);
 weapons["Nunchaku"] = new GearStats("Nunchaku","Uncommon",new ItemRecipe("Steel Chain","Scrap Metal"),"Weapon","Nunchaku",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
