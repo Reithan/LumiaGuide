@@ -212,4 +212,7 @@ test('Verify map hashing algorithms', () => {
   for (const test_area of test_areas) {
     expect(reconstructed_ares).toContain(test_area);
   }
+  for (let i = 0; i < 10; ++i) {
+    expect(Map.createAreasHash(test_areas)).toBe(Map.createAreasHash(test_areas.sort((e1,e2) => Math.round(Math.random() * 2 - 1))));
+  }
 });
