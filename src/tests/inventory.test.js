@@ -248,16 +248,25 @@ test('Test gear stat ratings', () => {
   inventory.addItems(["Vibroblade","Optical Camouflage Suit"]);
 
   var weapon_rating = inventory.rateGearSlot("Weapon");
+  var chest_rating = inventory.rateGearSlot("Chest");
   var build_rating = inventory.rateBuildStats();
   var total_rating = inventory.generateOverallRating();
   var function_rating = inventory.rateBuildStatsFunctional();
 
-  expect(weapon_rating["attack_power"]).toBeCloseTo(0.38);
-  expect(weapon_rating["attack_speed"]).toBeCloseTo(0.8181);
-  expect(build_rating["attack_speed"]).toBeCloseTo(0.1515);
+  expect(weapon_rating["attack_power"]).toBeCloseTo(0.3666);
+  expect(weapon_rating["attack_speed"]).toBeCloseTo(0.7500);
+
+  expect(chest_rating["attack_power"]).toBeCloseTo(0.0666);
+  expect(chest_rating["crit_rate"]).toBeCloseTo(0.8800);
+  expect(chest_rating["less_skill_percent"]).toBeCloseTo(0.5000);
+  
+  expect(build_rating["attack_power"]).toBeCloseTo(0.0722);
+  expect(build_rating["attack_speed"]).toBeCloseTo(0.1388);
   expect(build_rating["crit_rate"]).toBeCloseTo(0.1466);
-  expect(total_rating).toBeCloseTo(0.0848);
-  expect(function_rating).toBeCloseTo(0.0754);
+  expect(build_rating["less_skill_percent"]).toBeCloseTo(0.0833);
+  
+  expect(total_rating).toBeCloseTo(0.0819);
+  expect(function_rating).toBeCloseTo(0.0703);
 });
 
 test('Craft equal rarity equipment', () => {
