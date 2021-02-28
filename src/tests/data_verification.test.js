@@ -202,3 +202,14 @@ test('Stat limits are valid', () => {
     }
   }
 });
+
+test('Verify map hashing algorithms', () => {
+  var test_areas = ["Uptown","Factory","Cemetary","Pond","Avenue"];
+  expect(Map.doAreasHashesOverlap(Map.createAreaBitcode("Uptown"),Map.createAreasHash(test_areas))).toBe(true);
+  expect(Map.doAreasHashesOverlap(Map.createAreaBitcode("Research Center"),Map.createAreasHash(test_areas))).toBe(false);
+  expect(Map.createAreaBitcode("Uptown")).not.toBe(Map.createAreasHash(test_areas));
+  var reconstructed_ares = Map.getAreasFromHash(Map.createAreasHash(test_areas));
+  for (const test_area of test_areas) {
+    expect(reconstructed_ares).toContain(test_area);
+  }
+});

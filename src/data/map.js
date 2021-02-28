@@ -67,6 +67,19 @@ export function areAreasAdjacent(areaA, areaB) {
   return doAreasHashesOverlap(createAreaBitcode(areaB), area_adjacency_hashes[areaA]);
 }
 
+export function getAreasFromHash(hash) {
+  var area_list = [];
+  var area_key = 0;
+  while(hash != 0) {
+    if(hash & 1) {
+      area_list.push(areas[area_key]);
+    }
+    hash >>>= 1;
+    ++area_key;
+  }
+  return area_list;
+}
+
 export var area_adjacency_hashes = {};
 for (const area of areas) {
   area_adjacency_hashes[area] = createAreasHash(map_adjacencies[area]);
