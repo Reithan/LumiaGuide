@@ -238,7 +238,7 @@ weapons["Durendal Mk2"] = new GearStats("Durendal Mk2","Epic",new ItemRecipe("Ap
 weapons["Volticletto"] = new GearStats("Volticletto","Epic",new ItemRecipe("Apricot Sword","Electronic Parts"),"Weapon","Rapier",47,0.35,0,0.1,0.25,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Meteor Claymore"] = new GearStats("Meteor Claymore","Epic",new ItemRecipe("Apricot Sword","Meteorite"),"Weapon","Rapier",75,0,0,0.15,0.20,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Joyeuse"] = new GearStats("Joyeuse","Epic",new ItemRecipe("Fencing Rapier","Mithril"),"Weapon","Rapier",75,0.12,0,0,0.30,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
-weapons["Mistilteinn"] = new GearStats("Mistilteinn","Legendary",new ItemRecipe("Sword of Justice","Branch"),"Weapon","Rapier",30,0,0,0,0.25,0,0,0,0.15,0.12,0,1.5,0,0,0,2,0,0,0,0,0,0,0,1,0,0);
+weapons["Mistilteinn"] = new GearStats("Mistilteinn","Legendary",new ItemRecipe("Sword of Justice","Branch"),"Weapon","Rapier",33,0,0,0,0.25,0,0,0,0.15,0.12,0,1.5,0,0,0,2,0,0,0,0,0,0,0,1,0,0);
 // Guitars
 weapons["Starter Guitar"] = new GearStats("Starter Guitar","Common",new ItemRecipe("Bamboo","Piano Wire"),"Weapon","Guitar",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Golden Bridge"] = new GearStats("Golden Bridge","Uncommon",new ItemRecipe("Starter Guitar","Gold"),"Weapon","Guitar",8,0,0,0,0,0,0,0,0.14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
