@@ -25,9 +25,9 @@ weapons["Bamboo"] = new GearStats("Bamboo","Common",null,"Weapon","Tonfa",12,0,0
 weapons["Wooden Tonfa"] = new GearStats("Wooden Tonfa","Uncommon",new ItemRecipe("Bamboo","Branch"),"Weapon","Tonfa",23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0);
 weapons["Police Baton"] = new GearStats("Police Baton","Rare",new ItemRecipe("Wooden Tonfa","Stallion Medal"),"Weapon","Tonfa",31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0);
 weapons["Ryukyu Tonfa"] = new GearStats("Ryukyu Tonfa","Rare",new ItemRecipe("Wooden Tonfa","White Powder"),"Weapon","Tonfa",38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,0,0,0,0);
-weapons["Tactical Tonfa"] = new GearStats("Tactical Tonfa","Epic",new ItemRecipe("Police Baton","Blueprint"),"Weapon","Tonfa",74,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0);
-weapons["Mai Sok"] = new GearStats("Mai Sok","Epic",new ItemRecipe("Ryukyu Tonfa","Short Rod"),"Weapon","Tonfa",63,0,0,0,0,0,0,0,0,0,0,1.0,0,0,0,0,20,0,0,0,0,0,0,0,0,0);
-weapons["Plasma Tonfa"] = new GearStats("Plasma Tonfa","Epic",new ItemRecipe("Ryukyu Tonfa","Laser Pointer"),"Weapon","Tonfa",65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,0,2.5,0,0);
+weapons["Tactical Tonfa"] = new GearStats("Tactical Tonfa","Epic",new ItemRecipe("Police Baton","Blueprint"),"Weapon","Tonfa",74,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,0,0);
+weapons["Mai Sok"] = new GearStats("Mai Sok","Epic",new ItemRecipe("Ryukyu Tonfa","Short Rod"),"Weapon","Tonfa",63,0,0,0,0,0,0,0,0,0,0,1.0,0,0,0,0,22,0,0,0,0,0,0,0,0,0);
+weapons["Plasma Tonfa"] = new GearStats("Plasma Tonfa","Epic",new ItemRecipe("Ryukyu Tonfa","Laser Pointer"),"Weapon","Tonfa",65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,2.5,0,0);
 // Bats
 weapons["Branch"] = new GearStats("Branch","Common",null,"Weapon","Bat",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,["Woodpile"]);
 weapons["Short Rod"] = new GearStats("Short Rod","Common",null,"Weapon","Bat",15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",6],["Pond",5],["Temple",5]],null,[["Wild Dog","Rarely"]]);
