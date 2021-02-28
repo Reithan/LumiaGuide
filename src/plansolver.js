@@ -1,4 +1,3 @@
-import * as Pathfinder from './pathfinder.js';
 import * as Items from './data/items.js';
 import * as Map from './data/map.js';
 import * as Pathfinder from './pathfinder.js';
@@ -148,10 +147,6 @@ export class PlanSolver {
       if(unscored[0] == undefined)
         continue;
       unscored.forEach((unscored_route, index, array) => {
-        var score = 0;
-        var ratio = 0.6;
-        var prev_score = 0;
-        this.#pathfinder.reset();
         // TODO Consider moving scoring into permutation generation recursion
         // TODO if we consider
         // - A B C D
@@ -160,27 +155,25 @@ export class PlanSolver {
         // - A C D B    perhaps we can skip the res of the A C perms?
         //              This might not be mathematically complete, but
         //              might not skip any resonable results in our use case?
-        for (const area of unscored_route) {
+
+        var powerCurveScore = (area) => {
           this.#pathfinder.collectAllShoppingInArea(area);
           this.#pathfinder.doAllCrafts();
-          if(false) { // collection curve
-            var original = this.#pathfinder.getOriginalShoppingListLength();
-            var found = original - this.#pathfinder.getCurrentShoppingList().length;
-            var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
-            found = inv_size > 10 ? found - (inv_size-10) : found;
-            var new_score = found / original;
-            score += ratio * (new_score - prev_score);
-            prev_score = new_score;
-          } else { // build functional strength curve
-            var new_score = this.#pathfinder.getCurrentInventory().rateBuildStatsFunctional();
-            var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
-            score += ratio * (new_score - prev_score) * (inv_size > 10 ? 10/inv_size : 1);
-            ratio *= 0.4;
-            prev_score = new_score;
-          }
-        }
-        score += ratio;
-        array[index] = [score,unscored_route];
+          var score = this.#pathfinder.getCurrentInventory().rateBuildStatsFunctional();
+          var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
+          return score * (inv_size > 10 ? 10/inv_size : 1);
+        };
+
+        var shoppingCurveScore = (area) => {
+          var original = this.#pathfinder.getOriginalShoppingListLength();
+          var found = original - this.#pathfinder.getCurrentShoppingList().length;
+          var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
+          found = inv_size > 10 ? found - (inv_size-10) : found;
+          return found / original;
+        };
+
+        this.#pathfinder.reset();
+        array[index] = [Util.paretoRating(unscored_route,powerCurveScore),unscored_route];
       });
       unscored.sort((e1,e2) => e2[0] - e1[0]);
       new_routes.push(unscored[0]);
