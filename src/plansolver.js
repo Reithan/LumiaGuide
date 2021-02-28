@@ -50,6 +50,7 @@ export class PlanSolver {
   generateRawRoutes(step_limit, criteria, carry_over) {
     const sortAscendingByLength = (e1,e2) => e1.length - e2.length;
     const sortDescendingBySubZero = (e1,e2) => e2[0] - e1[0];
+    const sortAscendingBySubZero = (e1,e2) => e1[0] - e2[0];
     const SEEN = 1;
     const SOLVED = 2;
     var area_scores = this.#pathfinder.generateAreaScores(this.#pathfinder.percentItemsInArea.bind(this.#pathfinder), 1);
@@ -64,14 +65,16 @@ export class PlanSolver {
     } else {
       for (const area of area_scores) {
         area_hashes[Map.createAreaBitcode(area[0])] = SEEN;
-        open_set.push([area[1],[area[0]]]);
+        open_set.push([1-area[1],[area[0]]]);
       }
     }
+
+    const SOLUTION = ["Uptown","Factory","Cemetary","Pond","Avenue"];
 
     while(open_set.length > 0 && solutions.length < PlanSolver.SOLUTION_LIMIT) {
       var plan = open_set.shift();
       if(plan[1].length >= step_limit){
-        this.#enqueue(closed_set,plan,sortDescendingBySubZero);
+        this.#enqueue(closed_set,plan,sortAscendingBySubZero);
         continue;
       }
 
@@ -85,26 +88,26 @@ export class PlanSolver {
         if(area[1] > 0 && (Map.areAreasAdjacent(plan[1][plan[1].length-1], area[0]) || this.#isHyperlinkedBiDi(plan[1][plan[1].length-1],area[0]))) {
           var new_plan = [plan[0],[...plan[1]]];
           new_plan[1].push(area[0]);
-          new_plan[0] = area[1];
+          new_plan[0] = new_plan[1].length + 1 - area[1];
           var new_hash = Map.createAreasHash(new_plan[1]);
           if(!area_hashes[new_hash]) { // seen a permutation of this exact path?
             // TODO ****CHECKING AGAINST HASHES FOR PERMUTATIONS IS STILL SLOW****
             // TODO Can we optimize this or foist this check off to another step that might be faster?
             // solved a path permutation that this path contains?
-            var solved = false;
-            for (const area_hash in area_hashes) {
-              if((area_hash & new_hash) == area_hash && area_hashes[area_hash] == SOLVED) {
-                solved = true;
-                break;
-              }
-            }
-            if(!solved) {
-              if(new_plan[0] == 1) {
+            var skip = false;
+            // for (const area_hash in area_hashes) {
+            //   if((area_hash & new_hash) == area_hash && area_hashes[area_hash] == SOLVED) {
+            //     skip = true;
+            //     break;
+            //   }
+            // }
+            if(!skip) {
+              if(area[1] == 1) {
                 area_hashes[new_hash] = SOLVED;
                 solutions.push(new_plan[1]);
               } else {
                 area_hashes[new_hash] = SEEN;
-                this.#enqueue(open_set,new_plan,sortDescendingBySubZero);
+                this.#enqueue(open_set,new_plan,sortAscendingBySubZero);
               }
             }
           }
@@ -146,6 +149,7 @@ export class PlanSolver {
       unscored.forEach((unscored_route, index, array) => {
         var score = 0;
         var ratio = 0.6;
+        var prev_score = 0;
         this.#pathfinder.reset();
         // TODO Consider moving scoring into permutation generation recursion
         // TODO if we consider
@@ -163,10 +167,14 @@ export class PlanSolver {
             var found = original - this.#pathfinder.getCurrentShoppingList().length;
             var inv_size = this.#pathfinder.getCurrentInventory().getInventory().length;
             found = inv_size > 10 ? found - (inv_size-10) : found;
-            score += ratio * found / original;
+            var new_score = found / original;
+            score += ratio * (new_score - prev_score);
+            prev_score = new_score;
           } else {
-            score += ratio * this.#pathfinder.getCurrentInventory().rateBuildStatsFunctional();
+            var new_score = this.#pathfinder.getCurrentInventory().rateBuildStatsFunctional();
+            score += ratio * (new_score - prev_score);
             ratio *= 0.4;
+            prev_score = new_score;
           }
         }
         array[index] = [score,unscored_route];
