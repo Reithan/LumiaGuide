@@ -4,7 +4,7 @@ import * as Map from '../data/map.js';
 import * as Util from '../util.js';
 
 test('Test Route Generation', () => {
-  const ITERATIVE_TIME = 10000;
+  const ITERATIVE_TIME = 12000;
   const SINGLE_TIME = 1000;
   const PERMUTE_TIME = 15000;
   const MAX_STEPS = 6;
