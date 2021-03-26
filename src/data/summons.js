@@ -3,7 +3,7 @@ import { SummonStats, ItemRecipe } from "./itemclass";
 export var summons = {};
 
 summons["Surveillance Camera"] = new SummonStats("Surveillance Camera","Common",1,5,null,"Vision",null,null,[["Dock",6],["Beach",6],["Uptown",6],["Avenue",6],["Hospital",6],["Archery Range",5],["Cemetary",6],["School",6]],null,[["Bat","Rarely"],["Wild Boar","Rarely"],["Wild Dog","Rarely"]]);
-summons["Snare"] = new SummonStats("Snare","Common",2,5,null,"Root",0.5,10,[["Dock",3],["Pond",6],["Beach",3],["Archery Range",3],["Forest",5],["Chapel",4]],null,[["Wild Boar","Rarely"]]);
+summons["Snare"] = new SummonStats("Snare","Common",2,5,null,"Root",0.5,10,[["Dock",3],["Pond",5],["Beach",3],["Archery Range",3],["Forest",5],["Chapel",4]],null,[["Wild Boar","Rarely"]]);
 summons["Mousetrap"] = new SummonStats("Mousetrap","Common",2,5,null,null,null,50,[["Pond",5],["Beach",5],["Cemetary",6]],null,[["Wild Boar","Rarely"]]);
 summons["Piano Wire"] = new SummonStats("Piano Wire","Common",1,5,null,null,null,130,[["Beach",7],["Uptown",8],["Hotel",7],["Chapel",7]],null,[["Wild Boar","Rarely"]]);
 summons["Spiked Plank"] = new SummonStats("Spiked Plank","Uncommon",2,5,new ItemRecipe("Mousetrap","Nail"),null,null,120,null,null,null,["Green"]);

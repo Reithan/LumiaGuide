@@ -60,7 +60,7 @@ armors["Blazing Dress"] = new GearStats("Blazing Dress","Legendary",new ItemReci
 armors["Kabana"] = new GearStats("Kabana","Legendary",new ItemRecipe("Meteorite","Commander's Armor"),"Chest",null,0,0,0,0,0,0,0,0,0.20,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 armors["Queen of Hearts"] = new GearStats("Queen of Hearts","Legendary",new ItemRecipe("VF Blood Sample","Hanbok"),"Chest",null,0,0,0,0,0,0,0,0,0,0.25,0,3,0,0,0,0,37,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Arms
-armors["Watch"] = new GearStats("Watch","Common",null,"Arm",null,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Hotel",6],["Avenue",8]],null,[["Wild Dog","Rarely"]]);
+armors["Watch"] = new GearStats("Watch","Common",null,"Arm",null,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Hotel",6],["Avenue",7]],null,[["Wild Dog","Rarely"]]);
 armors["Bandage"] = new GearStats("Bandage","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Hospital",7],["Factory",7],["School",8]],null,[["Bat","Rarely"]]);
 armors["Bracelet"] = new GearStats("Bracelet","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,220,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Alley",7]],null,[["Wild Dog","Rarely"]]);
 armors["Leather Shield"] = new GearStats("Leather Shield","Uncommon",new ItemRecipe("Turtle Shell","Leather"),"Arm",null,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
@@ -111,7 +111,7 @@ armors["Red Shoes"] = new GearStats("Red Shoes","Legendary",new ItemRecipe("Kill
 // Accessories
 armors["Feather"] = new GearStats("Feather","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.06,0,0,0,0,[["Hospital",7],["Cemetary",8],["Forest",8]],null,[["Wild Boar","Rarely"]]);
 armors["Flower"] = new GearStats("Flower","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Cemetary",7],["Forest",8]],null,[["Wild Boar","Rarely"]]);
-armors["Ribbon"] = new GearStats("Ribbon","Common",null,"Accessory",null,0,0,0,0,0,0.005,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",6],["Uptown",7],["School",7]],null,[["Wild Dog","Rarely"]]);
+armors["Ribbon"] = new GearStats("Ribbon","Common",null,"Accessory",null,0,0,0,0,0,0.005,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["School",7]],null,[["Wild Dog","Rarely"]]);
 armors["Fan"] = new GearStats("Fan","Common",null,"Accessory",null,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Avenue",8],["Forest",8],["Chapel",6]],null,[["Wild Dog","Rarely"]]);
 armors["Buddhist Scripture"] = new GearStats("Buddhist Scripture","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Temple",10]],null,[["Bat","Rarely"],["Wild Dog","Rarely"]]);
 armors["Box"] = new GearStats("Box","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Pond",7],["Chapel",6]],null,[["Bat","Rarely"]]);
