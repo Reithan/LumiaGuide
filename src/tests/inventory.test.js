@@ -253,7 +253,7 @@ test('Test gear stat ratings', () => {
   var total_rating = inventory.generateOverallRating();
   var function_rating = inventory.rateBuildStatsFunctional();
 
-  expect(weapon_rating["attack_power"]).toBeCloseTo(0.3666);
+  expect(weapon_rating["attack_power"]).toBeCloseTo(0.3793);
   expect(weapon_rating["attack_speed"]).toBeCloseTo(0.7500);
 
   expect(chest_rating["attack_power"]).toBeCloseTo(0.0666);
@@ -265,7 +265,7 @@ test('Test gear stat ratings', () => {
   expect(build_rating["crit_rate"]).toBeCloseTo(0.1466);
   expect(build_rating["less_skill_percent"]).toBeCloseTo(0.0833);
   
-  expect(total_rating).toBeCloseTo(0.0819);
+  expect(total_rating).toBeCloseTo(0.1528);
   expect(function_rating).toBeCloseTo(0.0703);
 });
 
