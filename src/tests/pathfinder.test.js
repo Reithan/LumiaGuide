@@ -155,9 +155,9 @@ test('Test full area collect function', () => {
   var itemlist = makeItemList(pathfinder);
   
   const expected_itemlist = [["Kitchen Knife",1],["Branch",7],["Bandage",7],["Binoculars",7],
-      ["Iron Ball",7],["Chalk",7],["Short Crossbow",4],["Walther PPK",4],["Fedorova",4],
+      ["Iron Ball",7],["Chalk",7],["Short Crossbow",3],["Walther PPK",4],["Fedorova",4],
       ["Hatchet",4],["Curry Powder",6],["Stone",4],["Nail",8],["Turtle Shell",8],["Scrap Metal",10],
-      ["Lighter",10],["Battery",10],["Alcohol",6],["Oil",8],["Glue",7],["Leather",9],["Meat",5]];
+      ["Lighter",10],["Battery",10],["Alcohol",6],["Oil",8],["Glue",8],["Leather",9],["Meat",5]];
 
   const sortlistalphabetically = (e1,e2) => e1[0] > e2[0] ? 1 : e1[0] < e2[0] ? -1 : 0;
   itemlist.sort(sortlistalphabetically);
