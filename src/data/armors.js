@@ -3,8 +3,8 @@ import { GearStats, ItemRecipe } from "./itemclass";
 export var armors = {};
 // Heads
 armors["Hairband"] = new GearStats("Hairband","Common",null,"Head",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0.02,0,0,0,0,0,[["Avenue",8],["Temple",7],["Cemetary",7]],null,[["Bat","Rarely"]]);
-armors["Hat"] = new GearStats("Hat","Common",null,"Head",null,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,4,0,0,0,0.02,0,0,0,0,0,[["Pond",7],["Archery Range",5],["School",7]],null,[["Bat","Rarely"]]);
-armors["Bike Helmet"] = new GearStats("Bike Helmet","Common",null,"Head",null,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,0,0,0,0.02,0,0,0,0,0,[["Beach",6],["Chapel",6],["School",7]],null,[["Wild Boar","Rarely"]]);
+armors["Hat"] = new GearStats("Hat","Common",null,"Head",null,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,4,0,0,0,0.02,0,0,0,0,0,[["Pond",7],["Archery Range",6],["School",7]],null,[["Bat","Rarely"]]);
+armors["Bike Helmet"] = new GearStats("Bike Helmet","Common",null,"Head",null,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,0,0,0,0.02,0,0,0,0,0,[["Beach",6],["Chapel",6],["School",8]],null,[["Wild Boar","Rarely"]]);
 armors["Mask"] = new GearStats("Mask","Uncommon",new ItemRecipe("Hairband","Feather"),"Head",null,0,0,0,0,0,0,0,0,0,0,0,0,0,130,0,0,10,0,0,0,0.04,0.08,0,0,0,0,null,null,null,["Green"]);
 armors["Circlet"] = new GearStats("Circlet","Uncommon",new ItemRecipe("Hairband","Branch"),"Head",null,0,0,0,0,0,0,0,0,0,0,0,0,0,270,0,0,14,0,0,0,0.04,0,0,0,0,0,null,null,null,["Green"]);
 armors["Beret"] = new GearStats("Beret","Uncommon",new ItemRecipe("Hat","Scissors"),"Head",null,0,0,0,0,0,0,0,0,0,0.07,60,0,0,0,0,0,10,0,0,0,0.04,0,0,0,0,0,null,null,null,["Green"]);
@@ -61,8 +61,8 @@ armors["Kabana"] = new GearStats("Kabana","Legendary",new ItemRecipe("Meteorite"
 armors["Queen of Hearts"] = new GearStats("Queen of Hearts","Legendary",new ItemRecipe("VF Blood Sample","Hanbok"),"Chest",null,0,0,0,0,0,0,0,0,0,0.25,0,3,0,0,0,0,37,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Arms
 armors["Watch"] = new GearStats("Watch","Common",null,"Arm",null,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Hotel",6],["Avenue",8]],null,[["Wild Dog","Rarely"]]);
-armors["Bandage"] = new GearStats("Bandage","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Hospital",6],["Factory",7],["School",7]],null,[["Bat","Rarely"]]);
-armors["Bracelet"] = new GearStats("Bracelet","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,220,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Alley",6]],null,[["Wild Dog","Rarely"]]);
+armors["Bandage"] = new GearStats("Bandage","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Hospital",7],["Factory",7],["School",8]],null,[["Bat","Rarely"]]);
+armors["Bracelet"] = new GearStats("Bracelet","Common",null,"Arm",null,0,0,0,0,0,0,0,0,0,0,0,0,0,220,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Alley",7]],null,[["Wild Dog","Rarely"]]);
 armors["Leather Shield"] = new GearStats("Leather Shield","Uncommon",new ItemRecipe("Turtle Shell","Leather"),"Arm",null,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
 armors["Squad Leader Armband"] = new GearStats("Squad Leader Armband","Uncommon",new ItemRecipe("Bandage","Needle"),"Arm",null,0,0,0,0,0.15,0,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
 armors["Bracer"] = new GearStats("Bracer","Uncommon",new ItemRecipe("Bandage","Leather"),"Arm",null,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,13,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
@@ -85,8 +85,8 @@ armors["Bracelet of Skadi"] = new GearStats("Bracelet of Skadi","Legendary",new 
 armors["Radar"] = new GearStats("Radar","Legendary",new ItemRecipe("Vital Sign Sensor","Glass Panel"),"Arm",null,0,0.4,0,0.24,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 armors["Auto-arms"] = new GearStats("Auto-arms","Legendary",new ItemRecipe("Bracer","Force Core"),"Arm",null,45,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,35,0,0,0,0,0,0,0,0,0,null,null,null,["Yellow"]);
 // Legs
-armors["Slippers"] = new GearStats("Slippers","Common",null,"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.5,0,0,0,0,0,0,0.04,0,0,0,0,[["Avenue",9],["Hospital",6],["School",8]],null,[["Bat","Rarely"]]);
-armors["Running Shoes"] = new GearStats("Running Shoes","Common",null,"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0,[["Uptown",7],["Alley",8],["Archery Range",6]],null,[["Wild Dog","Rarely"]]);
+armors["Slippers"] = new GearStats("Slippers","Common",null,"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.5,0,0,0,0,0,0,0.04,0,0,0,0,[["Avenue",9],["Hospital",7],["School",8]],null,[["Bat","Rarely"]]);
+armors["Running Shoes"] = new GearStats("Running Shoes","Common",null,"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0,[["Uptown",7],["Alley",9],["Archery Range",7]],null,[["Wild Dog","Rarely"]]);
 armors["Tights"] = new GearStats("Tights","Common",null,"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0.04,0,0,0,0,[["Avenue",8],["Hospital",6],["Forest",7]],null,[["Wild Boar","Rarely"]]);
 armors["Knee Pads"] = new GearStats("Knee Pads","Uncommon",new ItemRecipe("Tights","Glue"),"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0.16,0,0,0,0,null,null,null,["Green"]);
 armors["Chain Leggings"] = new GearStats("Chain Leggings","Uncommon",new ItemRecipe("Tights","Steel Chain"),"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0.14,0,0,0,0,null,null,null,["Green"]);
@@ -109,15 +109,15 @@ armors["Glacial Shoes"] = new GearStats("Glacial Shoes","Legendary",new ItemReci
 armors["Boots of Hermes"] = new GearStats("Boots of Hermes","Legendary",new ItemRecipe("Force Core","Heelys"),"Leg",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,0,0,0,0,0.4,0.2,0,0,0,null,null,null,["Yellow"]);
 armors["Red Shoes"] = new GearStats("Red Shoes","Legendary",new ItemRecipe("Killer Heels","VF Blood Sample"),"Leg",null,5,0,0,0.1,0,0.15,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0.4,0,0,0,0,null,null,null,["Yellow"]);
 // Accessories
-armors["Feather"] = new GearStats("Feather","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.06,0,0,0,0,[["Hospital",6],["Cemetary",8],["Forest",8]],null,[["Wild Boar","Rarely"]]);
+armors["Feather"] = new GearStats("Feather","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.06,0,0,0,0,[["Hospital",7],["Cemetary",8],["Forest",8]],null,[["Wild Boar","Rarely"]]);
 armors["Flower"] = new GearStats("Flower","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",7],["Uptown",7],["Cemetary",7],["Forest",8]],null,[["Wild Boar","Rarely"]]);
 armors["Ribbon"] = new GearStats("Ribbon","Common",null,"Accessory",null,0,0,0,0,0,0.005,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",6],["Uptown",7],["School",7]],null,[["Wild Dog","Rarely"]]);
 armors["Fan"] = new GearStats("Fan","Common",null,"Accessory",null,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Avenue",8],["Forest",8],["Chapel",6]],null,[["Wild Dog","Rarely"]]);
-armors["Buddhist Scripture"] = new GearStats("Buddhist Scripture","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Temple",9]],null,[["Bat","Rarely"],["Wild Dog","Rarely"]]);
+armors["Buddhist Scripture"] = new GearStats("Buddhist Scripture","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Temple",10]],null,[["Bat","Rarely"],["Wild Dog","Rarely"]]);
 armors["Box"] = new GearStats("Box","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Pond",7],["Chapel",6]],null,[["Bat","Rarely"]]);
 armors["Holy Grail"] = new GearStats("Holy Grail","Common",null,"Accessory",null,0,0,0,0,0,0,0,0,0,0,0,0,1.2,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Chapel",10]],null,[["Bat","Rarely"],["Wild Boar","Rarely"]]);
 armors["Cross"] = new GearStats("Cross","Common",null,"Accessory",null,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Chapel",9]],null,[["Wild Dog","Rarely"]]);
-armors["Binoculars"] = new GearStats("Binoculars","Common",null,"Accessory",null,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0,[["Beach",6],["Alley",6],["Hotel",6],["Factory",7]],null,[["Bat","Rarely"],["Wild Dog","Rarely"]]);
+armors["Binoculars"] = new GearStats("Binoculars","Common",null,"Accessory",null,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,0,0,[["Beach",6],["Alley",7],["Hotel",6],["Factory",7]],null,[["Bat","Rarely"],["Wild Dog","Rarely"]]);
 armors["Saint's Relic"] = new GearStats("Saint's Relic","Uncommon",new ItemRecipe("Cross","Holy Grail"),"Accessory",null,0,0,8,0,0,0,0,0,0,0,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
 armors["Flower of Fate"] = new GearStats("Flower of Fate","Uncommon",new ItemRecipe("Flower","Playing Cards"),"Accessory",null,0,0,0,0.15,0,0,0,0,0,0.08,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);
 armors["Glass Pieces"] = new GearStats("Glass Pieces","Uncommon",new ItemRecipe("Glass Bottle","Stone"),"Accessory",null,0,0,0,0.13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,["Green"]);

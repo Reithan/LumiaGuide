@@ -3,7 +3,7 @@ import { GearStats, ItemRecipe } from "./itemclass";
 export var weapons = {};
 // Gloves
 weapons["Brass Knuckles"] = new GearStats("Brass Knuckles","Common",null,"Weapon","Glove",10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Cemetary",5],["Forest",5]]);
-weapons["Cotton Gloves"] = new GearStats("Cotton Gloves","Common",null,"Weapon","Glove",7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",4],["Hospital",3]]);
+weapons["Cotton Gloves"] = new GearStats("Cotton Gloves","Common",null,"Weapon","Glove",7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",4],["Hospital",4]]);
 weapons["Leather Gloves"] = new GearStats("Leather Gloves","Uncommon",new ItemRecipe("Cotton Gloves","Leather"),"Weapon","Glove",18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Iron Knuckles"] = new GearStats("Iron Knuckles","Uncommon",new ItemRecipe("Brass Knuckles","Iron Ore"),"Weapon","Glove",18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Gauntlet"] = new GearStats("Gauntlet","Rare",new ItemRecipe("Cotton Gloves","Steel"),"Weapon","Glove",28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
@@ -50,7 +50,7 @@ weapons["Gleipnir"] = new GearStats("Gleipnir","Epic",new ItemRecipe("Wind Whip"
 weapons["Plasma Whip"] = new GearStats("Plasma Whip","Epic",new ItemRecipe("Lightning Whip","Laser Pointer"),"Weapon","Whip",60,0.3,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
 weapons["Bloody Nine Tails"] = new GearStats("Bloody Nine Tails","Legendary",new ItemRecipe("Wind Whip","VF Blood Sample"),"Weapon","Whip",65,0,0,0,0,0.25,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.3,0,0);
 // Thrown Weapons
-weapons["Iron Ball"] = new GearStats("Iron Ball","Common",null,"Weapon","Throw",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Archery Range",5],["Forest",7],["Factory",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Iron Ball"] = new GearStats("Iron Ball","Common",null,"Weapon","Throw",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Archery Range",6],["Forest",7],["Factory",7]],null,[["Wild Boar","Rarely"]]);
 weapons["Baseball"] = new GearStats("Baseball","Common",null,"Weapon","Throw",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Grenade"] = new GearStats("Grenade","Uncommon",new ItemRecipe("Iron Ball","Gunpowder"),"Weapon","Throw",25,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Molotov Cocktail"] = new GearStats("Molotov Cocktail","Uncommon",new ItemRecipe("Glass Bottle","Oil"),"Weapon","Throw",22,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -67,7 +67,7 @@ weapons["Smoke Bomb"] = new GearStats("Smoke Bomb","Epic",new ItemRecipe("Flour 
 weapons["High Explosive Grenade"] = new GearStats("High Explosive Grenade","Epic",new ItemRecipe("Grenade","RDX"),"Weapon","Throw",56,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Ruthenium Marble"] = new GearStats("Ruthenium Marble","Epic",new ItemRecipe("Spiky Bouncy Ball","Gold"),"Weapon","Throw",76,0,0,0,0,0,0,0,0.28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.4);
 // Shurikens
-weapons["Razor"] = new GearStats("Razor","Common",null,"Weapon","Shuriken",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hospital",5],["Chapel",6],["School",6]],null,[["Bat","Rarely"]]);
+weapons["Razor"] = new GearStats("Razor","Common",null,"Weapon","Shuriken",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hospital",5],["Chapel",6],["School",7]],null,[["Bat","Rarely"]]);
 weapons["Playing Cards"] = new GearStats("Playing Cards","Common",null,"Weapon","Shuriken",4,0,0,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",6],["Avenue",8]],null,[["Wild Boar","Rarely"]]);
 weapons["Chalk"] = new GearStats("Chalk","Common",null,"Weapon","Shuriken",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Factory",7],["Chapel",6],["School",6]],null,[["Bat","Rarely"]]);
 weapons["Dart"] = new GearStats("Dart","Uncommon",new ItemRecipe("Needle","Feather"),"Weapon","Shuriken",16,0,0,0,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
@@ -175,8 +175,8 @@ weapons["Scythe"] = new GearStats("Scythe","Epic",new ItemRecipe("Reaper's Scyth
 weapons["Parashu"] = new GearStats("Parashu","Epic",new ItemRecipe("Light Hatchet","Buddha Sarira"),"Weapon","Axe",115,0,0,0,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0,0,0.07,0,0,0,0);
 weapons["Harpe"] = new GearStats("Harpe","Epic",new ItemRecipe("Reaper's Scythe","White Crane Fan"),"Weapon","Axe",105,0,0,0,0,0,0.5,33,0,0,0,0,0,0,0,0,0,0,0,0,0,0.07,0,0,0,0.4);
 // Daggers
-weapons["Scissors"] = new GearStats("Scissors","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
-weapons["Fountain Pen"] = new GearStats("Fountain Pen","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Avenue",8],["School",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Scissors"] = new GearStats("Scissors","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",8]],null,[["Bat","Rarely"]]);
+weapons["Fountain Pen"] = new GearStats("Fountain Pen","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Avenue",8],["School",8]],null,[["Wild Boar","Rarely"]]);
 weapons["Kitchen Knife"] = new GearStats("Kitchen Knife","Common",null,"Weapon","Dagger",4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,[["Dock",4],["Hotel",4],["Temple",6]],null,[["Wild Boar","Rarely"]]);
 weapons["Army Knife"] = new GearStats("Army Knife","Uncommon",new ItemRecipe("Kitchen Knife","Branch"),"Weapon","Dagger",14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0);
 weapons["Scalpel"] = new GearStats("Scalpel","Uncommon",new ItemRecipe("Fountain Pen","Razor"),"Weapon","Dagger",18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -211,7 +211,7 @@ weapons["Starsteel Twin Swords"] = new GearStats("Starsteel Twin Swords","Epic",
 weapons["Dioscuri"] = new GearStats("Dioscuri","Epic",new ItemRecipe("Twin Swords","Ion Battery"),"Weapon","Dual Swords",46,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Lloigor & Zahr"] = new GearStats("Lloigor & Zahr","Epic",new ItemRecipe("Twin Swords","Poison"),"Weapon","Dual Swords",38,0.2,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Spears
-weapons["Short Spear"] = new GearStats("Short Spear","Common",null,"Weapon","Spear",15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",5],["Temple",4],["Forest",4]],null,[["Wild Boar","Rarely"]]);
+weapons["Short Spear"] = new GearStats("Short Spear","Common",null,"Weapon","Spear",15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",5],["Temple",5],["Forest",4]],null,[["Wild Boar","Rarely"]]);
 weapons["Bamboo Spear"] = new GearStats("Bamboo Spear","Uncommon",new ItemRecipe("Short Spear","Bamboo"),"Weapon","Spear",37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Bident"] = new GearStats("Bident","Rare",new ItemRecipe("Bamboo Spear","Kitchen Knife"),"Weapon","Spear",52,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Pike"] = new GearStats("Pike","Rare",new ItemRecipe("Short Spear","Steel"),"Weapon","Spear",53,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
@@ -226,7 +226,7 @@ weapons["Dragon Guandao"] = new GearStats("Dragon Guandao","Epic",new ItemRecipe
 weapons["Blazing Lance"] = new GearStats("Blazing Lance","Legendary",new ItemRecipe("True Samadhi Fire","Bamboo Spear"),"Weapon","Spear",115,0,30,0,0,0,0,0,0,0,0,1.5,0,0,1.5,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Spear of Longinus"] = new GearStats("Spear of Longinus","Legendary",new ItemRecipe("VF Blood Sample","Pike"),"Weapon","Spear",130,0,0,0,0,0.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Nunchaku
-weapons["Steel Chain"] = new GearStats("Steel Chain","Common",null,"Weapon","Nunchaku",13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Beach",7],["Alley",7],["Cemetary",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Steel Chain"] = new GearStats("Steel Chain","Common",null,"Weapon","Nunchaku",13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Beach",7],["Alley",8],["Cemetary",7]],null,[["Wild Boar","Rarely"]]);
 weapons["Nunchaku"] = new GearStats("Nunchaku","Uncommon",new ItemRecipe("Steel Chain","Scrap Metal"),"Weapon","Nunchaku",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Sharper"] = new GearStats("Sharper","Rare",new ItemRecipe("Nunchaku","Nail"),"Weapon","Nunchaku",29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.4);
 weapons["Bleeder"] = new GearStats("Bleeder","Rare",new ItemRecipe("Nunchaku","Razor"),"Weapon","Nunchaku",38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
