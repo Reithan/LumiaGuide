@@ -3,7 +3,7 @@ import { GearStats, ItemRecipe } from "./itemclass";
 export var weapons = {};
 // Gloves
 weapons["Brass Knuckles"] = new GearStats("Brass Knuckles","Common",null,"Weapon","Glove",10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Cemetary",5],["Forest",5]]);
-weapons["Cotton Gloves"] = new GearStats("Cotton Gloves","Common",null,"Weapon","Glove",7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",4],["Hospital",4]]);
+weapons["Cotton Gloves"] = new GearStats("Cotton Gloves","Common",null,"Weapon","Glove",7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",4],["Hospital",3]]);
 weapons["Leather Gloves"] = new GearStats("Leather Gloves","Uncommon",new ItemRecipe("Cotton Gloves","Leather"),"Weapon","Glove",18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Iron Knuckles"] = new GearStats("Iron Knuckles","Uncommon",new ItemRecipe("Brass Knuckles","Iron Ore"),"Weapon","Glove",18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Gauntlet"] = new GearStats("Gauntlet","Rare",new ItemRecipe("Cotton Gloves","Steel"),"Weapon","Glove",28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.1,0,0,0,0);
@@ -21,7 +21,7 @@ weapons["Brasil Gauntlet"] = new GearStats("Brasil Gauntlet","Epic",new ItemReci
 weapons["White Claw Punch"] = new GearStats("White Claw Punch","Epic",new ItemRecipe("Glass Knuckles","White Powder"),"Weapon","Glove",55,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Imperial Silk Gloves"] = new GearStats("Imperial Silk Gloves","Epic",new ItemRecipe("Mithril String","Leather Gloves"),"Weapon","Glove",85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 // Tonfas
-weapons["Bamboo"] = new GearStats("Bamboo","Common",null,"Weapon","Tonfa",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",8],["Temple",6],["Archery Range",5],["Cemetary",7],["Forest",7]],null,[["Bat","Rarely"]]);
+weapons["Bamboo"] = new GearStats("Bamboo","Common",null,"Weapon","Tonfa",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Pond",8],["Temple",6],["Archery Range",5],["Cemetary",6],["Forest",7]],null,[["Bat","Rarely"]]);
 weapons["Wooden Tonfa"] = new GearStats("Wooden Tonfa","Uncommon",new ItemRecipe("Bamboo","Branch"),"Weapon","Tonfa",23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0);
 weapons["Police Baton"] = new GearStats("Police Baton","Rare",new ItemRecipe("Wooden Tonfa","Stallion Medal"),"Weapon","Tonfa",31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0);
 weapons["Ryukyu Tonfa"] = new GearStats("Ryukyu Tonfa","Rare",new ItemRecipe("Wooden Tonfa","White Powder"),"Weapon","Tonfa",38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,0,0,0,0);
@@ -40,7 +40,7 @@ weapons["Mallet"] = new GearStats("Mallet","Epic",new ItemRecipe("Goblin Bat","E
 weapons["Spy Umbrella"] = new GearStats("Spy Umbrella","Epic",new ItemRecipe("Umbrella","Ash"),"Weapon","Bat",65,0,0,0,0,0,0,28,0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Monkey King Bar"] = new GearStats("Monkey King Bar","Legendary",new ItemRecipe("Force Core","Long Rod"),"Weapon","Bat",145,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Whips
-weapons["Whip"] = new GearStats("Whip","Common",null,"Weapon","Whip",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Chapel",3],["School",4]]);
+weapons["Whip"] = new GearStats("Whip","Common",null,"Weapon","Whip",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Chapel",3],["School",3]]);
 weapons["Rope Cuffs"] = new GearStats("Rope Cuffs","Uncommon",new ItemRecipe("Whip","Stallion Medal"),"Weapon","Whip",24,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Bullwhip"] = new GearStats("Bullwhip","Uncommon",new ItemRecipe("Whip","Razor"),"Weapon","Whip",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Wind Whip"] = new GearStats("Wind Whip","Rare",new ItemRecipe("Rope Cuffs","Fan"),"Weapon","Whip",24,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -67,7 +67,7 @@ weapons["Smoke Bomb"] = new GearStats("Smoke Bomb","Epic",new ItemRecipe("Flour 
 weapons["High Explosive Grenade"] = new GearStats("High Explosive Grenade","Epic",new ItemRecipe("Grenade","RDX"),"Weapon","Throw",56,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Ruthenium Marble"] = new GearStats("Ruthenium Marble","Epic",new ItemRecipe("Spiky Bouncy Ball","Gold"),"Weapon","Throw",80,0,0,0,0,0,0,0,0.28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.4);
 // Shurikens
-weapons["Razor"] = new GearStats("Razor","Common",null,"Weapon","Shuriken",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hospital",6],["Chapel",6],["School",6]],null,[["Bat","Rarely"]]);
+weapons["Razor"] = new GearStats("Razor","Common",null,"Weapon","Shuriken",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hospital",5],["Chapel",6],["School",6]],null,[["Bat","Rarely"]]);
 weapons["Playing Cards"] = new GearStats("Playing Cards","Common",null,"Weapon","Shuriken",4,0,0,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Hotel",6],["Avenue",8]],null,[["Wild Boar","Rarely"]]);
 weapons["Chalk"] = new GearStats("Chalk","Common",null,"Weapon","Shuriken",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Factory",7],["Chapel",6],["School",6]],null,[["Bat","Rarely"]]);
 weapons["Dart"] = new GearStats("Dart","Uncommon",new ItemRecipe("Needle","Feather"),"Weapon","Shuriken",16,0,0,0,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
@@ -107,7 +107,7 @@ weapons["Twinbow"] = new GearStats("Twinbow","Epic",new ItemRecipe("Strong Bow",
 weapons["Elemental Bow"] = new GearStats("Elemental Bow","Epic",new ItemRecipe("Scorchbow","White Crane Fan"),"Weapon","Bow",60,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0.4,0);
 weapons["Failnaught"] = new GearStats("Failnaught","Legendary",new ItemRecipe("VF Blood Sample","Strong Bow"),"Weapon","Bow",100,0.2,0,0,0,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 // Crossbows
-weapons["Short Crossbow"] = new GearStats("Short Crossbow","Common",null,"Weapon","Crossbow",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Forest",4],["Factory",4]]);
+weapons["Short Crossbow"] = new GearStats("Short Crossbow","Common",null,"Weapon","Crossbow",12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Forest",3],["Factory",3]]);
 weapons["Long Crossbow"] = new GearStats("Long Crossbow","Uncommon",new ItemRecipe("Short Crossbow","Piano Wire"),"Weapon","Crossbow",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Crossbow"] = new GearStats("Crossbow","Uncommon",new ItemRecipe("Short Crossbow","Bamboo"),"Weapon","Crossbow",30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Power Crossbow"] = new GearStats("Power Crossbow","Rare",new ItemRecipe("Long Crossbow","Rubber"),"Weapon","Crossbow",42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -177,7 +177,7 @@ weapons["Harpe"] = new GearStats("Harpe","Epic",new ItemRecipe("Reaper's Scythe"
 // Daggers
 weapons["Scissors"] = new GearStats("Scissors","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Alley",7],["Hospital",6],["School",7]],null,[["Bat","Rarely"]]);
 weapons["Fountain Pen"] = new GearStats("Fountain Pen","Common",null,"Weapon","Dagger",5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Uptown",7],["Avenue",8],["School",7]],null,[["Wild Boar","Rarely"]]);
-weapons["Kitchen Knife"] = new GearStats("Kitchen Knife","Common",null,"Weapon","Dagger",4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,[["Dock",6],["Hotel",5],["Temple",7]],null,[["Wild Boar","Rarely"]]);
+weapons["Kitchen Knife"] = new GearStats("Kitchen Knife","Common",null,"Weapon","Dagger",4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.05,0,0,0,0,[["Dock",4],["Hotel",4],["Temple",6]],null,[["Wild Boar","Rarely"]]);
 weapons["Army Knife"] = new GearStats("Army Knife","Uncommon",new ItemRecipe("Kitchen Knife","Branch"),"Weapon","Dagger",14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08,0,0,0,0);
 weapons["Rose Knife"] = new GearStats("Rose Knife","Rare",new ItemRecipe("Army Knife","Flower"),"Weapon","Dagger",20,0,0,0,0,0,0,0,0,0.08,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Carnwennan"] = new GearStats("Carnwennan","Epic",new ItemRecipe("Rose Knife","Saint's Relic"),"Weapon","Dagger",41,0,29,0,0,0,0,0,0,0.08,0,1.2,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
@@ -185,7 +185,7 @@ weapons["Mount Slicer"] = new GearStats("Mount Slicer","Epic",new ItemRecipe("Ro
 weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",55,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Fragarach"] = new GearStats("Fragarach","Legendary",new ItemRecipe("Army Knife","Force Core"),"Weapon","Dagger",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
 // Two-Handed Swords
-weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",6],["Archery Range",5],["Chapel",5]]);
+weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Archery Range",6],["Chapel",6]]);
 weapons["Shamshir"] = new GearStats("Shamshir","Uncommon",new ItemRecipe("Rusty Sword","Lighter"),"Weapon","Two-Handed Sword",27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Katana"] = new GearStats("Katana","Rare",new ItemRecipe("Rusty Sword","Iron Sheet"),"Weapon","Two-Handed Sword",35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Masamune"] = new GearStats("Masamune","Rare",new ItemRecipe("Katana","Oil"),"Weapon","Two-Handed Sword",40,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);

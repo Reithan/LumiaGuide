@@ -72,7 +72,7 @@ consumables["Fish And Chips"] = new ConsumableStats("Fish And Chips","Epic",2,5,
 // Beverages
 consumables["Honey"] = new ConsumableStats("Honey","Common",2,5,null,"Beverage",250,[["Alley",6],["Avenue",6],["Forest",6]]);
 consumables["Water"] = new ConsumableStats("Water","Common",3,5,null,"Beverage",100,null,["Water Source"]);
-consumables["Ice"] = new ConsumableStats("Ice","Common",2,5,null,"Beverage",200,[["Hotel",7],["Hospital",6],["Cemetary",6]]);
+consumables["Ice"] = new ConsumableStats("Ice","Common",2,5,null,"Beverage",200,[["Hotel",8],["Hospital",7],["Cemetary",7]]);
 consumables["Whiskey"] = new ConsumableStats("Whiskey","Common",1,5,null,"Beverage",450,[["Uptown",5],["Hotel",5],["Chapel",4]]);
 consumables["Coffee"] = new ConsumableStats("Coffee","Common",1,5,null,"Beverage",380,[["Dock",5],["Uptown",5],["Cemetary",5]]);
 consumables["Carbonated Water"] = new ConsumableStats("Carbonated Water","Common",1,5,null,"Beverage",380,[["Beach",6],["Uptown",6],["Hotel",5]]);
