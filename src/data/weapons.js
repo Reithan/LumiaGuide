@@ -185,7 +185,7 @@ weapons["Mount Slicer"] = new GearStats("Mount Slicer","Epic",new ItemRecipe("Ro
 weapons["Vibroblade"] = new GearStats("Vibroblade","Epic",new ItemRecipe("Army Knife","Motor"),"Weapon","Dagger",55,0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.1,0,0,0,0);
 weapons["Fragarach"] = new GearStats("Fragarach","Legendary",new ItemRecipe("Army Knife","Force Core"),"Weapon","Dagger",90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0,0,0,0);
 // Two-Handed Swords
-weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Archery Range",6],["Chapel",6]]);
+weapons["Rusty Sword"] = new GearStats("Rusty Sword","Common",null,"Weapon","Two-Handed Sword",11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[["Dock",7],["Archery Range",7],["Chapel",5]]);
 weapons["Shamshir"] = new GearStats("Shamshir","Uncommon",new ItemRecipe("Rusty Sword","Lighter"),"Weapon","Two-Handed Sword",27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Katana"] = new GearStats("Katana","Rare",new ItemRecipe("Rusty Sword","Iron Sheet"),"Weapon","Two-Handed Sword",35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 weapons["Masamune"] = new GearStats("Masamune","Rare",new ItemRecipe("Katana","Oil"),"Weapon","Two-Handed Sword",40,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
